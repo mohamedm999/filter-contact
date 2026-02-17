@@ -1,0 +1,29 @@
+# Email Campaign Tool — Dependencies
+# All packages are from Python standard library!
+# No external packages required.
+#
+# Python 3.8+ is required.
+#
+# The following standard library modules are used:
+# - smtplib      (SMTP email sending)
+# - ssl          (TLS encryption)
+# - email        (MIME message building)
+# - json         (tracking persistence)
+# - logging      (campaign logging)
+# - argparse     (CLI interface)
+# - re           (regex parsing)
+# - uuid         (unique message IDs)
+# - time         (rate limiting delays)
+# - random       (randomized delays)
+# - socket       (connection handling)
+# - pathlib      (file path handling)
+# - dataclasses  (configuration models)
+# - collections  (data structures)
+# - datetime     (timestamps)
+# - os           (environment variables)
+# - sys          (system utilities)
+#
+# ════════════════════════════════════════
+# NO pip install required!
+# Just run: python main.py
+# ════════════════════════════════════════

@@ -1,0 +1,4782 @@
+{
+  "last_updated": "2026-02-17T10:28:35.125347",
+  "total_sent": 256,
+  "total_failed": 5,
+  "total_skipped": 216,
+  "sent": {
+    "amina@tcrew.be": {
+      "email": "amina@tcrew.be",
+      "company": "TCrew",
+      "subject": "Candidature — Full Stack Developer | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T13:28:34.730025",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "talents@insurbt.com": {
+      "email": "talents@insurbt.com",
+      "company": "Insurbt",
+      "subject": "Candidature — Développeur BackEnd | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T13:29:38.933263",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "igartoua@wemanity.com": {
+      "email": "igartoua@wemanity.com",
+      "company": "Wemanity",
+      "subject": "Candidature — Développeur Full Stack (React, Node.js, Angular) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T14:21:42.567666",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "cabinet.ybaccompagnement@gmail.com": {
+      "email": "cabinet.ybaccompagnement@gmail.com",
+      "company": "YB Accompagnement",
+      "subject": "Candidature — Développeur Web | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:23:52.350142",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "i.nssiri@klk.ma": {
+      "email": "i.nssiri@klk.ma",
+      "company": "KLK",
+      "subject": "Candidature – Ingénieur Développement Junior | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:25:23.471185",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "contact@tastyandnomad.com": {
+      "email": "contact@tastyandnomad.com",
+      "company": "Tasty and Nomad",
+      "subject": "Proposition — Refonte de site web & charte graphique | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:26:18.016820",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "attaam72@gmail.com": {
+      "email": "attaam72@gmail.com",
+      "company": "—",
+      "subject": "Candidature — Stage PFE Full Stack (React) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:27:47.135921",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@ac2i.ma": {
+      "email": "recrutement@ac2i.ma",
+      "company": "AC2I",
+      "subject": "Candidature — Développeur informatique (PHP, JS, React, Laravel) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:29:01.907597",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "moise.k@digiware-business.com": {
+      "email": "moise.k@digiware-business.com",
+      "company": "Digiware Business",
+      "subject": "Candidature — Développeur Spring Boot / React / React Native | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:30:09.446893",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "rhairecrutement@gmail.com": {
+      "email": "rhairecrutement@gmail.com",
+      "company": "—",
+      "subject": "Candidature — Full Stack Developer (JS, React/Angular) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:31:37.766359",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "hello@agentooz.com": {
+      "email": "hello@agentooz.com",
+      "company": "Agentooz",
+      "subject": "Application — Next.js Frontend Developer | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:32:54.599277",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "contact@stratchangeconsulting.com": {
+      "email": "contact@stratchangeconsulting.com",
+      "company": "StratChange Consulting",
+      "subject": "Candidature — Stage Flutter / Node.js | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:33:54.029931",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "rashmi.singh@dianapps.com": {
+      "email": "rashmi.singh@dianapps.com",
+      "company": "DianaApps",
+      "subject": "Application — React.js Developer | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:35:28.710630",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "hind.sbiti@accenture.com": {
+      "email": "hind.sbiti@accenture.com",
+      "company": "Btechnologie/Accenture",
+      "subject": "Candidature — Stage PFE Développeur Web (PHP / Vue.js) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:52:55.014450",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "hr@alahramgroup-eg.net": {
+      "email": "hr@alahramgroup-eg.net",
+      "company": "Alahram Group",
+      "subject": "Application — Backend Developer (Laravel, PHP) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:54:32.277040",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "kenitra.recruitment@eu.fujikura.com": {
+      "email": "kenitra.recruitment@eu.fujikura.com",
+      "company": "Fujikura",
+      "subject": "DEV-RH | Candidature — Développeur informatique | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:55:55.935398",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "shahzaddeveloper987@gmail.com": {
+      "email": "shahzaddeveloper987@gmail.com",
+      "company": "—",
+      "subject": "Application — Frontend Developer (Remote) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:57:12.103432",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "akkodismoroccorecruitment@akkodis.com": {
+      "email": "akkodismoroccorecruitment@akkodis.com",
+      "company": "Akkodis",
+      "subject": "Candidature — Développeur Full Stack (Node.js / JavaScript / Angular) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T15:58:22.713226",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrudigital4futur@gmail.com": {
+      "email": "recrudigital4futur@gmail.com",
+      "company": "Digital4Futur",
+      "subject": "Candidature — Développeur React (CDI Full Remote) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T16:23:52.001695",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "farah.lemsi@bti-advisory.com": {
+      "email": "farah.lemsi@bti-advisory.com",
+      "company": "BTI Advisory",
+      "subject": "Candidature — Développeur Full Stack (PHP / JavaScript) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T16:25:16.704899",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "contact@schoolify-edtech.com": {
+      "email": "contact@schoolify-edtech.com",
+      "company": "Schoolify",
+      "subject": "Candidature — Stage Pré-embauche Full Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T16:26:31.669693",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "meriem.aziz@adria-bt.com": {
+      "email": "meriem.aziz@adria-bt.com",
+      "company": "Adria Business & Technology",
+      "subject": "Candidature — Stage PFE (Front-End / QA / Banque Digitale) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T16:27:18.529643",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "wissal.el.hariri@accenture.com": {
+      "email": "wissal.el.hariri@accenture.com",
+      "company": "Accenture",
+      "subject": "Candidature — Développeur ReactJS / Java | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T16:29:04.958788",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@anakot.com": {
+      "email": "recrutement@anakot.com",
+      "company": "Anakot",
+      "subject": "Candidature — Stage Front-End / Back-End (Full Stack) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T16:45:33.188471",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "yafang@omnidata.ma": {
+      "email": "yafang@omnidata.ma",
+      "company": "Omnidata/Freelance",
+      "subject": "Candidature — Développeur Full Stack (Java/React) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T16:47:31.360308",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "hermance.ma@digiware-business.com": {
+      "email": "hermance.ma@digiware-business.com",
+      "company": "Digiware",
+      "subject": "Candidature — Développeur Spring Boot / React | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T16:48:46.824347",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "lina.perez@deltalink.ma": {
+      "email": "lina.perez@deltalink.ma",
+      "company": "DeltaLink",
+      "subject": "Candidature — Développeur Fullstack Java / React (Freelance) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-12T16:50:23.184192",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "marwane.boudouar@tandeem.net": {
+      "email": "marwane.boudouar@tandeem.net",
+      "company": "Tandeem",
+      "subject": "Candidature — Stage Pré-embauche Développeur Web (Next.js / Node.js) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T08:33:49.907876",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "contact@wakalny.com": {
+      "email": "contact@wakalny.com",
+      "company": "Wakalny",
+      "subject": "Candidature — Développeur Laravel / React | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T08:34:58.923123",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "rekrute.awarino@gmail.com": {
+      "email": "rekrute.awarino@gmail.com",
+      "company": "Awarino",
+      "subject": "Stage Développement Angular + Microservices | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T08:36:46.706528",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "fatine.bennani@decloedt.cloud": {
+      "email": "fatine.bennani@decloedt.cloud",
+      "company": "Decloedt DF",
+      "subject": "Candidature — Développeur React / Laravel | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T08:38:24.017934",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "youssra.boughrara@avantamaroc.com": {
+      "email": "youssra.boughrara@avantamaroc.com",
+      "company": "Avanta Maroc",
+      "subject": "Candidature — Développeur Java Full Stack (Java/Angular) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T08:39:51.001486",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "aya.idrissi@ef2conseil.com": {
+      "email": "aya.idrissi@ef2conseil.com",
+      "company": "EF2 Conseil",
+      "subject": "Candidature — Stage Pré-embauche Full-Stack (Node.js/Next.js) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T08:41:47.660730",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "fatima.akli@jeunestalents.ma": {
+      "email": "fatima.akli@jeunestalents.ma",
+      "company": "Jeunes Talents",
+      "subject": "Candidature — Développeur Fullstack Laravel / Vue.js | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T08:43:00.134489",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@talentmind.ma": {
+      "email": "recrutement@talentmind.ma",
+      "company": "TalentMind",
+      "subject": "Candidature — Stage Développement (Frontend/Backend) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T08:44:54.942159",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@technicfile.ma": {
+      "email": "recrutement@technicfile.ma",
+      "company": "TechnicFile",
+      "subject": "Candidature — Stage Développeur Full Stack (Pré-embauche) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T08:46:02.961781",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@achmitech.com": {
+      "email": "recrutement@achmitech.com",
+      "company": "Achmitech",
+      "subject": "Candidature — Développeur Fullstack Angular/Spring Boot | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T08:47:24.801032",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "jobs@homsys.ma": {
+      "email": "jobs@homsys.ma",
+      "company": "Homsys",
+      "subject": "Candidature — Développeur Front-End Angular (Freelance) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T09:05:29.906883",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "ahmed.benbrahim@bi-newvision.com": {
+      "email": "ahmed.benbrahim@bi-newvision.com",
+      "company": "BI-NewVision",
+      "subject": "Candidature — Développeur Java (Confirmé/Expert) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T09:07:29.941480",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "fevma_rh@fev.com": {
+      "email": "fevma_rh@fev.com",
+      "company": "FEV North Africa",
+      "subject": "Candidature — Stage Développement Informatique (MERN / Java) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T09:08:36.280737",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "gti.recrutement@gtiinfo.com.tn": {
+      "email": "gti.recrutement@gtiinfo.com.tn",
+      "company": "GTI",
+      "subject": "Candidature — Développeur React Native | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T09:10:21.040388",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "khawla.bourakkadi@globant.com": {
+      "email": "khawla.bourakkadi@globant.com",
+      "company": "Globant",
+      "subject": "Candidature — Développeur .NET Core / React.js | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T09:11:23.613420",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "y.benyahia@bibatech.ma": {
+      "email": "y.benyahia@bibatech.ma",
+      "company": "Bibatech",
+      "subject": "Candidature — Développeur Full Stack Laravel / React.js | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T09:15:23.135177",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "smasloh@bessand.com": {
+      "email": "smasloh@bessand.com",
+      "company": "Bessand",
+      "subject": "Candidature — Frontend Engineer React.js (Remote) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T09:19:00.472672",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "maha.cheikhi@avaliance.com": {
+      "email": "maha.cheikhi@avaliance.com",
+      "company": "Avaliance",
+      "subject": "Candidature — Développeur Angular / Full Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T09:20:19.080517",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "kaoutar.nouri@hps-worldwide.com": {
+      "email": "kaoutar.nouri@hps-worldwide.com",
+      "company": "HPS",
+      "subject": "Candidature — Développeur Java/Angular & Automation Test | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T09:22:16.774928",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "asmaa.jnibi@capgemini.com": {
+      "email": "asmaa.jnibi@capgemini.com",
+      "company": "Capgemini",
+      "subject": "Candidature — Développeur Full Stack / Backend | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T09:23:06.265344",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "lambdasoft5@gmail.com": {
+      "email": "lambdasoft5@gmail.com",
+      "company": "LambdaSoft",
+      "subject": "Candidature — Stage PFE Web Full Stack (Remote) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T09:23:59.868614",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "samia.elkaissi@hcltech.com": {
+      "email": "samia.elkaissi@hcltech.com",
+      "company": "HCLTech",
+      "subject": "Candidature — Full Stack Engineer (Remote) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T09:25:19.734390",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "asma.m@eitaconsulting.fr": {
+      "email": "asma.m@eitaconsulting.fr",
+      "company": "EITA Consulting",
+      "subject": "Candidature — Développeur Fullstack Java / Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T09:26:23.328038",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "imane.amsker@istyagroup.com": {
+      "email": "imane.amsker@istyagroup.com",
+      "company": "IstyaGroup",
+      "subject": "Candidature — Développeur FullStack Java/Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:01:51.984362",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "fbalibla@gmail.com": {
+      "email": "fbalibla@gmail.com",
+      "company": "LibertyPay",
+      "subject": "Application — Front-End Developer (React / React Native) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:03:31.403492",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "nour-elhoda.rafai@cpl-network.com": {
+      "email": "nour-elhoda.rafai@cpl-network.com",
+      "company": "CPL Network (Wirky?)",
+      "subject": "Candidature — Développeur Frontend Junior (React/Next.js) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:05:05.932957",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "kalhimarwa@gmail.com": {
+      "email": "kalhimarwa@gmail.com",
+      "company": "Marwa Kalhi (Freelance)",
+      "subject": "Candidature — Développeur Full Stack Flutter / React (Urgent) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:06:54.735251",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "hiring@axelites.com": {
+      "email": "hiring@axelites.com",
+      "company": "Axelites",
+      "subject": "Candidature — Développeur Fullstack Junior | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:08:15.103833",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "zaineb.berrazouk@intelcia.com": {
+      "email": "zaineb.berrazouk@intelcia.com",
+      "company": "Intelcia",
+      "subject": "Candidature — Développeur Java EE / Data | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:09:23.007446",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "edricknubla25@gmail.com": {
+      "email": "edricknubla25@gmail.com",
+      "company": "Edrick Nubla",
+      "subject": "Application — Full-Stack Web Developer (Laravel/Vue.js) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:10:20.059322",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "myassine@medtech.ma": {
+      "email": "myassine@medtech.ma",
+      "company": "MedTech",
+      "subject": "Candidature — DevOps / SRE | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:12:10.546098",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "jobs@weringroup.ma": {
+      "email": "jobs@weringroup.ma",
+      "company": "WerinGroup",
+      "subject": "Candidature — Développeur Full Stack Freelance | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:13:12.680750",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "contact@thetekcircle.io": {
+      "email": "contact@thetekcircle.io",
+      "company": "TheTekCircle",
+      "subject": "Candidature — Développeur Fullstack Node.js / React | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:14:23.138477",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "s.aoune@talentmind.ma": {
+      "email": "s.aoune@talentmind.ma",
+      "company": "TalentMind",
+      "subject": "Candidature — Développeur Angular Confirmé | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:30:46.104014",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "inass.kortmani@adria-bt.com": {
+      "email": "inass.kortmani@adria-bt.com",
+      "company": "Adria Business & Technology",
+      "subject": "Candidature — Développeur Java | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:32:08.920476",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "xavier@404-recrutement.fr": {
+      "email": "xavier@404-recrutement.fr",
+      "company": "404 Recrutement (Xavier)",
+      "subject": "Candidature — Développeur Fullstack Vue/PHP (Remote) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:33:43.534673",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "hr.nadatarek@gmail.com": {
+      "email": "hr.nadatarek@gmail.com",
+      "company": "Nada Tarek (HR)",
+      "subject": "Application — Backend / Frontend Developer (Remote) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:34:32.063100",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "koubaytarilana@gmail.com": {
+      "email": "koubaytarilana@gmail.com",
+      "company": "Saudi Project (Lana)",
+      "subject": "Application — Senior Fullstack Developer (Saudi Arabia Project) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T11:35:39.425629",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "khadija.achbab@infotel.com": {
+      "email": "khadija.achbab@infotel.com",
+      "company": "Infotel Maroc",
+      "subject": "Candidature — Développeur Java / Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:02:14.397761",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "bouchra.tounli@thetekcircle.io": {
+      "email": "bouchra.tounli@thetekcircle.io",
+      "company": "TheTekCircle (Bouchra)",
+      "subject": "Candidature — Stage Pré-embauche Fullstack Node.js / React | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:03:08.089547",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "hajar.workwide@gmail.com": {
+      "email": "hajar.workwide@gmail.com",
+      "company": "WorkWide",
+      "subject": "Candidature — Développeur Backend Java & IA | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:04:40.097671",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "talent@enova.ma": {
+      "email": "talent@enova.ma",
+      "company": "ENOVART",
+      "subject": "Candidature — Développeur Full Stack / Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:06:23.509804",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "aymane.halloumi@cpl-network.com": {
+      "email": "aymane.halloumi@cpl-network.com",
+      "company": "CPL Network",
+      "subject": "Candidature — Lead Java / Angular (Freelance) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:07:14.687227",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "maxime.desse@horezon.fr": {
+      "email": "maxime.desse@horezon.fr",
+      "company": "Horezon Maroc",
+      "subject": "Candidature — Développeur PHP Symfony / Node.js | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:23:57.070509",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "hbouftas@oceaneconsulting.com": {
+      "email": "hbouftas@oceaneconsulting.com",
+      "company": "Oceane Consulting",
+      "subject": "Candidature — Ingénieur PHP / Javascript (Vue.js) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:24:52.996937",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "pra.tallent@gmail.com": {
+      "email": "pra.tallent@gmail.com",
+      "company": "PRA Tallent (Stage)",
+      "subject": "Application — Web Development Internship (SpringBoot / React / AI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:26:49.637020",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "yassine.janati@paysera.net": {
+      "email": "yassine.janati@paysera.net",
+      "company": "Paysera (Fintech)",
+      "subject": "Candidature — Développeur PHP | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:28:30.319327",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "rhecomub@gmail.com": {
+      "email": "rhecomub@gmail.com",
+      "company": "Rhecomub (Angular)",
+      "subject": "Candidature — Développeur Angular Front-End | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:29:45.094737",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "oussama.ezzaytouni@africashore.com": {
+      "email": "oussama.ezzaytouni@africashore.com",
+      "company": "Africashore",
+      "subject": "Consultant Laravel Junior – Rabat | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:30:51.534361",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "meriem.massano@capgemini.com": {
+      "email": "meriem.massano@capgemini.com",
+      "company": "Capgemini Maroc",
+      "subject": "Candidature — Testeur Junior | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:32:25.144602",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@binitns.com": {
+      "email": "recrutement@binitns.com",
+      "company": "BinitNS",
+      "subject": "Candidature — Développeur Java Junior (Réf: Jun-ST) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:33:56.896647",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "ayakhlef@silamir.com": {
+      "email": "ayakhlef@silamir.com",
+      "company": "Silamir Afrique",
+      "subject": "Candidature — Développeur Fullstack Java Angular/ReactJS | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:34:43.674616",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "afef.kalleli@speegar.com": {
+      "email": "afef.kalleli@speegar.com",
+      "company": "Speegar",
+      "subject": "Candidature — Développeur Java/Angular (Full Remote) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T12:35:44.091673",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "backend@greensolutionsmaroc.com": {
+      "email": "backend@greensolutionsmaroc.com",
+      "company": "Green Solutions Maroc",
+      "subject": "Candidature — Développeur Laravel Junior | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T15:02:42.028567",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "oumaima@crafteam.io": {
+      "email": "oumaima@crafteam.io",
+      "company": "Crafteam",
+      "subject": "Candidature — Développeur Full Stack Java (Full Remote) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T15:03:30.439286",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "hanaa.farid@walitservices.com": {
+      "email": "hanaa.farid@walitservices.com",
+      "company": "Walitservices (Hanaa)",
+      "subject": "Candidature — Dev Full Stack Next.js/Angular (Freelance Télécom) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T15:05:20.212491",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "oumnia@reecho.eu": {
+      "email": "oumnia@reecho.eu",
+      "company": "Reecho",
+      "subject": "Candidature — Développeur Junior (TMA/CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T15:06:46.124439",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "yabed@maltem.com": {
+      "email": "yabed@maltem.com",
+      "company": "Maltem Africa",
+      "subject": "Candidature — Développeur Backend Java | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T15:07:41.538865",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "machour@eleveight-group.com": {
+      "email": "machour@eleveight-group.com",
+      "company": "Eleveight Group",
+      "subject": "Candidature — Développeur PHP Symfony (CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T15:08:45.264352",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "job.maroc@inetum.com": {
+      "email": "job.maroc@inetum.com",
+      "company": "Inetum Maroc",
+      "subject": "Candidature — Développeur Full Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T15:10:24.804732",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "nelhaj@neosys.fr": {
+      "email": "nelhaj@neosys.fr",
+      "company": "Neosys",
+      "subject": "Candidature — Développeur Frontend ReactJS | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T18:22:45.653111",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "najwa.mirani@skylark.ma": {
+      "email": "najwa.mirani@skylark.ma",
+      "company": "Skylark Services",
+      "subject": "Candidature — Développeur Frontend/Backend (Freelance) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T18:24:40.891107",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "h.tachfine@thegamechangercompany.io": {
+      "email": "h.tachfine@thegamechangercompany.io",
+      "company": "TheGameChangerCompany",
+      "subject": "Candidature — Développeur Full Stack (Stage) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-13T18:41:27.461037",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "fatima-ez-zahra.fadili@atos.net": {
+      "email": "fatima-ez-zahra.fadili@atos.net",
+      "company": "Atos",
+      "subject": "Candidature spontanée — Développeur Web Full Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T15:10:05.950782",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "assistant@automize.ma": {
+      "email": "assistant@automize.ma",
+      "company": "Automize",
+      "subject": "Candidature — QA / Software Tester & React Native Intern | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T15:11:22.284063",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "careers@azmsquad.com": {
+      "email": "careers@azmsquad.com",
+      "company": "AZM Squad",
+      "subject": "Candidature — Développeur | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T15:13:04.558702",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "f.ouladsine@nomatis.com": {
+      "email": "f.ouladsine@nomatis.com",
+      "company": "Nomatis",
+      "subject": "Candidature spontanée — Développeur Web Full Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T15:14:06.479053",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "ihssane.chemaou@avaliance.com": {
+      "email": "ihssane.chemaou@avaliance.com",
+      "company": "Avaliance",
+      "subject": "Candidature — Ingénieur DevSecOps | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T15:15:52.765261",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "chaimae.hasnaoui@smile-maroc.com": {
+      "email": "chaimae.hasnaoui@smile-maroc.com",
+      "company": "Smile Maroc",
+      "subject": "Candidature — Développeur Fullstack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T15:17:38.568426",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "doha.yahia@indatacore.com": {
+      "email": "doha.yahia@indatacore.com",
+      "company": "Indatacore",
+      "subject": "Candidature — Stagiaire / Ingénieur DevOps | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T15:18:35.357158",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "aymen.metoui@agoraplus.com": {
+      "email": "aymen.metoui@agoraplus.com",
+      "company": "Agoraplus",
+      "subject": "Candidature — Développeur SQL | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T15:20:24.296467",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "karima.sassi@kouka.io": {
+      "email": "karima.sassi@kouka.io",
+      "company": "Kouka",
+      "subject": "Candidature — Stage PFE Développement (Microservices, APIs REST) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T15:22:02.221209",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "avalette@teksystems.com": {
+      "email": "avalette@teksystems.com",
+      "company": "TEKsystems",
+      "subject": "Candidature — Développeur Full Stack (Spring Boot / JS) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T15:23:32.657060",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "fadwa.bouzianeouaritini@alten.com": {
+      "email": "fadwa.bouzianeouaritini@alten.com",
+      "company": "Alten Maroc",
+      "subject": "Candidature spontanée — Développeur Web Full Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:13:02.929687",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "g.spiess@wepoint.com": {
+      "email": "g.spiess@wepoint.com",
+      "company": "Wepoint",
+      "subject": "Candidature — Développeur Fullstack React | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:14:29.969066",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "frh@alfapeople.com": {
+      "email": "frh@alfapeople.com",
+      "company": "AlfaPeople",
+      "subject": "Application — Mobile Developer (React Native) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:15:22.909868",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "ikram.aguriach@deltalink.ma": {
+      "email": "ikram.aguriach@deltalink.ma",
+      "company": "DeltaLink",
+      "subject": "Candidature — Développeur PHP / JavaScript | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:16:56.418823",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "inayssa@omnidata.ma": {
+      "email": "inayssa@omnidata.ma",
+      "company": "Omnidata",
+      "subject": "Candidature — Consultant Développeur Full Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:18:32.042766",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "rahma.bellili@peppermint.company": {
+      "email": "rahma.bellili@peppermint.company",
+      "company": "Peppermint",
+      "subject": "Candidature — Développeur Frontend Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:20:02.053088",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "nadir.benyoussef@consort-group.com": {
+      "email": "nadir.benyoussef@consort-group.com",
+      "company": "Consort Group",
+      "subject": "Candidature — Développeur Fullstack Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:22:02.432971",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "igerp@i-gouvernancia.com": {
+      "email": "igerp@i-gouvernancia.com",
+      "company": "I-Gouvernancia",
+      "subject": "Stage DevOps – Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:23:23.008385",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "abdelkhalek@smartovate.com": {
+      "email": "abdelkhalek@smartovate.com",
+      "company": "Smartovate",
+      "subject": "Candidature — Stage PFE DevOps / CI-CD | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:25:15.234674",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "contact@walitservices.com": {
+      "email": "contact@walitservices.com",
+      "company": "Walit Services",
+      "subject": "Candidature — Testeur logiciel | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:26:24.758940",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "donia.chennoufi@value.com.tn": {
+      "email": "donia.chennoufi@value.com.tn",
+      "company": "Value",
+      "subject": "Candidature — QA Automation | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:44:02.699556",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "candidature@ifcarsolutions.com": {
+      "email": "candidature@ifcarsolutions.com",
+      "company": "Ifcar Solutions",
+      "subject": "Candidature — Développeur Full Stack Java / Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:45:10.825066",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "careers@aicrafters.com": {
+      "email": "careers@aicrafters.com",
+      "company": "AI Crafters",
+      "subject": "QA Engineer — Candidature | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:46:47.764959",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "ghofrane.hefiene@binitns.com": {
+      "email": "ghofrane.hefiene@binitns.com",
+      "company": "BinitNS",
+      "subject": "Candidature — Ingénieur QA Junior / Développeur Java/Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:48:16.226725",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "offre-st@consult-it.com": {
+      "email": "offre-st@consult-it.com",
+      "company": "Consult IT",
+      "subject": "Candidature — Stage Testeur / QA (3 mois) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T19:50:09.278409",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "amal.lasri@accenture.com": {
+      "email": "amal.lasri@accenture.com",
+      "company": "Accenture",
+      "subject": "Candidature — Développeur Python & SQL | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T20:14:51.347726",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "meriem.boumzguid@smile-maroc.com": {
+      "email": "meriem.boumzguid@smile-maroc.com",
+      "company": "Smile Maroc",
+      "subject": "Candidature — DevOps / Cloud | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T20:16:11.947295",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@atlascs.ma": {
+      "email": "recrutement@atlascs.ma",
+      "company": "Atlas Cloud Services",
+      "subject": "Candidature — DevOps Junior / Cloud | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T20:18:01.238997",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "marwa.hekki@walitservices.com": {
+      "email": "marwa.hekki@walitservices.com",
+      "company": "WAL-IT Services",
+      "subject": "Candidature — Stage Pré-embauche Ingénieur Java/JEE | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T20:35:44.243022",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "contact@ac2i.ma": {
+      "email": "contact@ac2i.ma",
+      "company": "AC2I",
+      "subject": "Candidature — Développeur Full Stack (Java / PHP / React) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T20:36:37.113115",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@goandev.net": {
+      "email": "recrutement@goandev.net",
+      "company": "Go&Dev",
+      "subject": "Candidature — Stage PFE QA / Qualité Logicielle | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T20:37:38.570267",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "meriem.antar20@gmail.com": {
+      "email": "meriem.antar20@gmail.com",
+      "company": "Projet Freelance",
+      "subject": "Candidature — Développeur Web (Mission 2-3 mois) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T20:39:13.220115",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "mkallel@neosys.fr": {
+      "email": "mkallel@neosys.fr",
+      "company": "Neosys",
+      "subject": "Candidature — Profil IT Confirmé (Java/Spring/DevOps) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T20:40:59.997250",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "wissal.ait-mansour@wirkygroup.com": {
+      "email": "wissal.ait-mansour@wirkygroup.com",
+      "company": "WIRKY Group",
+      "subject": "Candidature — Développeur Front-End | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T21:00:54.346170",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "sanaa.elhaddaoui@skylark.ma": {
+      "email": "sanaa.elhaddaoui@skylark.ma",
+      "company": "Skylark Services",
+      "subject": "Candidature — Testeur Technico-Fonctionnel / QA | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T21:02:46.007410",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "sfathi@s2m.ma": {
+      "email": "sfathi@s2m.ma",
+      "company": "S2M Maroc",
+      "subject": "Candidature — Stage PFE Informatique / Dév SI | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T21:04:06.802561",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@weshore.com": {
+      "email": "recrutement@weshore.com",
+      "company": "Weshore",
+      "subject": "Candidature — Développeur Intégrateur Web | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T21:22:11.459487",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@qacode.fr": {
+      "email": "recrutement@qacode.fr",
+      "company": "QACODE",
+      "subject": "Candidature — Développeur Full Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T21:23:53.518436",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "melyamami@valueit.ma": {
+      "email": "melyamami@valueit.ma",
+      "company": "ValueIT",
+      "subject": "Candidature — Stagiaire Test Logiciel / QA | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T21:25:26.452669",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "contact@ogcommunication.ma": {
+      "email": "contact@ogcommunication.ma",
+      "company": "OG Communication",
+      "subject": "Candidature — Développeur Full Stack (PHP/JS) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-14T21:26:51.469366",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recruitment@t2s.ma": {
+      "email": "recruitment@t2s.ma",
+      "company": "T2S Group",
+      "subject": "Candidature — Développeur Web / .NET | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T08:50:30.839227",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "amani.essid@softgen.fr": {
+      "email": "amani.essid@softgen.fr",
+      "company": "SoftGen",
+      "subject": "Candidature — Développeur Java/Angular & QA | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T08:52:23.012377",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "mariam.rabie@asset.com.eg": {
+      "email": "mariam.rabie@asset.com.eg",
+      "company": "ASSET Technology",
+      "subject": "Candidature — QA Automation Engineer | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T08:53:48.340599",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "salma.ashraf@fawry.com": {
+      "email": "salma.ashraf@fawry.com",
+      "company": "Fawry",
+      "subject": "Application — Junior Java Developer | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T08:55:05.274267",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "rh-talent@g3c.ma": {
+      "email": "rh-talent@g3c.ma",
+      "company": "G3C",
+      "subject": "Candidature — Stage Développement IT (Bac+5) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T08:56:46.767447",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "o.elbaytari@talentmind.ma": {
+      "email": "o.elbaytari@talentmind.ma",
+      "company": "TalentMind (Java)",
+      "subject": "Candidature — Développeur Java/Angular (CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T08:58:08.146797",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "DRY RUN — not actually sent"
+    },
+    "contact@softbridgesolutions.com": {
+      "email": "contact@softbridgesolutions.com",
+      "company": "Softbridge Solutions",
+      "subject": "Candidature — Développeur PHP / WordPress | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:21:07.555872",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "hiring@alton.ma": {
+      "email": "hiring@alton.ma",
+      "company": "Alton",
+      "subject": "Candidature — Testeur Fonctionnel (QA) Bancaire | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:22:21.843501",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "a.fatima-zahra@connecting-systems.net": {
+      "email": "a.fatima-zahra@connecting-systems.net",
+      "company": "Connecting Systems",
+      "subject": "Candidature — Consultant Java / DevOps (Freelance/CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:23:09.986331",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "janna.zaouga@softeam.fr": {
+      "email": "janna.zaouga@softeam.fr",
+      "company": "Softeam Docaposte",
+      "subject": "Candidature — Développeur Java Fullstack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:24:17.313396",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "hfc.rh@howmet.com": {
+      "email": "hfc.rh@howmet.com",
+      "company": "Howmet Aerospace",
+      "subject": "Candidature — IT Support & Développement (Débutant) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:26:14.264133",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "candidature@axa-services.ma": {
+      "email": "candidature@axa-services.ma",
+      "company": "AXA Services",
+      "subject": "Candidature — Testeur Informatique Anglophone | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:27:13.518606",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "amina.lhissou@alten.com": {
+      "email": "amina.lhissou@alten.com",
+      "company": "ALTEN Maroc",
+      "subject": "Candidature — Développeur Full Stack PHP | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:29:00.705386",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "anas.essanhaji@alten.com": {
+      "email": "anas.essanhaji@alten.com",
+      "company": "ALTEN Maroc",
+      "subject": "Candidature — Stage PFE Développeur Python | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:29:52.451818",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "cv@solutionsxpr.com": {
+      "email": "cv@solutionsxpr.com",
+      "company": "Solutions XPR",
+      "subject": "Candidature — Développeur Java | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:30:58.576396",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@tacticaltactics.ma": {
+      "email": "recrutement@tacticaltactics.ma",
+      "company": "Tactical Tactics",
+      "subject": "Candidature — Web Développeur Polyvalent (PHP/JS) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:32:32.994481",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "drh@involys.com": {
+      "email": "drh@involys.com",
+      "company": "Involys",
+      "subject": "Candidature — Stage PFE 2026 (Développeur Full Stack) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:49:58.447087",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "amal.khan@ariagroup.io": {
+      "email": "amal.khan@ariagroup.io",
+      "company": "Aria Group",
+      "subject": "Candidature — Test Analyst Junior | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:50:51.662626",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "zineb.benlbrikia@accenture.com": {
+      "email": "zineb.benlbrikia@accenture.com",
+      "company": "Accenture",
+      "subject": "Candidature — QA Backend / Validation | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:52:22.508851",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "y.elkacemi@proman.ma": {
+      "email": "y.elkacemi@proman.ma",
+      "company": "Proman",
+      "subject": "Candidature — Technicien IT | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:53:13.798119",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@mobiarchitects.com": {
+      "email": "recrutement@mobiarchitects.com",
+      "company": "MobiArchitects",
+      "subject": "Candidature — Développeur React Native | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T16:54:49.865498",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "contact@walitservice.com": {
+      "email": "contact@walitservice.com",
+      "company": "Walit Service",
+      "subject": "Candidature — Développeur PL/SQL Java (Télétravail) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T17:21:37.499355",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "ahmedlaagouz79@gmail.com": {
+      "email": "ahmedlaagouz79@gmail.com",
+      "company": "Technicien Info (Ahmed)",
+      "subject": "Candidature — Technicien Développement Web | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T17:22:26.183364",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "fatimazohra.gamhor@anakot.com": {
+      "email": "fatimazohra.gamhor@anakot.com",
+      "company": "Anakot (Django)",
+      "subject": "Candidature — Développeur Django | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T17:24:07.876707",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "careers@digitinary.com": {
+      "email": "careers@digitinary.com",
+      "company": "Digitinary (QA Stage)",
+      "subject": "Application — QA Internship | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T17:25:30.186365",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "asmaa.el-bouhali@capgemini.com": {
+      "email": "asmaa.el-bouhali@capgemini.com",
+      "company": "Capgemini (COBOL)",
+      "subject": "Candidature — Développeur Junior | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T17:26:31.008248",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "n.elouali@connecting-systems.net": {
+      "email": "n.elouali@connecting-systems.net",
+      "company": "Connecting Systems (QA)",
+      "subject": "Candidature — Testeur QA (CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T17:47:16.607393",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "rachida.essaleh@hps-worldwide.com": {
+      "email": "rachida.essaleh@hps-worldwide.com",
+      "company": "HPS (IT Support)",
+      "subject": "Candidature — IT Support Engineer Junior | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T17:48:08.566680",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "amal.lasri@niji.fr": {
+      "email": "amal.lasri@niji.fr",
+      "company": "Niji (Altados)",
+      "subject": "Candidature — Développeur Web PHP (CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T17:49:48.733283",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "bouchra.mahfoud@symolia.com": {
+      "email": "bouchra.mahfoud@symolia.com",
+      "company": "Symolia",
+      "subject": "Candidature — Développeur Java Junior (Secteur Bancaire) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:19:30.710277",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "mohammedamine.benhamza@alten.com": {
+      "email": "mohammedamine.benhamza@alten.com",
+      "company": "ALTEN Maroc",
+      "subject": "Candidature — Ingénieur Développement Informatique (CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:21:16.540948",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutementmaroc@groupe-crit.com": {
+      "email": "recrutementmaroc@groupe-crit.com",
+      "company": "Groupe CRIT",
+      "subject": "Candidature — Développeur Java (CDI Rabat) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:23:08.360600",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "alyani.n@lynoconsulting.com": {
+      "email": "alyani.n@lynoconsulting.com",
+      "company": "Lyno Consulting",
+      "subject": "Candidature — Développeur Android Java/Kotlin (Remote) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:24:48.509998",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "fmanaf@omnidata.ma": {
+      "email": "fmanaf@omnidata.ma",
+      "company": "Omnidata (N8n)",
+      "subject": "Candidature — Analyste Développeur N8n (Freelance) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:26:02.284510",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "ali.alessa@dataplusbiz.com": {
+      "email": "ali.alessa@dataplusbiz.com",
+      "company": "Dataplus",
+      "subject": "Candidature pour Dataplus — Développeur Full Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:27:08.122841",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@ef2conseil.com": {
+      "email": "recrutement@ef2conseil.com",
+      "company": "EF2C Consulting",
+      "subject": "Développeur Full Stack (NestJS / React) — Rabat | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:44:10.221137",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "mouna.reda@alten.com": {
+      "email": "mouna.reda@alten.com",
+      "company": "ALTEN Fès",
+      "subject": "Candidature — Testeur Fonctionnel | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:45:57.836932",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "souhaila.kourih@neo-devit.com": {
+      "email": "souhaila.kourih@neo-devit.com",
+      "company": "Neo-DevIT",
+      "subject": "Poste NestJS Junior | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:47:40.795222",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "ali.alissa@digitalsolutionco.com": {
+      "email": "ali.alissa@digitalsolutionco.com",
+      "company": "Digital Solution Co",
+      "subject": "Candidature pour Dataplus — Développeur Full Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:48:49.949368",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "b.ferre@catamania.com": {
+      "email": "b.ferre@catamania.com",
+      "company": "Catamania",
+      "subject": "Candidature — Développeur Fullstack Java + React | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:50:44.574517",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "manel.bounnite@infotel.com": {
+      "email": "manel.bounnite@infotel.com",
+      "company": "Infotel Maroc",
+      "subject": "Candidature — Développeur Java/Angular (CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:51:40.353570",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutements@jbel-annour.ma": {
+      "email": "recrutements@jbel-annour.ma",
+      "company": "Jbel Annour",
+      "subject": "développeur de logiciel full stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:52:38.076604",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "asmaa.albaraka@skylark.ma": {
+      "email": "asmaa.albaraka@skylark.ma",
+      "company": "Skylark (Asmaa)",
+      "subject": "Candidature — Développeur Full Stack Java/Node.js | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:54:36.125511",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "i.benezzine@idatech.ma": {
+      "email": "i.benezzine@idatech.ma",
+      "company": "ID&A Tech",
+      "subject": "Candidature Stage — Développeur Web & Mobile MERN | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:55:32.304004",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@lgc-sarl.com": {
+      "email": "recrutement@lgc-sarl.com",
+      "company": "LGC SARL",
+      "subject": "Candidature — Développeur Full Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T18:57:29.098782",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "emeddeb@crafteam.io": {
+      "email": "emeddeb@crafteam.io",
+      "company": "Crafteam (Emeddeb)",
+      "subject": "Candidature — Développeur Backend Java (CDI/Freelance) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-15T19:30:19.395245",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "marouan.mekri@beautystation.ma": {
+      "email": "marouan.mekri@beautystation.ma",
+      "company": "BeautyStation",
+      "subject": "Candidature — Développeur Full Stack Junior (CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T09:58:40.535977",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "m.elatba@reechosolutions.com": {
+      "email": "m.elatba@reechosolutions.com",
+      "company": "Reecho Solutions",
+      "subject": "Candidature — Consultant Tech-Fcn | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T10:00:24.784905",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@timlogsolutions.com": {
+      "email": "recrutement@timlogsolutions.com",
+      "company": "TimLog Solutions",
+      "subject": "Candidature — Développeur Full Stack Java/JS | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T10:01:35.460737",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "y.ghalmi@numeryx.fr": {
+      "email": "y.ghalmi@numeryx.fr",
+      "company": "Numeryx Technologies",
+      "subject": "Candidature — Développeur Backend Java (CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T10:02:27.159021",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@fidelfi.ma": {
+      "email": "recrutement@fidelfi.ma",
+      "company": "Fidelfi",
+      "subject": "Candidature — Développeur Full Stack Angular/Node.js (CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T10:04:10.679357",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "k.gourrami@altados.com": {
+      "email": "k.gourrami@altados.com",
+      "company": "Altados/Niji (Gourrami)",
+      "subject": "Candidature — Développeur Java Angular (CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T10:05:51.338428",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "h.mhaidra@catamania.com": {
+      "email": "h.mhaidra@catamania.com",
+      "company": "Catamania (Hind)",
+      "subject": "Candidature — Développeur Front-End | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T10:07:07.012489",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "sara.elgourdia@axone-sys.com": {
+      "email": "sara.elgourdia@axone-sys.com",
+      "company": "Axone Systems",
+      "subject": "Candidature — Développeur Java (CDI Hybride) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T10:08:18.692020",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "amani.yaakoubi@octans-consulting.com": {
+      "email": "amani.yaakoubi@octans-consulting.com",
+      "company": "Octans Consulting",
+      "subject": "Candidature — Développeur PHP/ReactJS | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T10:10:04.677446",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "rachid@dgh.ma": {
+      "email": "rachid@dgh.ma",
+      "company": "DGH",
+      "subject": "Candidature — WordPress Developer | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T10:12:02.608327",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "ykhouna@maltem.com": {
+      "email": "ykhouna@maltem.com",
+      "company": "Maltem (Yasser)",
+      "subject": "Candidature — Développeur Java/Angular (CDI/Freelance) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T10:29:44.498260",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "dev-java@xtensus.com": {
+      "email": "dev-java@xtensus.com",
+      "company": "Xtensus (Java)",
+      "subject": "Candidature FS-2025 — Développeur Full Stack Spring/Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T10:30:50.869160",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "dev-php@xtensus.com": {
+      "email": "dev-php@xtensus.com",
+      "company": "Xtensus (PHP)",
+      "subject": "Candidature BE-Symfony-2025 — Développeur Backend Symfony | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T10:31:58.672889",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@deliorgroup.com": {
+      "email": "recrutement@deliorgroup.com",
+      "company": "Delior Group",
+      "subject": "Candidature — Développeur Frontend React Native (CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T10:33:07.682272",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "kawthar.elgamah@atos.net": {
+      "email": "kawthar.elgamah@atos.net",
+      "company": "Atos (Kawthar)",
+      "subject": "Candidature — Stage Pré-Embauche Java/Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T10:34:42.568324",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "manal.mbarki@capgemini.com": {
+      "email": "manal.mbarki@capgemini.com",
+      "company": "Capgemini (Manal)",
+      "subject": "Candidature — Jeune Diplômé IT | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:00:10.841168",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutment@adria-bt.com": {
+      "email": "recrutment@adria-bt.com",
+      "company": "Adria BT",
+      "subject": "Candidature — Développeur Java | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:02:01.433451",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "rania.baccouche@kodemade.com": {
+      "email": "rania.baccouche@kodemade.com",
+      "company": "Kodemade",
+      "subject": "Candidature — Développeur Full Stack Junior | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:03:39.226269",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "ilham.bennajah@roadmap-itconsulting.com": {
+      "email": "ilham.bennajah@roadmap-itconsulting.com",
+      "company": "Roadmap IT",
+      "subject": "Candidature — Développeur Fullstack PHP/ReactJS | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:20:56.647458",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "aelghoul@silamir.com": {
+      "email": "aelghoul@silamir.com",
+      "company": "Silamir (Aelghoul)",
+      "subject": "Candidature — Développeur Golang | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:22:32.169159",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "nihel@crafteam.io": {
+      "email": "nihel@crafteam.io",
+      "company": "Crafteam (Nihel)",
+      "subject": "Candidature — Développeur Java/React (CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:23:38.361940",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "chaimae.zarkani@deltalink.ma": {
+      "email": "chaimae.zarkani@deltalink.ma",
+      "company": "Deltalink (Chaimae)",
+      "subject": "Candidature — Développeur JEE ReactJs (Anglophone) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:25:22.947089",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "c.kamali@mercureit.com": {
+      "email": "c.kamali@mercureit.com",
+      "company": "Mercure IT",
+      "subject": "Candidature — Développeur Front-end Web et Mobile | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:26:29.864940",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recutement@cygna.fr": {
+      "email": "recutement@cygna.fr",
+      "company": "Cygna",
+      "subject": "Candidature — Développeur Fullstack Java / Angular & DevOps | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:28:20.208471",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "rifai3lal@gmail.com": {
+      "email": "rifai3lal@gmail.com",
+      "company": "Rifai (Gmail)",
+      "subject": "Candidature — Vue.js & Laravel Developer | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:30:06.222283",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "safaa.jamaa@smile-maroc.com": {
+      "email": "safaa.jamaa@smile-maroc.com",
+      "company": "Smile Maroc (Safaa)",
+      "subject": "Candidature — Développeur PHP/Symfony | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:31:32.326982",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "najwa.aitaattou@asa-techno.com": {
+      "email": "najwa.aitaattou@asa-techno.com",
+      "company": "ASA Techno",
+      "subject": "Candidature — Designer Web & Front-end Developer | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:32:46.129088",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "s.tougui@proxiad.com": {
+      "email": "s.tougui@proxiad.com",
+      "company": "Proxiad",
+      "subject": "Candidature — Développeur Java/Angular (Freelance) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:50:49.941970",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "nisrine.elkarouani@deltalink.ma": {
+      "email": "nisrine.elkarouani@deltalink.ma",
+      "company": "Deltalink (Nisrine)",
+      "subject": "Candidature — Développeur Java Spring Boot (Sécurité) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:51:57.251848",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "salma.lamri@red-tic.com": {
+      "email": "salma.lamri@red-tic.com",
+      "company": "Red Tic",
+      "subject": "Candidature — Software Development Manager / Lead Dev | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:53:24.806081",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "imane.elimrani@werecruit.ma": {
+      "email": "imane.elimrani@werecruit.ma",
+      "company": "Werecruit",
+      "subject": "Candidature — Développeur Fullstack Angular (Freelance) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T11:58:35.980371",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "wiam.chakir@niji.fr": {
+      "email": "wiam.chakir@niji.fr",
+      "company": "Niji (Wiam)",
+      "subject": "Candidature — AMOA / Automatisation des Tests | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T12:00:33.336914",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "r.hallal@marchiche.com": {
+      "email": "r.hallal@marchiche.com",
+      "company": "Marchiche Global",
+      "subject": "Candidature — Développeur Full Stack Laravel/React | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T12:02:17.033802",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "nada.maher@atos.net": {
+      "email": "nada.maher@atos.net",
+      "company": "Atos (Nada)",
+      "subject": "Candidature — Java / Frontend / Web Developer | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T12:03:24.425389",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "mahlebkenza1@gmail.com": {
+      "email": "mahlebkenza1@gmail.com",
+      "company": "Mahleb Kenza",
+      "subject": "Candidature — Développeur Web & Mobile Freelance | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T12:04:44.745355",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "j.perkins@tenthrevolution.com": {
+      "email": "j.perkins@tenthrevolution.com",
+      "company": "Tenth Revolution",
+      "subject": "Candidature — Freelance PHP/Symfony / VueJS | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T12:05:49.159512",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "workwidecabinet@gmail.com": {
+      "email": "workwidecabinet@gmail.com",
+      "company": "Workwide Cabinet",
+      "subject": "Candidature — Freelance Développeur JAVA/Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T12:23:19.130416",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@ma.g4s.com": {
+      "email": "recrutement@ma.g4s.com",
+      "company": "G4S",
+      "subject": "Candidature — Développeur Mobile Full Stack (Flutter) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T12:24:55.862393",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "f.ouazzani@altados.com": {
+      "email": "f.ouazzani@altados.com",
+      "company": "Altados (F. Ouazzani)",
+      "subject": "Candidature — Développeur Java Backend / Tech Lead | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T12:26:13.186438",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "s.bensalem@qacode.fr": {
+      "email": "s.bensalem@qacode.fr",
+      "company": "QACODE",
+      "subject": "Candidature — Développeur Full Stack JAVA/ANGULAR | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-16T12:27:06.579084",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "anas.et-tayea@akkodis.com": {
+      "email": "anas.et-tayea@akkodis.com",
+      "company": "Akkodis (Anas)",
+      "subject": "Candidature — Développeur JavaScript/MongoDB | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T07:59:51.062210",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "ahmed.haddad@dunamaiconsulting.fr": {
+      "email": "ahmed.haddad@dunamaiconsulting.fr",
+      "company": "Dunamai Consulting",
+      "subject": "Candidature — Développeur Java | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T08:01:36.321506",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "oei@cyclad.ma": {
+      "email": "oei@cyclad.ma",
+      "company": "Cyclad",
+      "subject": "Candidature — Développeur PHP (Freelance) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T08:03:21.189188",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "abourouadi@m2mgroup.com": {
+      "email": "abourouadi@m2mgroup.com",
+      "company": "M2M Group",
+      "subject": "Candidature — Développeur Full-Stack React/Spring | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T08:04:29.449860",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "younessbr.recrutement2022@gmail.com": {
+      "email": "younessbr.recrutement2022@gmail.com",
+      "company": "YB Accomp (Youness)",
+      "subject": "Candidature — Développeur Full Stack Confirmé | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T08:05:35.637968",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "abdelilah.kardoud@welink.ma": {
+      "email": "abdelilah.kardoud@welink.ma",
+      "company": "Welink",
+      "subject": "Candidature — Développeur Fullstack Java/Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T08:06:25.404502",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "rayan.hasnaoui@newco-partners.com": {
+      "email": "rayan.hasnaoui@newco-partners.com",
+      "company": "Newco Partners",
+      "subject": "Candidature — Développeur Java Fullstack (Weblogic) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T08:07:24.736823",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "donia.seif@globaction.com": {
+      "email": "donia.seif@globaction.com",
+      "company": "Globaction",
+      "subject": "Candidature — Junior Frontend Developer (Angular) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T08:08:51.504541",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@totalwork.ma": {
+      "email": "recrutement@totalwork.ma",
+      "company": "TotalWork",
+      "subject": "Candidature — Développeur Web & Full-Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T08:10:39.181996",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "isardari41@gmail.com": {
+      "email": "isardari41@gmail.com",
+      "company": "Start-up (Gmail)",
+      "subject": "Candidature — Développeur Web Full Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T08:12:07.360567",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "driss.elachaby@atliontech.com": {
+      "email": "driss.elachaby@atliontech.com",
+      "company": "Atliontech",
+      "subject": "Candidature — Développeur JavaScript/Node.js/Java | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T08:30:21.608124",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement2025.cv@outlook.fr": {
+      "email": "recrutement2025.cv@outlook.fr",
+      "company": "Outlook (Technicien)",
+      "subject": "Candidature — Technicien Full Stack Informatique | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T08:31:33.154720",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "magali.neveu@ibfmedical.fr": {
+      "email": "magali.neveu@ibfmedical.fr",
+      "company": "IBF Medical (Corben)",
+      "subject": "Candidature — Développeur Full Stack Junior (Vue/Nuxt) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T08:33:25.755123",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "souad.mekaik@infotel.com": {
+      "email": "souad.mekaik@infotel.com",
+      "company": "Infotel (Souad)",
+      "subject": "Candidature — Développeur Full Stack Java Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T08:34:15.676132",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "contact@ouz.ma": {
+      "email": "contact@ouz.ma",
+      "company": "Ouz.ma",
+      "subject": "Candidature — Ingénieur Développeur (React/Node) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T08:35:16.190721",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@mabelka.com": {
+      "email": "recrutement@mabelka.com",
+      "company": "Mabelka",
+      "subject": "Candidature — Stagiaire Développeur Full Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:01:09.730804",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "madiha.tounsi@inetum.com": {
+      "email": "madiha.tounsi@inetum.com",
+      "company": "Inetum",
+      "subject": "Candidature — Technico-Fonctionnel SQL | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:02:29.359061",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recruitment@asset.com.eg": {
+      "email": "recruitment@asset.com.eg",
+      "company": "Asset Technology",
+      "subject": "Candidature — Backend Java Engineer / Frontend Developer | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:04:02.822003",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "talentacquisition@tesselategroup.com": {
+      "email": "talentacquisition@tesselategroup.com",
+      "company": "Tesselate",
+      "subject": "Candidature — IT Quant Consultant (Java/Full Stack) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:22:12.806387",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "sbiborchi@omnidata.ma": {
+      "email": "sbiborchi@omnidata.ma",
+      "company": "Omnidata (Sbiborchi)",
+      "subject": "Candidature — Développeur Back-end Java (Microservices) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:23:16.649047",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "kaoutar.gourrami@niji.fr": {
+      "email": "kaoutar.gourrami@niji.fr",
+      "company": "Altados/Niji (Kaoutar)",
+      "subject": "Candidature — Développeur Node.js / React.js (CDI) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:24:50.229018",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "basma.affaya@goandev.net": {
+      "email": "basma.affaya@goandev.net",
+      "company": "Goandev (Basma)",
+      "subject": "Candidature — Développeur Fullstack Junior Java/Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:25:58.085320",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "safia.rida@infotel.com": {
+      "email": "safia.rida@infotel.com",
+      "company": "Infotel (Safia)",
+      "subject": "Candidature — Développeur Java Angular Confirmé | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:27:55.913540",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "fatimaezzahra.sellami@upadvisory.ma": {
+      "email": "fatimaezzahra.sellami@upadvisory.ma",
+      "company": "UpAdvisory",
+      "subject": "Candidature — Développeur Fullstack / Backend (Freelance Rabat) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:29:03.556747",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "j.bennani@connecting-systems.net": {
+      "email": "j.bennani@connecting-systems.net",
+      "company": "Connecting Systems",
+      "subject": "Candidature — Développeur FullStack / DevOps (Freelance) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:30:37.866152",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "jobs@artyva.com": {
+      "email": "jobs@artyva.com",
+      "company": "Artyva",
+      "subject": "Candidature — Webmaster WordPress Confirmé (Remote) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:31:42.920556",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "vmg.conseil@calipso-assurances.ma": {
+      "email": "vmg.conseil@calipso-assurances.ma",
+      "company": "Calipso Assurances",
+      "subject": "Candidature — Développeur Back-End (Mission VMG Conseil) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:33:23.491109",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "oumnia.oubaassou@weshore.com": {
+      "email": "oumnia.oubaassou@weshore.com",
+      "company": "Weshore (Oumnia)",
+      "subject": "Candidature — Profil Technique Web (SEO / Graphisme) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:50:31.309731",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "benjamin.dorgan@infotel.com": {
+      "email": "benjamin.dorgan@infotel.com",
+      "company": "Infotel (Benjamin)",
+      "subject": "Candidature — Développeur FullStack Java / PHP | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:52:00.905961",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "jobs@dahbigroup.com": {
+      "email": "jobs@dahbigroup.com",
+      "company": "Dahbi Group",
+      "subject": "Candidature — Développeur Full Stack Laravel/Wordpress (Tanger) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:53:45.354656",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@proxym-it.com": {
+      "email": "recrutement@proxym-it.com",
+      "company": "Proxym IT",
+      "subject": "Candidature — Intégrateur Web Confirmé | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T09:59:44.867753",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "h.saif@lmsorh.com": {
+      "email": "h.saif@lmsorh.com",
+      "company": "LMSORH (Hind Saif)",
+      "subject": "Candidature — Développeur Full Stack Java/Angular | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T10:01:10.334518",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "ghita.sebbai@cdm.ma": {
+      "email": "ghita.sebbai@cdm.ma",
+      "company": "Crédit du Maroc",
+      "subject": "Candidature — Développeur Front-End / Mobile / Tech Lead | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T10:02:32.593520",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "sara.lifandali@adria-bt.com": {
+      "email": "sara.lifandali@adria-bt.com",
+      "company": "Adria BT (Sara)",
+      "subject": "Candidature — Développeur Backend / Java | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T10:03:50.232498",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "job@tarmiz.ma": {
+      "email": "job@tarmiz.ma",
+      "company": "Tarmiz",
+      "subject": "Candidature — Stage Pré-embauche Full-Stack Laravel | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T10:05:23.827210",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "rbouron@bessand.com": {
+      "email": "rbouron@bessand.com",
+      "company": "Bessand (R. Bouron)",
+      "subject": "Candidature — Développeur PHP (Tech for Food) | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T10:06:54.775400",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "application@businessinnovation.ma": {
+      "email": "application@businessinnovation.ma",
+      "company": "Business Innovation",
+      "subject": "Candidature — Expert Laravel | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T10:24:27.534756",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@dieze.center": {
+      "email": "recrutement@dieze.center",
+      "company": "Dieze Center",
+      "subject": "Candidature — Web Développeur | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T10:26:24.987352",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "cv@yulcom.ca": {
+      "email": "cv@yulcom.ca",
+      "company": "YULCOM Technologies",
+      "subject": "Candidature — Développeur Web Full Stack | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T10:27:39.432277",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    },
+    "recrutement@sqli.com": {
+      "email": "recrutement@sqli.com",
+      "company": "SQLI Maroc",
+      "subject": "Candidature Spontanée — Développeur Full Stack PHP/JS | Mohamed Moukhtari",
+      "status": "sent",
+      "timestamp": "2026-02-17T10:28:35.125291",
+      "attempt": 1,
+      "error_message": "",
+      "smtp_response": "Sent successfully (attempt 1)"
+    }
+  },
+  "failed": {
+    "cv@linkopus.dev": {
+      "email": "cv@linkopus.dev",
+      "company": "Linkopus",
+      "subject": "Candidature — Développeur Back Confirmé (Node.js) | Mohamed Moukhtari",
+      "status": "failed",
+      "timestamp": "2026-02-17T08:28:33.718005",
+      "attempt": 1,
+      "error_message": "Could not establish SMTP connection",
+      "smtp_response": ""
+    },
+    "job@marketingconfort.com": {
+      "email": "job@marketingconfort.com",
+      "company": "Marketing Confort",
+      "subject": "Candidature — Développeur Java Springboot React | Mohamed Moukhtari",
+      "status": "failed",
+      "timestamp": "2026-02-17T08:59:43.875016",
+      "attempt": 1,
+      "error_message": "Could not establish SMTP connection",
+      "smtp_response": ""
+    },
+    "recrutement@divatechdz.com": {
+      "email": "recrutement@divatechdz.com",
+      "company": "Divatech",
+      "subject": "Candidature — Développeur Full Stack (Django/React) | Mohamed Moukhtari",
+      "status": "failed",
+      "timestamp": "2026-02-17T09:20:21.831652",
+      "attempt": 1,
+      "error_message": "Could not establish SMTP connection",
+      "smtp_response": ""
+    },
+    "ahmed.bastani@inetum.com": {
+      "email": "ahmed.bastani@inetum.com",
+      "company": "Inetum (Ahmed)",
+      "subject": "Candidature — Architecte Java / Développeur Senior | Mohamed Moukhtari",
+      "status": "failed",
+      "timestamp": "2026-02-17T09:49:15.446152",
+      "attempt": 1,
+      "error_message": "Could not establish SMTP connection",
+      "smtp_response": ""
+    },
+    "caroline.parent@alithya.com": {
+      "email": "caroline.parent@alithya.com",
+      "company": "Alithya (Caroline)",
+      "subject": "Candidature — Développeur Fullstack Java/Angular | Mohamed Moukhtari",
+      "status": "failed",
+      "timestamp": "2026-02-17T10:23:16.795883",
+      "attempt": 1,
+      "error_message": "Could not establish SMTP connection",
+      "smtp_response": ""
+    }
+  },
+  "skipped": {
+    "amina@tcrew.be": {
+      "email": "amina@tcrew.be",
+      "company": "TCrew",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:43.916955",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "talents@insurbt.com": {
+      "email": "talents@insurbt.com",
+      "company": "Insurbt",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:43.960983",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "igartoua@wemanity.com": {
+      "email": "igartoua@wemanity.com",
+      "company": "Wemanity",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:43.976582",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "cabinet.ybaccompagnement@gmail.com": {
+      "email": "cabinet.ybaccompagnement@gmail.com",
+      "company": "YB Accompagnement",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.002539",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "i.nssiri@klk.ma": {
+      "email": "i.nssiri@klk.ma",
+      "company": "KLK",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.028957",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "contact@tastyandnomad.com": {
+      "email": "contact@tastyandnomad.com",
+      "company": "Tasty and Nomad",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.222505",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "attaam72@gmail.com": {
+      "email": "attaam72@gmail.com",
+      "company": "—",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.239752",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@ac2i.ma": {
+      "email": "recrutement@ac2i.ma",
+      "company": "AC2I",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.249404",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "moise.k@digiware-business.com": {
+      "email": "moise.k@digiware-business.com",
+      "company": "Digiware Business",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.323897",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "rhairecrutement@gmail.com": {
+      "email": "rhairecrutement@gmail.com",
+      "company": "—",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.362743",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "hello@agentooz.com": {
+      "email": "hello@agentooz.com",
+      "company": "Agentooz",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.481093",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "contact@stratchangeconsulting.com": {
+      "email": "contact@stratchangeconsulting.com",
+      "company": "StratChange Consulting",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.493784",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "rashmi.singh@dianapps.com": {
+      "email": "rashmi.singh@dianapps.com",
+      "company": "DianaApps",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.513835",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "hind.sbiti@accenture.com": {
+      "email": "hind.sbiti@accenture.com",
+      "company": "Btechnologie/Accenture",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.523999",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "hr@alahramgroup-eg.net": {
+      "email": "hr@alahramgroup-eg.net",
+      "company": "Alahram Group",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.531951",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "kenitra.recruitment@eu.fujikura.com": {
+      "email": "kenitra.recruitment@eu.fujikura.com",
+      "company": "Fujikura",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.565021",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "shahzaddeveloper987@gmail.com": {
+      "email": "shahzaddeveloper987@gmail.com",
+      "company": "—",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.599281",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "akkodismoroccorecruitment@akkodis.com": {
+      "email": "akkodismoroccorecruitment@akkodis.com",
+      "company": "Akkodis",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.630451",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrudigital4futur@gmail.com": {
+      "email": "recrudigital4futur@gmail.com",
+      "company": "Digital4Futur",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.639158",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "farah.lemsi@bti-advisory.com": {
+      "email": "farah.lemsi@bti-advisory.com",
+      "company": "BTI Advisory",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.648039",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "contact@schoolify-edtech.com": {
+      "email": "contact@schoolify-edtech.com",
+      "company": "Schoolify",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.718364",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "meriem.aziz@adria-bt.com": {
+      "email": "meriem.aziz@adria-bt.com",
+      "company": "Adria Business & Technology",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.727698",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "wissal.el.hariri@accenture.com": {
+      "email": "wissal.el.hariri@accenture.com",
+      "company": "Accenture",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.750991",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@anakot.com": {
+      "email": "recrutement@anakot.com",
+      "company": "Anakot",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.758661",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "yafang@omnidata.ma": {
+      "email": "yafang@omnidata.ma",
+      "company": "Omnidata/Freelance",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.767295",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "hermance.ma@digiware-business.com": {
+      "email": "hermance.ma@digiware-business.com",
+      "company": "Digiware",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.794044",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "lina.perez@deltalink.ma": {
+      "email": "lina.perez@deltalink.ma",
+      "company": "DeltaLink",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.812650",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "smasloh@bessand.com": {
+      "email": "smasloh@bessand.com",
+      "company": "Bessand",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.821218",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "maha.cheikhi@avaliance.com": {
+      "email": "maha.cheikhi@avaliance.com",
+      "company": "Avaliance",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.831031",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "kaoutar.nouri@hps-worldwide.com": {
+      "email": "kaoutar.nouri@hps-worldwide.com",
+      "company": "HPS",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.849721",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "asmaa.jnibi@capgemini.com": {
+      "email": "asmaa.jnibi@capgemini.com",
+      "company": "Capgemini",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.882573",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "lambdasoft5@gmail.com": {
+      "email": "lambdasoft5@gmail.com",
+      "company": "LambdaSoft",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.890675",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "samia.elkaissi@hcltech.com": {
+      "email": "samia.elkaissi@hcltech.com",
+      "company": "HCLTech",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.908225",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "marwane.boudouar@tandeem.net": {
+      "email": "marwane.boudouar@tandeem.net",
+      "company": "Tandeem",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.951840",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "contact@wakalny.com": {
+      "email": "contact@wakalny.com",
+      "company": "Wakalny",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.960744",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "rekrute.awarino@gmail.com": {
+      "email": "rekrute.awarino@gmail.com",
+      "company": "Awarino",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.978097",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "fatine.bennani@decloedt.cloud": {
+      "email": "fatine.bennani@decloedt.cloud",
+      "company": "Decloedt DF",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.992303",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "youssra.boughrara@avantamaroc.com": {
+      "email": "youssra.boughrara@avantamaroc.com",
+      "company": "Avanta Maroc",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.024448",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "aya.idrissi@ef2conseil.com": {
+      "email": "aya.idrissi@ef2conseil.com",
+      "company": "EF2 Conseil",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.038791",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "fatima.akli@jeunestalents.ma": {
+      "email": "fatima.akli@jeunestalents.ma",
+      "company": "Jeunes Talents",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.072869",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@talentmind.ma": {
+      "email": "recrutement@talentmind.ma",
+      "company": "TalentMind",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.098388",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@technicfile.ma": {
+      "email": "recrutement@technicfile.ma",
+      "company": "TechnicFile",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.119948",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@achmitech.com": {
+      "email": "recrutement@achmitech.com",
+      "company": "Achmitech",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.128529",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "asma.m@eitaconsulting.fr": {
+      "email": "asma.m@eitaconsulting.fr",
+      "company": "EITA Consulting",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.166569",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "jobs@homsys.ma": {
+      "email": "jobs@homsys.ma",
+      "company": "Homsys",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.180292",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "ahmed.benbrahim@bi-newvision.com": {
+      "email": "ahmed.benbrahim@bi-newvision.com",
+      "company": "BI-NewVision",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.201448",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "fevma_rh@fev.com": {
+      "email": "fevma_rh@fev.com",
+      "company": "FEV North Africa",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.210739",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "gti.recrutement@gtiinfo.com.tn": {
+      "email": "gti.recrutement@gtiinfo.com.tn",
+      "company": "GTI",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.248850",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "khawla.bourakkadi@globant.com": {
+      "email": "khawla.bourakkadi@globant.com",
+      "company": "Globant",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.267587",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "y.benyahia@bibatech.ma": {
+      "email": "y.benyahia@bibatech.ma",
+      "company": "Bibatech",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.322322",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "imane.amsker@istyagroup.com": {
+      "email": "imane.amsker@istyagroup.com",
+      "company": "IstyaGroup",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.332364",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "fbalibla@gmail.com": {
+      "email": "fbalibla@gmail.com",
+      "company": "LibertyPay",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.341289",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "nour-elhoda.rafai@cpl-network.com": {
+      "email": "nour-elhoda.rafai@cpl-network.com",
+      "company": "CPL Network (Wirky?)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.354210",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "kalhimarwa@gmail.com": {
+      "email": "kalhimarwa@gmail.com",
+      "company": "Marwa Kalhi (Freelance)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.366454",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "hiring@axelites.com": {
+      "email": "hiring@axelites.com",
+      "company": "Axelites",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.430718",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "zaineb.berrazouk@intelcia.com": {
+      "email": "zaineb.berrazouk@intelcia.com",
+      "company": "Intelcia",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.484517",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "edricknubla25@gmail.com": {
+      "email": "edricknubla25@gmail.com",
+      "company": "Edrick Nubla",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.508964",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "myassine@medtech.ma": {
+      "email": "myassine@medtech.ma",
+      "company": "MedTech",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.524324",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "jobs@weringroup.ma": {
+      "email": "jobs@weringroup.ma",
+      "company": "WerinGroup",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.539280",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "contact@thetekcircle.io": {
+      "email": "contact@thetekcircle.io",
+      "company": "TheTekCircle",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.549288",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "s.aoune@talentmind.ma": {
+      "email": "s.aoune@talentmind.ma",
+      "company": "TalentMind",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.557840",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "inass.kortmani@adria-bt.com": {
+      "email": "inass.kortmani@adria-bt.com",
+      "company": "Adria Business & Technology",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.574064",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "xavier@404-recrutement.fr": {
+      "email": "xavier@404-recrutement.fr",
+      "company": "404 Recrutement (Xavier)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.581569",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "hr.nadatarek@gmail.com": {
+      "email": "hr.nadatarek@gmail.com",
+      "company": "Nada Tarek (HR)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.589179",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "koubaytarilana@gmail.com": {
+      "email": "koubaytarilana@gmail.com",
+      "company": "Saudi Project (Lana)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.599412",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "khadija.achbab@infotel.com": {
+      "email": "khadija.achbab@infotel.com",
+      "company": "Infotel Maroc",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.608061",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "bouchra.tounli@thetekcircle.io": {
+      "email": "bouchra.tounli@thetekcircle.io",
+      "company": "TheTekCircle (Bouchra)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.623402",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "hajar.workwide@gmail.com": {
+      "email": "hajar.workwide@gmail.com",
+      "company": "WorkWide",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.631582",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "talent@enova.ma": {
+      "email": "talent@enova.ma",
+      "company": "ENOVART",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.639442",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "aymane.halloumi@cpl-network.com": {
+      "email": "aymane.halloumi@cpl-network.com",
+      "company": "CPL Network",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.648495",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "maxime.desse@horezon.fr": {
+      "email": "maxime.desse@horezon.fr",
+      "company": "Horezon Maroc",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.679355",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "hbouftas@oceaneconsulting.com": {
+      "email": "hbouftas@oceaneconsulting.com",
+      "company": "Oceane Consulting",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.722228",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "pra.tallent@gmail.com": {
+      "email": "pra.tallent@gmail.com",
+      "company": "PRA Tallent (Stage)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.742436",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "yassine.janati@paysera.net": {
+      "email": "yassine.janati@paysera.net",
+      "company": "Paysera (Fintech)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.757773",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "rhecomub@gmail.com": {
+      "email": "rhecomub@gmail.com",
+      "company": "Rhecomub (Angular)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.764693",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "oussama.ezzaytouni@africashore.com": {
+      "email": "oussama.ezzaytouni@africashore.com",
+      "company": "Africashore",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.770854",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "meriem.massano@capgemini.com": {
+      "email": "meriem.massano@capgemini.com",
+      "company": "Capgemini Maroc",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.778335",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@binitns.com": {
+      "email": "recrutement@binitns.com",
+      "company": "BinitNS",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.789857",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "ayakhlef@silamir.com": {
+      "email": "ayakhlef@silamir.com",
+      "company": "Silamir Afrique",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.799605",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "afef.kalleli@speegar.com": {
+      "email": "afef.kalleli@speegar.com",
+      "company": "Speegar",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.817438",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "backend@greensolutionsmaroc.com": {
+      "email": "backend@greensolutionsmaroc.com",
+      "company": "Green Solutions Maroc",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.832862",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "oumaima@crafteam.io": {
+      "email": "oumaima@crafteam.io",
+      "company": "Crafteam",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.852739",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "hanaa.farid@walitservices.com": {
+      "email": "hanaa.farid@walitservices.com",
+      "company": "Walitservices (Hanaa)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.863838",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "oumnia@reecho.eu": {
+      "email": "oumnia@reecho.eu",
+      "company": "Reecho",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.886013",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "yabed@maltem.com": {
+      "email": "yabed@maltem.com",
+      "company": "Maltem Africa",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.899910",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "machour@eleveight-group.com": {
+      "email": "machour@eleveight-group.com",
+      "company": "Eleveight Group",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.922624",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "job.maroc@inetum.com": {
+      "email": "job.maroc@inetum.com",
+      "company": "Inetum Maroc",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.940943",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "nelhaj@neosys.fr": {
+      "email": "nelhaj@neosys.fr",
+      "company": "Neosys",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.971834",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "najwa.mirani@skylark.ma": {
+      "email": "najwa.mirani@skylark.ma",
+      "company": "Skylark Services",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.982897",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "h.tachfine@thegamechangercompany.io": {
+      "email": "h.tachfine@thegamechangercompany.io",
+      "company": "TheGameChangerCompany",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.992859",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "fatima-ez-zahra.fadili@atos.net": {
+      "email": "fatima-ez-zahra.fadili@atos.net",
+      "company": "Atos",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:43.905851",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "assistant@automize.ma": {
+      "email": "assistant@automize.ma",
+      "company": "Automize",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:43.925867",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "careers@azmsquad.com": {
+      "email": "careers@azmsquad.com",
+      "company": "AZM Squad",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:43.938188",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "f.ouladsine@nomatis.com": {
+      "email": "f.ouladsine@nomatis.com",
+      "company": "Nomatis",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:43.947785",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "ihssane.chemaou@avaliance.com": {
+      "email": "ihssane.chemaou@avaliance.com",
+      "company": "Avaliance",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:43.989297",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "chaimae.hasnaoui@smile-maroc.com": {
+      "email": "chaimae.hasnaoui@smile-maroc.com",
+      "company": "Smile Maroc",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.021508",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "doha.yahia@indatacore.com": {
+      "email": "doha.yahia@indatacore.com",
+      "company": "Indatacore",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.069361",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "aymen.metoui@agoraplus.com": {
+      "email": "aymen.metoui@agoraplus.com",
+      "company": "Agoraplus",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.207904",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "karima.sassi@kouka.io": {
+      "email": "karima.sassi@kouka.io",
+      "company": "Kouka",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.266720",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "avalette@teksystems.com": {
+      "email": "avalette@teksystems.com",
+      "company": "TEKsystems",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.305860",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "fadwa.bouzianeouaritini@alten.com": {
+      "email": "fadwa.bouzianeouaritini@alten.com",
+      "company": "Alten Maroc",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.334600",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "g.spiess@wepoint.com": {
+      "email": "g.spiess@wepoint.com",
+      "company": "Wepoint",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.403953",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "frh@alfapeople.com": {
+      "email": "frh@alfapeople.com",
+      "company": "AlfaPeople",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.422627",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "ikram.aguriach@deltalink.ma": {
+      "email": "ikram.aguriach@deltalink.ma",
+      "company": "DeltaLink",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.503431",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "inayssa@omnidata.ma": {
+      "email": "inayssa@omnidata.ma",
+      "company": "Omnidata",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.541352",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "rahma.bellili@peppermint.company": {
+      "email": "rahma.bellili@peppermint.company",
+      "company": "Peppermint",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.553994",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "nadir.benyoussef@consort-group.com": {
+      "email": "nadir.benyoussef@consort-group.com",
+      "company": "Consort Group",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.573727",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "igerp@i-gouvernancia.com": {
+      "email": "igerp@i-gouvernancia.com",
+      "company": "I-Gouvernancia",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.587618",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "abdelkhalek@smartovate.com": {
+      "email": "abdelkhalek@smartovate.com",
+      "company": "Smartovate",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.612720",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "contact@walitservices.com": {
+      "email": "contact@walitservices.com",
+      "company": "Walit Services",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.622721",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recruitment@t2s.ma": {
+      "email": "recruitment@t2s.ma",
+      "company": "T2S Group",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.688553",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "donia.chennoufi@value.com.tn": {
+      "email": "donia.chennoufi@value.com.tn",
+      "company": "Value",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.698610",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "candidature@ifcarsolutions.com": {
+      "email": "candidature@ifcarsolutions.com",
+      "company": "Ifcar Solutions",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.707854",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "careers@aicrafters.com": {
+      "email": "careers@aicrafters.com",
+      "company": "AI Crafters",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.736359",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "ghofrane.hefiene@binitns.com": {
+      "email": "ghofrane.hefiene@binitns.com",
+      "company": "BinitNS",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.778254",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "offre-st@consult-it.com": {
+      "email": "offre-st@consult-it.com",
+      "company": "Consult IT",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.785953",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "amani.essid@softgen.fr": {
+      "email": "amani.essid@softgen.fr",
+      "company": "SoftGen",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.803688",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "amal.lasri@accenture.com": {
+      "email": "amal.lasri@accenture.com",
+      "company": "Accenture",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.839926",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "meriem.boumzguid@smile-maroc.com": {
+      "email": "meriem.boumzguid@smile-maroc.com",
+      "company": "Smile Maroc",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.860992",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@atlascs.ma": {
+      "email": "recrutement@atlascs.ma",
+      "company": "Atlas Cloud Services",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.869842",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "mariam.rabie@asset.com.eg": {
+      "email": "mariam.rabie@asset.com.eg",
+      "company": "ASSET Technology",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.899349",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "marwa.hekki@walitservices.com": {
+      "email": "marwa.hekki@walitservices.com",
+      "company": "WAL-IT Services",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.920661",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "contact@ac2i.ma": {
+      "email": "contact@ac2i.ma",
+      "company": "AC2I",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.935112",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@goandev.net": {
+      "email": "recrutement@goandev.net",
+      "company": "Go&Dev",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.943103",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "meriem.antar20@gmail.com": {
+      "email": "meriem.antar20@gmail.com",
+      "company": "Projet Freelance",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:44.969241",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "mkallel@neosys.fr": {
+      "email": "mkallel@neosys.fr",
+      "company": "Neosys",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.009588",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "salma.ashraf@fawry.com": {
+      "email": "salma.ashraf@fawry.com",
+      "company": "Fawry",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.048801",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "wissal.ait-mansour@wirkygroup.com": {
+      "email": "wissal.ait-mansour@wirkygroup.com",
+      "company": "WIRKY Group",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.061605",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "sanaa.elhaddaoui@skylark.ma": {
+      "email": "sanaa.elhaddaoui@skylark.ma",
+      "company": "Skylark Services",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.085966",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "sfathi@s2m.ma": {
+      "email": "sfathi@s2m.ma",
+      "company": "S2M Maroc",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.111571",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "rh-talent@g3c.ma": {
+      "email": "rh-talent@g3c.ma",
+      "company": "G3C",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.137503",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@weshore.com": {
+      "email": "recrutement@weshore.com",
+      "company": "Weshore",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.146317",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@qacode.fr": {
+      "email": "recrutement@qacode.fr",
+      "company": "QACODE",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.155489",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "melyamami@valueit.ma": {
+      "email": "melyamami@valueit.ma",
+      "company": "ValueIT",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.191084",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "contact@ogcommunication.ma": {
+      "email": "contact@ogcommunication.ma",
+      "company": "OG Communication",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.224353",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "o.elbaytari@talentmind.ma": {
+      "email": "o.elbaytari@talentmind.ma",
+      "company": "TalentMind (Java)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.961802",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "contact@softbridgesolutions.com": {
+      "email": "contact@softbridgesolutions.com",
+      "company": "Softbridge Solutions",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.235842",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "hiring@alton.ma": {
+      "email": "hiring@alton.ma",
+      "company": "Alton",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.258585",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "a.fatima-zahra@connecting-systems.net": {
+      "email": "a.fatima-zahra@connecting-systems.net",
+      "company": "Connecting Systems",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.277883",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "janna.zaouga@softeam.fr": {
+      "email": "janna.zaouga@softeam.fr",
+      "company": "Softeam Docaposte",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.287192",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "hfc.rh@howmet.com": {
+      "email": "hfc.rh@howmet.com",
+      "company": "Howmet Aerospace",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.301030",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "candidature@axa-services.ma": {
+      "email": "candidature@axa-services.ma",
+      "company": "AXA Services",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.311280",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "amina.lhissou@alten.com": {
+      "email": "amina.lhissou@alten.com",
+      "company": "ALTEN Maroc",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.376274",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "anas.essanhaji@alten.com": {
+      "email": "anas.essanhaji@alten.com",
+      "company": "ALTEN Maroc",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.386063",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "cv@solutionsxpr.com": {
+      "email": "cv@solutionsxpr.com",
+      "company": "Solutions XPR",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.406205",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@tacticaltactics.ma": {
+      "email": "recrutement@tacticaltactics.ma",
+      "company": "Tactical Tactics",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.448441",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "drh@involys.com": {
+      "email": "drh@involys.com",
+      "company": "Involys",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.462043",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "amal.khan@ariagroup.io": {
+      "email": "amal.khan@ariagroup.io",
+      "company": "Aria Group",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.470399",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "zineb.benlbrikia@accenture.com": {
+      "email": "zineb.benlbrikia@accenture.com",
+      "company": "Accenture",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.496101",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "y.elkacemi@proman.ma": {
+      "email": "y.elkacemi@proman.ma",
+      "company": "Proman",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.657458",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@mobiarchitects.com": {
+      "email": "recrutement@mobiarchitects.com",
+      "company": "MobiArchitects",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.668353",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "contact@walitservice.com": {
+      "email": "contact@walitservice.com",
+      "company": "Walit Service",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.732289",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "ahmedlaagouz79@gmail.com": {
+      "email": "ahmedlaagouz79@gmail.com",
+      "company": "Technicien Info (Ahmed)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.749746",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "fatimazohra.gamhor@anakot.com": {
+      "email": "fatimazohra.gamhor@anakot.com",
+      "company": "Anakot (Django)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.824619",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "careers@digitinary.com": {
+      "email": "careers@digitinary.com",
+      "company": "Digitinary (QA Stage)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.840867",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "asmaa.el-bouhali@capgemini.com": {
+      "email": "asmaa.el-bouhali@capgemini.com",
+      "company": "Capgemini (COBOL)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.873840",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "n.elouali@connecting-systems.net": {
+      "email": "n.elouali@connecting-systems.net",
+      "company": "Connecting Systems (QA)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.912927",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "rachida.essaleh@hps-worldwide.com": {
+      "email": "rachida.essaleh@hps-worldwide.com",
+      "company": "HPS (IT Support)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.932670",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "amal.lasri@niji.fr": {
+      "email": "amal.lasri@niji.fr",
+      "company": "Niji (Altados)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:45.948876",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "bouchra.mahfoud@symolia.com": {
+      "email": "bouchra.mahfoud@symolia.com",
+      "company": "Symolia",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.015065",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "mohammedamine.benhamza@alten.com": {
+      "email": "mohammedamine.benhamza@alten.com",
+      "company": "ALTEN Maroc",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.026225",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutementmaroc@groupe-crit.com": {
+      "email": "recrutementmaroc@groupe-crit.com",
+      "company": "Groupe CRIT",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.036661",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "alyani.n@lynoconsulting.com": {
+      "email": "alyani.n@lynoconsulting.com",
+      "company": "Lyno Consulting",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.045858",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "fmanaf@omnidata.ma": {
+      "email": "fmanaf@omnidata.ma",
+      "company": "Omnidata (N8n)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.058003",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "ali.alessa@dataplusbiz.com": {
+      "email": "ali.alessa@dataplusbiz.com",
+      "company": "Dataplus",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.069101",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@ef2conseil.com": {
+      "email": "recrutement@ef2conseil.com",
+      "company": "EF2C Consulting",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.092614",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "mouna.reda@alten.com": {
+      "email": "mouna.reda@alten.com",
+      "company": "ALTEN Fès",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.103173",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "souhaila.kourih@neo-devit.com": {
+      "email": "souhaila.kourih@neo-devit.com",
+      "company": "Neo-DevIT",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.113792",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "ali.alissa@digitalsolutionco.com": {
+      "email": "ali.alissa@digitalsolutionco.com",
+      "company": "Digital Solution Co",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.121765",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "b.ferre@catamania.com": {
+      "email": "b.ferre@catamania.com",
+      "company": "Catamania",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.130125",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "manel.bounnite@infotel.com": {
+      "email": "manel.bounnite@infotel.com",
+      "company": "Infotel Maroc",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.139140",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutements@jbel-annour.ma": {
+      "email": "recrutements@jbel-annour.ma",
+      "company": "Jbel Annour",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.148312",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "asmaa.albaraka@skylark.ma": {
+      "email": "asmaa.albaraka@skylark.ma",
+      "company": "Skylark (Asmaa)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.185437",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "i.benezzine@idatech.ma": {
+      "email": "i.benezzine@idatech.ma",
+      "company": "ID&A Tech",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.199214",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@lgc-sarl.com": {
+      "email": "recrutement@lgc-sarl.com",
+      "company": "LGC SARL",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.218517",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "emeddeb@crafteam.io": {
+      "email": "emeddeb@crafteam.io",
+      "company": "Crafteam (Emeddeb)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.273947",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "marouan.mekri@beautystation.ma": {
+      "email": "marouan.mekri@beautystation.ma",
+      "company": "BeautyStation",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.002870",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "m.elatba@reechosolutions.com": {
+      "email": "m.elatba@reechosolutions.com",
+      "company": "Reecho Solutions",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.322564",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@timlogsolutions.com": {
+      "email": "recrutement@timlogsolutions.com",
+      "company": "TimLog Solutions",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.336559",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "y.ghalmi@numeryx.fr": {
+      "email": "y.ghalmi@numeryx.fr",
+      "company": "Numeryx Technologies",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.355166",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@fidelfi.ma": {
+      "email": "recrutement@fidelfi.ma",
+      "company": "Fidelfi",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.363473",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "k.gourrami@altados.com": {
+      "email": "k.gourrami@altados.com",
+      "company": "Altados/Niji (Gourrami)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.372951",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "h.mhaidra@catamania.com": {
+      "email": "h.mhaidra@catamania.com",
+      "company": "Catamania (Hind)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.382777",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "sara.elgourdia@axone-sys.com": {
+      "email": "sara.elgourdia@axone-sys.com",
+      "company": "Axone Systems",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.392040",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "amani.yaakoubi@octans-consulting.com": {
+      "email": "amani.yaakoubi@octans-consulting.com",
+      "company": "Octans Consulting",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.411732",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "rachid@dgh.ma": {
+      "email": "rachid@dgh.ma",
+      "company": "DGH",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.428366",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "ykhouna@maltem.com": {
+      "email": "ykhouna@maltem.com",
+      "company": "Maltem (Yasser)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.437656",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "dev-java@xtensus.com": {
+      "email": "dev-java@xtensus.com",
+      "company": "Xtensus (Java)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.448329",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "dev-php@xtensus.com": {
+      "email": "dev-php@xtensus.com",
+      "company": "Xtensus (PHP)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.457938",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@deliorgroup.com": {
+      "email": "recrutement@deliorgroup.com",
+      "company": "Delior Group",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.472013",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "kawthar.elgamah@atos.net": {
+      "email": "kawthar.elgamah@atos.net",
+      "company": "Atos (Kawthar)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.481275",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "manal.mbarki@capgemini.com": {
+      "email": "manal.mbarki@capgemini.com",
+      "company": "Capgemini (Manal)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.490206",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutment@adria-bt.com": {
+      "email": "recrutment@adria-bt.com",
+      "company": "Adria BT",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.502080",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "rania.baccouche@kodemade.com": {
+      "email": "rania.baccouche@kodemade.com",
+      "company": "Kodemade",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.510571",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "ilham.bennajah@roadmap-itconsulting.com": {
+      "email": "ilham.bennajah@roadmap-itconsulting.com",
+      "company": "Roadmap IT",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.518354",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "aelghoul@silamir.com": {
+      "email": "aelghoul@silamir.com",
+      "company": "Silamir (Aelghoul)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.528283",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "nihel@crafteam.io": {
+      "email": "nihel@crafteam.io",
+      "company": "Crafteam (Nihel)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.537780",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "chaimae.zarkani@deltalink.ma": {
+      "email": "chaimae.zarkani@deltalink.ma",
+      "company": "Deltalink (Chaimae)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.546220",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "c.kamali@mercureit.com": {
+      "email": "c.kamali@mercureit.com",
+      "company": "Mercure IT",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.554938",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recutement@cygna.fr": {
+      "email": "recutement@cygna.fr",
+      "company": "Cygna",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.564968",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "rifai3lal@gmail.com": {
+      "email": "rifai3lal@gmail.com",
+      "company": "Rifai (Gmail)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.575328",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "safaa.jamaa@smile-maroc.com": {
+      "email": "safaa.jamaa@smile-maroc.com",
+      "company": "Smile Maroc (Safaa)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.584134",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "najwa.aitaattou@asa-techno.com": {
+      "email": "najwa.aitaattou@asa-techno.com",
+      "company": "ASA Techno",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.594382",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "s.tougui@proxiad.com": {
+      "email": "s.tougui@proxiad.com",
+      "company": "Proxiad",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.605068",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "nisrine.elkarouani@deltalink.ma": {
+      "email": "nisrine.elkarouani@deltalink.ma",
+      "company": "Deltalink (Nisrine)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.616843",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "salma.lamri@red-tic.com": {
+      "email": "salma.lamri@red-tic.com",
+      "company": "Red Tic",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.627542",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "imane.elimrani@werecruit.ma": {
+      "email": "imane.elimrani@werecruit.ma",
+      "company": "Werecruit",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.641521",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "wiam.chakir@niji.fr": {
+      "email": "wiam.chakir@niji.fr",
+      "company": "Niji (Wiam)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.668835",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "r.hallal@marchiche.com": {
+      "email": "r.hallal@marchiche.com",
+      "company": "Marchiche Global",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.681055",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "nada.maher@atos.net": {
+      "email": "nada.maher@atos.net",
+      "company": "Atos (Nada)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.693331",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "mahlebkenza1@gmail.com": {
+      "email": "mahlebkenza1@gmail.com",
+      "company": "Mahleb Kenza",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.702250",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "j.perkins@tenthrevolution.com": {
+      "email": "j.perkins@tenthrevolution.com",
+      "company": "Tenth Revolution",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.718870",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "workwidecabinet@gmail.com": {
+      "email": "workwidecabinet@gmail.com",
+      "company": "Workwide Cabinet",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.731639",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "recrutement@ma.g4s.com": {
+      "email": "recrutement@ma.g4s.com",
+      "company": "G4S",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.744929",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "f.ouazzani@altados.com": {
+      "email": "f.ouazzani@altados.com",
+      "company": "Altados (F. Ouazzani)",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.756029",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    },
+    "s.bensalem@qacode.fr": {
+      "email": "s.bensalem@qacode.fr",
+      "company": "QACODE",
+      "subject": "",
+      "status": "skipped",
+      "timestamp": "2026-02-17T07:59:46.798290",
+      "attempt": 1,
+      "error_message": "Already sent (tracked)",
+      "smtp_response": ""
+    }
+  }
+}

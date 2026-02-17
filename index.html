@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Filter & Email Generator | M2Dev</title>
+    <meta name="description" content="Extrait les emails et contacts depuis du texte et génère des emails professionnels de prospection.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated background orbs -->
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-icon">✉</span>
+                <span class="logo-text">Contact<span class="logo-accent">Filter</span></span>
+            </div>
+            <p class="header-tagline">Extraire • Générer • Prospecter</p>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Step 1: Input Section -->
+        <section class="card step-card" id="step-input">
+            <div class="step-badge">1</div>
+            <h2 class="card-title">
+                <span class="card-icon">📋</span>
+                Collez votre texte
+            </h2>
+            <p class="card-desc">Collez du texte contenant des emails et informations de contact (offres d'emploi, annuaires, pages web, etc.)</p>
+            <textarea id="rawTextInput" class="text-input" rows="10" placeholder="Collez ici le texte contenant des emails et contacts...&#10;&#10;Exemple:&#10;Contactez-nous à contact@entreprise.com&#10;RH: recrutement@societe.fr&#10;Pour candidater: john.doe@techcorp.com"></textarea>
+            <div class="btn-row">
+                <button id="extractBtn" class="btn btn-primary" onclick="extractContacts()">
+                    <span class="btn-icon">🔍</span>
+                    Extraire les contacts
+                </button>
+                <button class="btn btn-ghost" onclick="clearInput()">
+                    <span class="btn-icon">🗑</span>
+                    Effacer
+                </button>
+            </div>
+        </section>
+
+        <!-- Step 2: Extracted Contacts -->
+        <section class="card step-card hidden" id="step-contacts">
+            <div class="step-badge">2</div>
+            <h2 class="card-title">
+                <span class="card-icon">📧</span>
+                Contacts extraits
+                <span class="count-badge" id="contactCount">0</span>
+            </h2>
+            <p class="card-desc">Sélectionnez les contacts pour lesquels vous souhaitez générer un email de prospection.</p>
+            
+            <div class="table-controls">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="selectAll" onchange="toggleSelectAll()">
+                    <span class="custom-checkbox"></span>
+                    Tout sélectionner
+                </label>
+                <div class="lang-toggle">
+                    <span class="lang-label">Langue de l'email :</span>
+                    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</button>
+                    <button class="lang-btn" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="contacts-table">
+                    <thead>
+                        <tr>
+                            <th class="th-check"></th>
+                            <th>Email</th>
+                            <th>Entreprise (déduit)</th>
+                            <th>Domaine</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contactsBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="btn-row">
+                <button id="generateBtn" class="btn btn-primary" onclick="generateEmails()">
+                    <span class="btn-icon">✨</span>
+                    Générer les emails
+                </button>
+                <button class="btn btn-secondary" onclick="exportCSV()">
+                    <span class="btn-icon">📥</span>
+                    Exporter CSV
+                </button>
+            </div>
+        </section>
+
+        <!-- Step 3: Generated Emails -->
+        <section class="card step-card hidden" id="step-emails">
+            <div class="step-badge">3</div>
+            <h2 class="card-title">
+                <span class="card-icon">💌</span>
+                Emails générés
+                <span class="count-badge" id="emailCount">0</span>
+            </h2>
+            <p class="card-desc">Vos emails de prospection sont prêts ! Copiez-les individuellement ou exportez-les tous.</p>
+            
+            <div class="btn-row" style="margin-bottom: 1.5rem;">
+                <button class="btn btn-secondary" onclick="exportAllEmails()">
+                    <span class="btn-icon">📥</span>
+                    Exporter tout en CSV
+                </button>
+                <button class="btn btn-secondary" onclick="copyAllEmails()">
+                    <span class="btn-icon">📋</span>
+                    Copier tout
+                </button>
+            </div>
+
+            <div id="emailsContainer" class="emails-container">
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Fait avec ❤️ par <strong>Mohamed Moukhtari</strong> — M2Dev</p>
+    </footer>
+
+    <!-- Toast notification -->
+    <div id="toast" class="toast hidden">
+        <span id="toastMsg"></span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
