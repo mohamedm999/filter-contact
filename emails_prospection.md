@@ -12476,3 +12476,1301 @@ Available: Immediately
 
 Best regards,
 Mohamed Moukhtari  +212 772 841 600  moukhtari.mohamed.dev@gmail.com
+
+
+---
+
+## 📋 Récapitulatif — Batch 23/02/2026
+
+| # | Entreprise | Email | Poste | Ville | Pertinence |
+|---|-----------|-------|-------|-------|------------|
+| 472 | Cohort AI | vishwap@thecohort.ai | Senior Full Stack Developer (Python, React) | Remote US | ⭐⭐ |
+| 473 | LinkoJob Services | arij.belarbi+7514092@linkojob-sourcing.com | QA Automation Engineer (Cypress/Node.js/React.js) | Rabat | ⭐⭐⭐ |
+| 474 | SGMB (Société Générale) | mohamed.noukouda@socgen.com | Candidature spontanée — Développeur Web | Casablanca | ⭐⭐ |
+| 475 | SGMB (Société Générale) | mohamed.el-hidaoui@socgen.com | Candidature spontanée — Développeur Web | Casablanca | ⭐⭐ |
+| 476 | EMAAR Morocco | shamery@emaar.ae | Candidature spontanée — Développeur Web | — | ⭐ |
+| 477 | LAFARGE Maroc | lakbir.taya@lafarge-maroc.lafarge.com | Candidature spontanée — Développeur Web | — | ⭐ |
+| 478 | CIMR | najat.tadlaoui@cimr.ma | Candidature spontanée — Développeur Web | — | ⭐ |
+| 479 | AUTO HALL | f.elalaoui@autohall.ma | Candidature spontanée — Développeur Web | — | ⭐ |
+| 480 | AUTO HALL | drh@autohall.ma | Candidature spontanée — Développeur Web | — | ⭐ |
+| 481 | CGI (Immobilier) | aessemlali@cgi.ma | Candidature spontanée — Développeur Web | — | ⭐ |
+| 482 | BAM (Barid Al Maghrib) | fatih@poste.ma | Candidature spontanée — Développeur Web | — | ⭐ |
+| 483 | SCHNEIDER ELECTRIC | hafida.tallal@ma.schneider-electric.com | Candidature spontanée — Développeur Web | — | ⭐⭐ |
+| 484 | DELL SAS | ihsane_digua@dell.com | Candidature spontanée — Développeur Web | — | ⭐⭐ |
+| 485 | MARSA MAROC | m_eliklil@marsamaroc.co.ma | Candidature spontanée — Développeur Web | — | ⭐ |
+| 486 | ANRT | meryem-t@anrt.net.ma | Candidature spontanée — Développeur Web | — | ⭐⭐ |
+| 487 | ARINSO | khalid.jahidi@arinso.com | Candidature spontanée — Développeur Web | — | ⭐⭐ |
+| 488 | PHARMA 5 | ouajdi@pharma5.ma | Candidature spontanée — Développeur Web | — | ⭐ |
+| 489 | UBISOFT MAROC | cyril.vermeil@ubisoft.com | Candidature spontanée — Développeur Web | — | ⭐⭐⭐ |
+| 490 | ONCF | achibane@oncf.ma | Candidature spontanée — Développeur Web | — | ⭐ |
+| 491 | ONMT | leila.majlal@onmt.org.ma | Candidature spontanée — Développeur Web | — | ⭐ |
+| 492 | L'OREAL MAROC | avelsch@ma.loreal.com | Candidature spontanée — Développeur Web | — | ⭐ |
+| 493 | MÉDI TELECOM (Orange) | fatimazahra_abbadi.idrissi@meditel.ma | Candidature spontanée — Développeur Web | — | ⭐⭐ |
+| 494 | MAROC TELECOM | l.digoulay@iam.ma | Candidature spontanée — Développeur Web | — | ⭐⭐ |
+| 495 | CAP INFO | kbenhamiada@capinfo.co.ma | Candidature spontanée — Développeur Web | — | ⭐⭐ |
+| 496 | SANOFI AVENTIS – MAPHAR | bahija.marzoug@sanofi-aventis.com | Candidature spontanée — Développeur Web | — | ⭐ |
+| 497 | ACIMA | melbakni@acima.co.ma | Candidature spontanée — Développeur Web | — | ⭐ |
+| 498 | CIMENTS DU MAROC | r.benchaaboun@cimar.co.ma | Candidature spontanée — Développeur Web | — | ⭐ |
+| 499 | LA MAROCAINE VIE | bensaids@lamarocainevie.co.ma | Candidature spontanée — Développeur Web | — | ⭐ |
+| 500 | GTR | kelibrahimi@gsimaroc.com | Candidature spontanée — Développeur Web | — | ⭐ |
+| 501 | LPEE | lahlou@lpee.ma | Candidature spontanée — Développeur Web | — | ⭐ |
+| 502 | CBI (Télécom) | benhammou@mail.cbi.net.ma | Candidature spontanée — Développeur Web | — | ⭐ |
+| 503 | UPS MAROC | nth2mwh@europe.ups.com | Candidature spontanée — Développeur Web | — | ⭐ |
+| 504 | AGH DATA AGENCY | hasnae.belovance@gmail.com | Stage Testeur QA / Développeur | — | ⭐⭐ |
+| 505 | Symolia | salma.oueslati@symolia.com | Développeur PHP/React — Secteur Médical | Aix-en-Provence | ⭐⭐⭐ |
+| 506 | Invest'M Consulting | investm.consulting@gmail.com | Full-Stack JS (Node/Next/Nest) | Casablanca | ⭐⭐⭐ |
+| 507 | Rehabitaire | jobs@rehabitaire.com | Back-End Developer (NestJS) | Aleppo | ⭐⭐⭐ |
+| 508 | Scaylar | hr@scaylar.com | Software Engineer (React, Node, Nest) | — | ⭐⭐⭐ |
+
+> **Légende :** ⭐⭐⭐ = Très pertinent (Full Stack JS, NestJS, React) · ⭐⭐ = Pertinent (IT/Tech) · ⭐ = Candidature spontanée (non-tech)
+
+---
+
+## ✉️ Emails — Batch 23/02/2026
+
+---
+
+### 472. Cohort AI — vishwap@thecohort.ai
+
+**To:** vishwap@thecohort.ai
+**Subject:** Application — Full Stack Developer (React) | Mohamed Moukhtari
+
+Hello,
+
+I am writing to express my interest in the Senior Full Stack Developer position at Cohort AI. While my primary backend expertise is in Node.js/NestJS rather than Python/Django, I bring strong React experience and a solid full-stack background that could be valuable to your team.
+
+Technical skills relevant to the role:
+• React.js, TypeScript, JavaScript (ES6+) — 3+ years of active use
+• Node.js, NestJS, Express.js — production-grade APIs
+• TDD: Jest, Mocha, Chai, E2E testing, Postman
+• AWS, Docker, CI/CD (GitHub Actions, Jenkins)
+• PostgreSQL, MySQL, MongoDB — relational & NoSQL databases
+• Git, code review, mentoring
+
+Key projects:
+• YouShop — E-commerce platform (NestJS, React, Prisma, Docker) with modular architecture
+• MyArtisan — Artisan/Client platform (Laravel, TailwindCSS, PostgreSQL)
+
+I am a quick learner and open to expanding my Python expertise to complement my existing JavaScript/TypeScript full-stack skills.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Best regards,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 473. LinkoJob Services — arij.belarbi+7514092@linkojob-sourcing.com
+
+**To:** arij.belarbi+7514092@linkojob-sourcing.com
+**Subject:** Candidature — Stage QA Automation Engineer (Cypress / Node.js / React.js) | Mohamed Moukhtari
+
+Bonjour,
+
+Votre offre de stage QA Automation Engineer chez LinkoJob Services m'intéresse fortement. Mon profil correspond aux technologies de votre stack : Node.js, React.js, et j'ai une solide expérience en testing.
+
+Compétences pertinentes :
+• Testing & QA : Jest, Mocha, Chai, E2E testing, Unit testing, Postman ✅
+• JavaScript / TypeScript — maîtrise avancée ✅
+• React.js, Node.js — stack principale ✅
+• MongoDB — expérience avec NoSQL ✅
+• GitHub Actions — CI/CD automation ✅
+• Git, Agile/Scrum — méthodologies de travail
+
+Projets clés :
+• YouShop — E-commerce (NestJS, React, Prisma, Docker) avec tests automatisés
+• MyArtisan — Plateforme Artisan/Client (Laravel, PostgreSQL)
+
+Stage OCP (OMS) : Développement Full Stack (Laravel, Vue.js) en méthode Agile/Scrum.
+
+Disponibilité : Immédiate
+Localisation : Compatible Rabat / Remote
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 474. SGMB (Société Générale) — mohamed.noukouda@socgen.com
+
+**To:** mohamed.noukouda@socgen.com
+**Subject:** Candidature spontanée — Développeur Web Full Stack | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée pour un poste de Développeur Web au sein de la Société Générale Maroc. Le secteur bancaire m'intéresse particulièrement, notamment pour les enjeux de digitalisation et de sécurité des applications.
+
+Compétences :
+• Frontend : ReactJS, TypeScript, JavaScript (ES6+), NextJS, HTML5, CSS3
+• Backend : NodeJS, NestJS, ExpressJS, PHP, Laravel, REST APIs
+• Bases de données : PostgreSQL, MySQL, MongoDB
+• Sécurité : JWT, authentification, gestion des accès
+• DevOps : Docker, CI/CD, GitHub Actions
+• Méthodologie : Agile/Scrum, Git
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 475. SGMB (Société Générale) — mohamed.el-hidaoui@socgen.com
+
+**To:** mohamed.el-hidaoui@socgen.com
+**Subject:** Candidature spontanée — Développeur Web Full Stack | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée pour un poste de Développeur Web au sein de la Société Générale Maroc. La transformation digitale du secteur bancaire m'intéresse particulièrement.
+
+Compétences :
+• Frontend : ReactJS, TypeScript, JavaScript (ES6+), NextJS
+• Backend : NodeJS, NestJS, PHP, Laravel, REST APIs
+• Bases de données : PostgreSQL, MySQL, MongoDB
+• Sécurité : JWT, authentification, gestion des accès
+• DevOps : Docker, CI/CD, GitHub Actions
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 476. EMAAR Morocco — shamery@emaar.ae
+
+**To:** shamery@emaar.ae
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez EMAAR Morocco. Je suis Développeur Web Full Stack et je serais ravi de contribuer à la digitalisation de vos services.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, MongoDB, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 477. LAFARGE Maroc — lakbir.taya@lafarge-maroc.lafarge.com
+
+**To:** lakbir.taya@lafarge-maroc.lafarge.com
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez LAFARGE Maroc pour un éventuel poste en développement web ou digitalisation de vos processus internes.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 478. CIMR — najat.tadlaoui@cimr.ma
+
+**To:** najat.tadlaoui@cimr.ma
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je vous adresse ma candidature spontanée pour un poste de Développeur Web au sein de la CIMR. La digitalisation des services de retraite est un domaine qui m'intéresse.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 479. AUTO HALL — f.elalaoui@autohall.ma
+
+**To:** f.elalaoui@autohall.ma
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous contacter pour proposer ma candidature spontanée en tant que Développeur Web chez AUTO HALL.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 480. AUTO HALL (DRH) — drh@autohall.ma
+
+**To:** drh@autohall.ma
+**Subject:** Candidature spontanée — Développeur Web Full Stack | Mohamed Moukhtari
+
+Bonjour,
+
+Je vous adresse ma candidature spontanée pour un éventuel poste de Développeur Web au sein d'AUTO HALL.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD, Agile/Scrum.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 481. CGI (Développement Immobilier) — aessemlali@cgi.ma
+
+**To:** aessemlali@cgi.ma
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez CGI pour un poste de Développeur Web.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 482. BAM (Barid Al Maghrib) — fatih@poste.ma
+
+**To:** fatih@poste.ma
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée pour un poste de Développeur Web au sein de Barid Al Maghrib.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 483. SCHNEIDER ELECTRIC — hafida.tallal@ma.schneider-electric.com
+
+**To:** hafida.tallal@ma.schneider-electric.com
+**Subject:** Candidature spontanée — Développeur Web Full Stack | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez Schneider Electric Maroc. L'IoT et la digitalisation industrielle m'intéressent, et je suis convaincu que mes compétences en développement web pourraient être utiles à vos projets digitaux.
+
+Compétences :
+• Frontend : ReactJS, TypeScript, NextJS
+• Backend : NodeJS, NestJS, PHP, Laravel, REST APIs
+• Bases de données : PostgreSQL, MySQL, MongoDB
+• DevOps : Docker, CI/CD, GitHub Actions
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 484. DELL SAS — ihsane_digua@dell.com
+
+**To:** ihsane_digua@dell.com
+**Subject:** Candidature spontanée — Développeur Web Full Stack | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez Dell SAS Maroc pour un poste de Développeur Web. Travailler dans une entreprise technologique de cette envergure serait une opportunité exceptionnelle.
+
+Compétences :
+• Frontend : ReactJS, TypeScript, NextJS
+• Backend : NodeJS, NestJS, PHP, Laravel, REST APIs
+• Bases de données : PostgreSQL, MySQL, MongoDB
+• DevOps : Docker, CI/CD, GitHub Actions
+• Testing : Jest, Mocha, Postman
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 485. MARSA MAROC — m_eliklil@marsamaroc.co.ma
+
+**To:** m_eliklil@marsamaroc.co.ma
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée pour un poste de Développeur Web chez Marsa Maroc.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 486. ANRT — meryem-t@anrt.net.ma
+
+**To:** meryem-t@anrt.net.ma
+**Subject:** Candidature spontanée — Développeur Web Full Stack | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée à l'ANRT. Le secteur des télécommunications et la régulation numérique m'intéressent particulièrement.
+
+Compétences :
+• Frontend : ReactJS, TypeScript, NextJS
+• Backend : NodeJS, NestJS, PHP, Laravel, REST APIs
+• Bases de données : PostgreSQL, MySQL, MongoDB
+• DevOps : Docker, CI/CD, GitHub Actions
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 487. ARINSO — khalid.jahidi@arinso.com
+
+**To:** khalid.jahidi@arinso.com
+**Subject:** Candidature spontanée — Développeur Web Full Stack | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez ARINSO. Votre spécialisation en logiciels RH m'intéresse, et mes compétences en développement web pourraient contribuer à vos projets.
+
+Compétences :
+• Frontend : ReactJS, TypeScript, NextJS
+• Backend : NodeJS, NestJS, PHP, Laravel, REST APIs
+• Bases de données : PostgreSQL, MySQL, MongoDB
+• DevOps : Docker, CI/CD
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 488. PHARMA 5 — ouajdi@pharma5.ma
+
+**To:** ouajdi@pharma5.ma
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez Pharma 5 pour un éventuel poste de Développeur Web.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 489. UBISOFT MAROC — cyril.vermeil@ubisoft.com
+
+**To:** cyril.vermeil@ubisoft.com
+**Subject:** Candidature spontanée — Développeur Web Full Stack | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez Ubisoft Maroc. En tant que passionné de technologie et de développement web, rejoindre un studio de jeux vidéo de renommée mondiale serait une opportunité exceptionnelle.
+
+Compétences :
+• Frontend : ReactJS, TypeScript, JavaScript (ES6+), NextJS
+• Backend : NodeJS, NestJS, ExpressJS, REST APIs, GraphQL
+• Bases de données : PostgreSQL, MySQL, MongoDB
+• Testing : Jest, Mocha, Chai, E2E, Postman
+• DevOps : Docker, CI/CD, GitHub Actions
+• Outils : Git, Figma, Agile/Scrum, Jira
+
+Projets clés :
+• YouShop — E-commerce (NestJS, React, Prisma, Docker)
+• MyArtisan — Plateforme Artisan/Client (Laravel, PostgreSQL)
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 490. ONCF — achibane@oncf.ma
+
+**To:** achibane@oncf.ma
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée pour un poste de Développeur Web au sein de l'ONCF.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 491. ONMT — leila.majlal@onmt.org.ma
+
+**To:** leila.majlal@onmt.org.ma
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée pour un poste de Développeur Web au sein de l'ONMT.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 492. L'OREAL MAROC — avelsch@ma.loreal.com
+
+**To:** avelsch@ma.loreal.com
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée pour un poste de Développeur Web chez L'Oréal Maroc.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 493. MÉDI TELECOM (Orange) — fatimazahra_abbadi.idrissi@meditel.ma
+
+**To:** fatimazahra_abbadi.idrissi@meditel.ma
+**Subject:** Candidature spontanée — Développeur Web Full Stack | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez Médi Telecom (Orange). Le secteur des télécommunications et la digitalisation des services m'intéressent particulièrement.
+
+Compétences :
+• Frontend : ReactJS, TypeScript, NextJS
+• Backend : NodeJS, NestJS, PHP, Laravel, REST APIs
+• Bases de données : PostgreSQL, MySQL, MongoDB
+• DevOps : Docker, CI/CD, GitHub Actions
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 494. MAROC TELECOM — l.digoulay@iam.ma
+
+**To:** l.digoulay@iam.ma
+**Subject:** Candidature spontanée — Développeur Web Full Stack | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez Maroc Telecom. La transformation digitale du secteur télécom m'intéresse particulièrement.
+
+Compétences :
+• Frontend : ReactJS, TypeScript, NextJS
+• Backend : NodeJS, NestJS, PHP, Laravel, REST APIs
+• Bases de données : PostgreSQL, MySQL, MongoDB
+• DevOps : Docker, CI/CD, GitHub Actions
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 495. CAP INFO — kbenhamiada@capinfo.co.ma
+
+**To:** kbenhamiada@capinfo.co.ma
+**Subject:** Candidature spontanée — Développeur Web Full Stack | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez Cap Info. Votre activité en systèmes d'information et formation m'intéresse.
+
+Compétences :
+• Frontend : ReactJS, TypeScript, NextJS
+• Backend : NodeJS, NestJS, PHP, Laravel, REST APIs
+• Bases de données : PostgreSQL, MySQL, MongoDB
+• DevOps : Docker, CI/CD
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 496. SANOFI AVENTIS – MAPHAR — bahija.marzoug@sanofi-aventis.com
+
+**To:** bahija.marzoug@sanofi-aventis.com
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez Sanofi Aventis – Maphar pour un éventuel poste de Développeur Web.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 497. ACIMA — melbakni@acima.co.ma
+
+**To:** melbakni@acima.co.ma
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée pour un poste de Développeur Web chez Acima.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 498. CIMENTS DU MAROC — r.benchaaboun@cimar.co.ma
+
+**To:** r.benchaaboun@cimar.co.ma
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez Ciments du Maroc pour un éventuel poste de Développeur Web.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 499. LA MAROCAINE VIE — bensaids@lamarocainevie.co.ma
+
+**To:** bensaids@lamarocainevie.co.ma
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée pour un poste de Développeur Web chez La Marocaine Vie.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 500. GTR — kelibrahimi@gsimaroc.com
+
+**To:** kelibrahimi@gsimaroc.com
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée pour un poste de Développeur Web chez GTR (Grands Travaux Routiers).
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 501. LPEE — lahlou@lpee.ma
+
+**To:** lahlou@lpee.ma
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée pour un poste de Développeur Web au sein du LPEE.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 502. CBI (Télécom) — benhammou@mail.cbi.net.ma
+
+**To:** benhammou@mail.cbi.net.ma
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez CBI pour un poste de Développeur Web.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 503. UPS MAROC — nth2mwh@europe.ups.com
+
+**To:** nth2mwh@europe.ups.com
+**Subject:** Candidature spontanée — Développeur Web | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature spontanée chez UPS Maroc pour un éventuel poste de Développeur Web.
+
+Compétences : ReactJS, TypeScript, NodeJS, NestJS, PHP, Laravel, PostgreSQL, MySQL, Docker, CI/CD.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 504. AGH DATA AGENCY — hasnae.belovance@gmail.com
+
+**To:** hasnae.belovance@gmail.com
+**Subject:** Candidature — Stage Développeur / Testeur QA | Mohamed Moukhtari
+
+Bonjour,
+
+Votre offre de stage chez AGH DATA AGENCY HOLDING SA m'intéresse fortement, notamment les postes de Testeur QA et Développeur.
+
+Mon profil combine développement Full Stack et testing :
+• Testing & QA : Jest, Mocha, Chai, E2E testing, Postman ✅
+• JavaScript / TypeScript — maîtrise avancée ✅
+• React.js, Node.js, NestJS — développement web ✅
+• Git, GitHub Actions — CI/CD ✅
+• PostgreSQL, MySQL, MongoDB — bases de données ✅
+• Agile/Scrum — méthodologies de travail ✅
+
+Projets clés :
+• YouShop — E-commerce (NestJS, React, Prisma, Docker) avec tests automatisés
+• MyArtisan — Plateforme Artisan/Client (Laravel, PostgreSQL)
+• Stage OCP (OMS) — Full Stack (Laravel, Vue.js) en méthode Agile
+
+Disponibilité : Immédiate
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 505. Symolia — salma.oueslati@symolia.com
+
+**To:** salma.oueslati@symolia.com
+**Subject:** Candidature — Développeur PHP/React (Secteur Médical) | Mohamed Moukhtari
+
+Bonjour,
+
+Votre offre de Développeur PHP/React pour le projet RIS (Système d'Information Radiologique) m'intéresse fortement.
+
+Compétences directement pertinentes :
+• PHP 7 & 8 — expérience confirmée (Laravel) ✅
+• React — framework frontend principal ✅
+• SQL — PostgreSQL, MySQL, conception de schémas ✅
+• Symfony — notions applicables ✅
+• TypeScript, JavaScript (ES6+) — maîtrise avancée ✅
+• REST APIs — conception et documentation ✅
+• Git, Docker, CI/CD — workflow DevOps ✅
+
+Projets clés :
+• YouShop — E-commerce (NestJS, React, Prisma, Docker) avec architecture modulaire
+• MyArtisan — Plateforme Artisan/Client (Laravel, PostgreSQL)
+• Stage OCP (OMS) — Full Stack (Laravel, Vue.js)
+
+Français : Courant · Anglais : Professionnel
+
+Disponibilité : Immédiate
+Mobilité : Flexible
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 506. Invest'M Consulting — investm.consulting@gmail.com
+
+**To:** investm.consulting@gmail.com
+**Subject:** Candidature — Full-Stack JS (Next/Nest) | Mohamed Moukhtari
+
+Bonjour,
+
+Vos postes de Senior Full-Stack JS et Full-Stack Junior chez Invest'M Consulting m'intéressent fortement. Mon profil correspond exactement à votre stack technique.
+
+Compétences :
+• Next.js, React.js — frontend moderne ✅
+• NestJS, Node.js — backend robuste ✅
+• TypeScript, JavaScript (ES6+) — maîtrise avancée ✅
+• Docker, CI/CD (GitHub Actions) — DevOps ✅
+• SQL (PostgreSQL, MySQL), JWT — sécurité et bases de données ✅
+• Microservices — architecture distribuée ✅
+• Git, Agile/Scrum — méthodologies ✅
+
+Projets clés :
+• YouShop — E-commerce (NestJS, React, Prisma, Docker, microservices)
+• MyArtisan — Plateforme Artisan/Client (Laravel, PostgreSQL)
+
+Français : Courant (écrit et oral)
+
+GitHub : https://github.com/mohamedm999
+Portfolio : https://code-folio-portfolio-personnel-fron.vercel.app/
+LinkedIn : https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Disponibilité : Immédiate
+Localisation : Compatible Casablanca / Hybride
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 507. Rehabitaire — jobs@rehabitaire.com
+
+**To:** jobs@rehabitaire.com
+**Subject:** Application — Back-End Developer (NestJS) | Mohamed Moukhtari
+
+Hello,
+
+I am writing to apply for the Back-End Developer (NestJS) position at Rehabitaire.
+
+My technical profile aligns directly with your requirements:
+• NestJS — primary backend framework, production experience ✅
+• RESTful APIs — design, documentation (Swagger), testing (Postman) ✅
+• SQL — schema design, PostgreSQL, MySQL, performance tuning ✅
+• Git — version control and collaboration ✅
+• System Scalability — modular architecture, microservices ✅
+• TypeScript — advanced proficiency ✅
+
+Key projects:
+• YouShop — E-commerce platform (NestJS, React, Prisma, Docker) with modular monolith architecture, JWT auth, role-based access control
+• MyArtisan — Artisan/Client platform (Laravel, PostgreSQL)
+
+Education: Bachelor's degree in Computer Science
+
+English: Strong written and verbal communication skills
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Best regards,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 508. Scaylar — hr@scaylar.com
+
+**To:** hr@scaylar.com
+**Subject:** Application — Software Engineer (React, Node, Nest) | Mohamed Moukhtari
+
+Hello,
+
+I am interested in the Software Engineer (React, Node, Nest) position at Scaylar. My stack is a direct match.
+
+Technical skills:
+• React.js, Next.js — frontend development ✅
+• Node.js, NestJS — backend APIs ✅
+• TypeScript, JavaScript (ES6+) — core expertise ✅
+• PostgreSQL, MySQL, MongoDB — databases ✅
+• Docker, CI/CD (GitHub Actions) — DevOps ✅
+• Jest, Mocha, Postman — testing ✅
+• Git, Agile/Scrum — workflows ✅
+
+Key projects:
+• YouShop — E-commerce (NestJS, React, Prisma, Docker)
+• MyArtisan — Artisan/Client platform (Laravel, PostgreSQL)
+
+I fix problems instead of forwarding them. Let's talk.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Best regards,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+## 📋 Récapitulatif — Batch 23/02/2026 (v2)
+
+| # | Entreprise | Email | Poste | Ville | Pertinence |
+|---|-----------|-------|-------|-------|------------|
+| 509 | CODE-TALENT | recrutement@code-talent.fr | Développeur Fullstack Node.js / React | Remote | ⭐⭐⭐ |
+| 510 | Revival | noura.gamal@revival-me.com | Front-End Developer (React.js / Next.js) | Remote | ⭐⭐⭐ |
+
+---
+
+## ✉️ Emails — Batch 23/02/2026 (v2)
+
+---
+
+### 509. CODE-TALENT — recrutement@code-talent.fr
+
+**To:** recrutement@code-talent.fr
+**Subject:** Candidature — Développeur Fullstack Node.js / React | Mohamed Moukhtari
+
+Bonjour Myriame,
+
+Votre offre de Développeur Fullstack Node.js / React chez CODE-TALENT m'intéresse fortement. Je cherche exactement ce type de mission : des projets concrets avec des startups, sur le long terme, avec un cadre sérieux.
+
+Mon profil :
+• Node.js, NestJS, ExpressJS — APIs production-ready ✅
+• React.js, Next.js, TypeScript — frontend moderne ✅
+• PostgreSQL, MySQL, MongoDB — bases de données ✅
+• Docker, CI/CD, GitHub Actions — DevOps ✅
+• Jest, Mocha, Postman — testing ✅
+• Git, Agile/Scrum, communication remote — méthodes de travail ✅
+
+Projets clés :
+• YouShop — E-commerce (NestJS, React, Prisma, Docker) avec architecture modulaire et JWT auth
+• MyArtisan — Plateforme Artisan/Client (Laravel, PostgreSQL)
+• Stage OCP (OMS) — Développement Full Stack (Laravel, Vue.js) en méthode Agile
+
+Je livre proprement, je communique clairement, et je m'intègre bien dans les équipes remote.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 510. Revival — noura.gamal@revival-me.com
+
+**To:** noura.gamal@revival-me.com
+**Subject:** Front-End Developer — React.js / Next.js | Mohamed Moukhtari
+
+Hello,
+
+I am writing to apply for the Front-End Developer (React.js / Next.js) position at Revival.
+
+My skills match your requirements directly:
+• React.js & Next.js — primary frontend frameworks, 3+ years ✅
+• JavaScript (ES6+), HTML5, CSS3 — solid fundamentals ✅
+• TypeScript — advanced proficiency ✅
+• Tailwind CSS, responsive design — clean UI ✅
+• REST APIs — integration experience ✅
+• Git — version control and collaboration ✅
+• Clean, scalable, maintainable code — consistent practice ✅
+
+Key projects:
+• YouShop — E-commerce platform (Next.js, React, NestJS, Prisma, Docker)
+• MyArtisan — Artisan/Client platform (Laravel, Vue.js, PostgreSQL)
+
+🌐 Portfolio: https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 GitHub: https://github.com/mohamedm999
+🔗 LinkedIn: https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Best regards,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+## 📋 Récapitulatif — Batch 23/02/2026 (v3)
+
+| # | Entreprise | Email | Poste | Ville | Pertinence |
+|---|-----------|-------|-------|-------|------------|
+| 511 | RAL Aviation | sujatha.khesavan@ral-as.com | Front-End Developer (Web & Mobile) | — | ⭐⭐⭐ |
+| 512 | Intricare Tech | hr@intricaretech.com | Front-End Developer (Vue.js / React.js) | Remote | ⭐⭐ |
+
+> **Skipped:** Vitric (narayani@vitric.in, yashana@vitric.in, turankardevyani@gmail.com) — poste Three.js/WebGL/LLM très spécialisé, hors stack principale.
+
+---
+
+## ✉️ Emails — Batch 23/02/2026 (v3)
+
+---
+
+### 511. RAL Aviation — sujatha.khesavan@ral-as.com
+
+**To:** sujatha.khesavan@ral-as.com
+**Subject:** Application — Front-End Developer (Web & Mobile) | Mohamed Moukhtari
+
+Hello,
+
+I am writing to apply for the Front-End Developer position at RAL Aviation.
+
+My skills align with your requirements:
+• React.js — primary frontend framework, 3+ years ✅
+• Vue.js, Angular — additional frontend experience ✅
+• JavaScript (ES6+), HTML5, CSS3 — solid fundamentals ✅
+• React Native — mobile application development ✅
+• REST API integration — production experience ✅
+• Git — version control and collaboration ✅
+• Performance optimization & scalability — regular practice ✅
+• UI/UX principles — design-to-code implementation ✅
+
+Key projects:
+• YouShop — E-commerce platform (Next.js, React, NestJS, Prisma, Docker) — responsive, API-driven
+• MyArtisan — Artisan/Client platform (Laravel, Vue.js, PostgreSQL) — mobile-friendly UI
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Best regards,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 512. Intricare Tech — hr@intricaretech.com
+
+**To:** hr@intricaretech.com
+**Subject:** Application – Front-End Developer (Vue.js & React.js) | Mohamed Moukhtari
+
+Hello,
+
+I am writing to apply for the Front-End Developer (Vue.js & React.js) position at Intricare Tech.
+
+My skills match your requirements:
+• Vue.js — production experience (MyArtisan project) ✅
+• React.js — primary frontend framework, 3+ years ✅
+• JavaScript (ES6+), modern front-end practices ✅
+• REST APIs & asynchronous data handling ✅
+• Cross-browser compatibility & performance optimization ✅
+• Figma to responsive HTML/CSS ✅
+• Git, collaboration with design & backend teams ✅
+
+Key projects:
+• YouShop — E-commerce platform (Next.js, React, NestJS, Docker)
+• MyArtisan — Artisan/Client platform (Laravel, Vue.js, PostgreSQL)
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Best regards,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+## 📋 Récapitulatif — Batch 23/02/2026 (v4)
+
+| # | Entreprise | Email | Poste | Ville | Pertinence |
+|---|-----------|-------|-------|-------|------------|
+| 513 | Lsquared AI | hr@lsquared.ai | Front-End Developer (Vue.js / React) | Remote | ⭐⭐ |
+| 514 | Oia Properties | jem@oiaproperties.com | Front-End Developer (Vue.js) | — | ⭐⭐ |
+
+> **Skipped (12 offers):** India/Philippines/Bangladesh onsite, UAE relocation required, 7-15 years exp required, SAP/WordPress niche, duplicates.
+
+---
+
+## ✉️ Emails — Batch 23/02/2026 (v4)
+
+---
+
+### 513. Lsquared AI — hr@lsquared.ai
+
+**To:** hr@lsquared.ai
+**Subject:** Application — Front-End Developer (Vue.js / React) | Mohamed Moukhtari
+
+Hello,
+
+I am writing to apply for the Front-End Developer position at Lsquared AI. The remote setup and focus on modern front-end technologies align perfectly with my profile.
+
+My skills:
+• Vue.js — production experience (MyArtisan platform) ✅
+• React.js, Next.js — primary frontend frameworks, 3+ years ✅
+• JavaScript (ES6+), TypeScript — advanced proficiency ✅
+• REST APIs & async data handling ✅
+• Git, CI/CD (GitHub Actions) ✅
+• Strong communication skills ✅
+
+Key projects:
+• YouShop — E-commerce (Next.js, React, NestJS, Docker)
+• MyArtisan — Artisan/Client platform (Laravel, Vue.js, PostgreSQL)
+
+Available immediately.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Best regards,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 514. Oia Properties — jem@oiaproperties.com
+
+**To:** jem@oiaproperties.com
+**Subject:** Application — Front-End Developer (Vue.js) | Mohamed Moukhtari
+
+Hello,
+
+I am writing to apply for the Front-End Developer (Vue.js) position at Oia Properties.
+
+My skills:
+• Vue.js — production experience ✅
+• React.js, Next.js, TypeScript — frontend stack ✅
+• JavaScript (ES6+), HTML5, CSS3, responsive design ✅
+• REST API integration ✅
+• Git, performance optimization ✅
+
+Key projects:
+• YouShop — E-commerce (Next.js, React, NestJS, Docker)
+• MyArtisan — Artisan/Client platform (Laravel, Vue.js, PostgreSQL)
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Best regards,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+## 📋 Récapitulatif — Batch 23/02/2026 (v5)
+
+| # | Entreprise | Email | Poste | Ville | Pertinence |
+|---|-----------|-------|-------|-------|------------|
+| 515 | Innolia | rh@innolia.ma | Stage PFE Full Stack Developer | Casablanca | ⭐⭐⭐ |
+| 516 | Groupe Hammami | recrutement-grh@groupe-hammami.com.tn | Développeur SI Junior (PHP/JS) | Tunisie | ⭐⭐ |
+| 517 | Groupe Hammami (RH) | rhairecrutement@gmail.com | Développeur SI Junior (PHP/JS) | Tunisie | ⭐⭐ |
+
+---
+
+## ✉️ Emails — Batch 23/02/2026 (v5)
+
+---
+
+### 515. Innolia — rh@innolia.ma
+
+**To:** rh@innolia.ma
+**Subject:** Candidature Stage PFE Full Stack Developer – Innolia | Mohamed Moukhtari
+
+Bonjour,
+
+Je vous adresse ma candidature pour le poste de Stagiaire PFE Full Stack Developer chez Innolia. Votre activité en consulting digital à Casablanca m'intéresse particulièrement.
+
+Mon profil correspond à vos attentes :
+• Frontend : React.js, Next.js, Vue.js, TypeScript, HTML5, CSS3 ✅
+• Backend : Node.js, NestJS, ExpressJS, PHP, Laravel ✅
+• Bases de données : PostgreSQL, MySQL, MongoDB (SQL & NoSQL) ✅
+• API REST — conception, documentation, intégration ✅
+• Architecture technique : microservices, modules, clean code ✅
+• Git, Docker, CI/CD, Agile/Scrum ✅
+
+Projets clés :
+• YouShop — E-commerce (NestJS, React, Prisma, Docker) avec architecture modulaire et JWT auth
+• MyArtisan — Plateforme Artisan/Client (Laravel, Vue.js, PostgreSQL)
+• Stage OCP (OMS) — Full Stack (Laravel, Vue.js) en méthode Agile
+
+Disponibilité : Immédiate
+Localisation : Casablanca
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 516. Groupe Hammami — recrutement-grh@groupe-hammami.com.tn
+
+**To:** recrutement-grh@groupe-hammami.com.tn
+**Subject:** Candidature — Développeur Système d'Information Junior | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature pour le poste de Développeur SI Junior au sein du Groupe Hammami.
+
+Compétences correspondant à votre profil :
+• JavaScript (ES6+), TypeScript — maîtrise avancée ✅
+• PHP, Laravel — développement backend ✅
+• Node.js, NestJS — APIs REST ✅
+• React.js, Vue.js, Next.js — développement frontend ✅
+• SQL (PostgreSQL, MySQL), NoSQL (MongoDB) ✅
+• Git, Docker, CI/CD ✅
+
+Formation : Bac+5 en Informatique / Génie logiciel
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+### 517. Groupe Hammami (RH) — rhairecrutement@gmail.com
+
+**To:** rhairecrutement@gmail.com
+**Subject:** Candidature — Développeur Système d'Information Junior | Mohamed Moukhtari
+
+Bonjour,
+
+Je me permets de vous adresser ma candidature pour le poste de Développeur SI Junior.
+
+Compétences :
+• JavaScript, TypeScript, PHP, Laravel — développement web ✅
+• Node.js, NestJS, React.js, Vue.js ✅
+• PostgreSQL, MySQL, MongoDB ✅
+• Git, Docker, Agile/Scrum ✅
+
+Formation : Bac+5 en Informatique / Génie logiciel
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
+
+---
+
+## 📋 Récapitulatif — Batch 24/02/2026
+
+| # | Entreprise | Email | Poste | Ville | Pertinence |
+|---|-----------|-------|-------|-------|------------|
+| 518 | YELLOW IT | slim.besbes@yellow-it.fr | Dev Python / JavaScript – Spécialiste IA & LLM | Tunis | ⭐⭐ |
+
+---
+
+## ✉️ Emails — Batch 24/02/2026
+
+---
+
+### 518. YELLOW IT — slim.besbes@yellow-it.fr
+
+**To:** slim.besbes@yellow-it.fr
+**Subject:** Candidature — Développeur Python / JavaScript | Mohamed Moukhtari
+
+Bonjour,
+
+Votre offre de Développeur Python / JavaScript chez YELLOW IT m'intéresse fortement. L'axe IA & LLM est un domaine vers lequel je souhaite évoluer, et mon profil JavaScript/Python peut y contribuer.
+
+Compétences pertinentes :
+• JavaScript / TypeScript — maîtrise avancée (3+ ans) ✅
+• Python — expérience technique ✅
+• Node.js, NestJS, ExpressJS — backend production-ready ✅
+• React.js, Next.js — frontend moderne ✅
+• REST APIs, architecture modulaire, microservices ✅
+• Docker, CI/CD (GitHub Actions), Git ✅
+• Agile/Scrum, travail en équipe ✅
+• Curiosité forte pour l'IA, les LLM et l'automatisation intelligente ✅
+
+Projets clés :
+• YouShop — E-commerce (NestJS, React, Prisma, Docker) avec architecture modulaire et JWT auth
+• MyArtisan — Plateforme Artisan/Client (Laravel, Vue.js, PostgreSQL)
+• Stage OCP (OMS) — Full Stack (Laravel, Vue.js) en méthode Agile
+
+Je suis motivé à apprendre et builder des projets IA à fort impact. Disponibilité immédiate.
+
+🌐 https://code-folio-portfolio-personnel-fron.vercel.app/
+💻 https://github.com/mohamedm999
+🔗 https://www.linkedin.com/in/mohamed-moukhtari-197a53338/
+
+Cordialement,
+Mohamed Moukhtari · +212 772 841 600 · moukhtari.mohamed.dev@gmail.com
