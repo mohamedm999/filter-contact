@@ -71,7 +71,7 @@ class EmailProspectionParser:
     )
 
     SECTION_HEADER_RE = re.compile(
-        r'^###\s*(\d+)\.\s*(.+?)\s*—\s*(\S+@\S+)',
+        r'^###\s*(\d+)\.\s*(.+?)\s*(?:—|\s{2,})\s*(\S+@\S+)',
         re.IGNORECASE
     )
 
@@ -240,10 +240,23 @@ class EmailProspectionParser:
                     contact.has_custom_email = True
                     logger.debug(f"Attached email for {lookup_email} ({contact.company})")
             else:
-                # Contact exists in sections but not in table — add it
-                self.errors.append(
-                    f"Section #{section_idx} email '{lookup_email}' "
-                    f"not found in table — skipped"
+                # Contact exists in sections but not in table — auto-create it
+                new_contact = Contact(
+                    index=section_idx,
+                    company=section_company,
+                    email=lookup_email,
+                    position='',
+                    city='',
+                    relevance=2,  # Default relevance
+                    subject=subject,
+                    body=body,
+                    has_custom_email=True,
+                )
+                contacts.append(new_contact)
+                contact_map[lookup_email] = new_contact
+                logger.info(
+                    f"Auto-created contact #{section_idx} '{section_company}' "
+                    f"({lookup_email}) from email section"
                 )
 
             # Don't increment i here, the while loop already positioned us

@@ -15,17 +15,33 @@
     python main.py --limit 10          # Send max 10 emails this session
     python main.py --send --min-stars 2 --limit 20
 
-  Environment Variables (recommended for security):
-    set EMAIL_USERNAME=your.email@gmail.com
-    set EMAIL_PASSWORD=your-16-char-app-password
+  Scraper commands:
+    python main.py --scrape            # Scrape all job boards
+    python main.py --scrape --site rekrute  # Scrape only ReKrute
+    python main.py --dry-scrape        # Preview what would be scraped
+    python main.py --scrape --keywords "react,node.js"
+    python main.py --merge-scraped     # Merge scraped → main file + AI emails
+    python main.py --merge-scraped --no-generate  # Merge only, no AI
+    python main.py --generate-emails   # Generate email bodies via AI
+    python main.py --generate-emails --min-stars 3 --limit 10
+
+  Environment Variables (centralized in .env at project root):
+    Copy .env.example → .env and fill in your values.
+    All API keys, passwords, and settings are loaded from .env automatically.
 """
 
 import sys
 import os
+import io
 import argparse
 import logging
 from datetime import datetime
 from pathlib import Path
+
+# Fix Unicode output on Windows (cp1252 can't handle emoji/box chars)
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 # Add parent directory to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -34,6 +50,8 @@ from config import load_config, CampaignConfig
 from parse_contacts import EmailProspectionParser, print_contacts_summary, Contact
 from email_sender import EmailSender, EmailValidator
 from tracker import SentTracker
+from scraper.runner import run_scraper, merge_scraped_contacts
+from scraper.email_generator import generate_emails_for_contacts
 
 
 # ═══════════════════════════════════════════════════════════
@@ -270,9 +288,24 @@ Examples:
   python main.py --send --limit 10       Send max 10 emails
   python main.py --retry-failed          Retry failed emails
 
+Scraper commands:
+  python main.py --scrape                Scrape all job boards
+  python main.py --scrape --site rekrute Scrape only ReKrute
+  python main.py --dry-scrape            Preview scraper plan
+  python main.py --scrape --keywords "react,node.js"
+
+Merge & AI email generation:
+  python main.py --merge-scraped         Merge + auto-generate emails (AI)
+  python main.py --merge-scraped --no-generate   Merge only (no AI)
+  python main.py --generate-emails       Generate emails for all contacts missing one
+  python main.py --generate-emails --min-stars 3  Only for ⭐⭐⭐ contacts
+  python main.py --generate-emails --limit 5      Generate max 5 emails
+  python main.py --generate-emails --ai-model gpt-4o  Use GPT-4o model
+
 Before sending, set credentials:
   set EMAIL_USERNAME=your.email@gmail.com
   set EMAIL_PASSWORD=your-16-char-app-password
+  set OPENAI_API_KEY=sk-your-key-here     (for AI email generation)
         """
     )
 
@@ -313,6 +346,41 @@ Before sending, set credentials:
         help='Skip confirmation prompt (auto-confirm)'
     )
 
+    # ── Scraper arguments ──
+    arg_parser.add_argument(
+        '--scrape', action='store_true',
+        help='Scrape job boards for new contacts'
+    )
+    arg_parser.add_argument(
+        '--site', type=str, nargs='+',
+        choices=['rekrute', 'emploi_ma', 'maroc_annonces', 'bayt'],
+        help='Which job board(s) to scrape (default: all)'
+    )
+    arg_parser.add_argument(
+        '--keywords', type=str, default=None,
+        help='Comma-separated search keywords (overrides defaults)'
+    )
+    arg_parser.add_argument(
+        '--dry-scrape', action='store_true',
+        help='Preview scraper plan without actually scraping'
+    )
+    arg_parser.add_argument(
+        '--merge-scraped', action='store_true',
+        help='Merge latest scraped contacts into emails_prospection.md'
+    )
+    arg_parser.add_argument(
+        '--generate-emails', action='store_true',
+        help='Generate email bodies (via OpenAI) for contacts without one'
+    )
+    arg_parser.add_argument(
+        '--no-generate', action='store_true',
+        help='Skip auto email generation when merging (merge table rows only)'
+    )
+    arg_parser.add_argument(
+        '--ai-model', type=str, default='gpt-4o-mini',
+        help='OpenAI model to use for email generation (default: gpt-4o-mini)'
+    )
+
     args = arg_parser.parse_args()
 
     # ── Banner ──
@@ -342,6 +410,41 @@ Before sending, set credentials:
 
     if args.preview:
         cmd_preview(config, limit=args.preview, min_stars=args.min_stars)
+        return
+
+    # ── Scraper commands ──
+    if args.scrape or args.dry_scrape:
+        run_scraper(
+            sites=args.site,
+            keywords=args.keywords,
+            dry_run=args.dry_scrape,
+        )
+        return
+
+    if args.merge_scraped:
+        import os
+        scraped_file = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            'scraper_output', 'scraped_contacts_latest.md'
+        )
+        if not os.path.exists(scraped_file):
+            print("  ❌ No scraped contacts found. Run --scrape first.")
+            sys.exit(1)
+        merge_scraped_contacts(
+            scraped_file=scraped_file,
+            target_file=config.paths.contacts_file,
+            min_stars=args.min_stars,
+            auto_generate_emails=(not args.no_generate),
+        )
+        return
+
+    if args.generate_emails:
+        generate_emails_for_contacts(
+            contacts_file=config.paths.contacts_file,
+            min_stars=args.min_stars,
+            limit=args.limit,
+            model=args.ai_model,
+        )
         return
 
     # Default: dry run or send

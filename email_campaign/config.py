@@ -16,8 +16,14 @@
 """
 
 import os
+from pathlib import Path
 from dataclasses import dataclass, field
 from typing import Optional
+
+# Load .env file from project root (one level up from email_campaign/)
+from dotenv import load_dotenv
+_ENV_PATH = Path(__file__).resolve().parent.parent / ".env"
+load_dotenv(_ENV_PATH)
 
 
 # ═══════════════════════════════════════════════════════════
@@ -30,13 +36,13 @@ class SMTPConfig:
     host: str = "smtp.gmail.com"
     port: int = 587                          # TLS port (recommended)
     use_tls: bool = True                     # Always use TLS
-    username: str = "moukhtari.mohamed.dev@gmail.com"                       # Your Gmail address
-    password: str = "bcrm tggr hykg mmgm"                # Gmail App Password (16 chars)
+    username: str = ""                       # Loaded from .env → EMAIL_USERNAME
+    password: str = ""                       # Loaded from .env → EMAIL_PASSWORD
 
     def __post_init__(self):
-        # Allow env vars to override (safer than hardcoding)
-        self.username = self.username or os.getenv("EMAIL_USERNAME", "")
-        self.password = self.password or os.getenv("EMAIL_PASSWORD", "")
+        # Always load from .env / environment variables
+        self.username = os.getenv("EMAIL_USERNAME", self.username)
+        self.password = os.getenv("EMAIL_PASSWORD", self.password)
 
 
 # ═══════════════════════════════════════════════════════════
@@ -46,12 +52,15 @@ class SMTPConfig:
 @dataclass
 class SenderProfile:
     """Your personal info used in email headers."""
-    name: str = "Mohamed Moukhtari"
-    email: str = "moukhtari.mohamed.dev@gmail.com"
-    phone: str = "+212 772 841 600"
-    reply_to: str = ""  # If empty, uses email
+    name: str = ""                        # Loaded from .env → SENDER_NAME
+    email: str = ""                       # Loaded from .env → SENDER_EMAIL
+    phone: str = ""                       # Loaded from .env → SENDER_PHONE
+    reply_to: str = ""                    # If empty, uses email
 
     def __post_init__(self):
+        self.name = os.getenv("SENDER_NAME", self.name)
+        self.email = os.getenv("SENDER_EMAIL", self.email)
+        self.phone = os.getenv("SENDER_PHONE", self.phone)
         if not self.reply_to:
             self.reply_to = self.email
 
@@ -151,7 +160,7 @@ class FilterConfig:
 
     # Skip these specific emails
     skip_emails: list = field(default_factory=lambda: [
-        "moukhtari.mohamed.dev@gmail.com",   # Your own email
+        os.getenv("SENDER_EMAIL", ""),       # Your own email (from .env)
     ])
 
     # Only send to these domains (empty = all domains)
@@ -181,16 +190,29 @@ class CampaignConfig:
 
 def load_config() -> CampaignConfig:
     """
-    Load configuration. Override with environment variables for security.
+    Load configuration from .env file (auto-loaded at module import).
 
-    Set these env vars before running:
-        set EMAIL_USERNAME=your.email@gmail.com
-        set EMAIL_PASSWORD=your-app-password-here
+    All secrets are read from:  .env  (project root)
+    Copy .env.example → .env and fill in your values.
     """
     config = CampaignConfig()
 
-    # Override SMTP from env vars (recommended)
-    config.smtp.username = os.getenv("EMAIL_USERNAME", config.smtp.username)
-    config.smtp.password = os.getenv("EMAIL_PASSWORD", config.smtp.password)
+    # Campaign-level overrides from .env
+    if os.getenv("DRY_RUN", "").lower() in ("false", "0", "no"):
+        config.dry_run = False
+    if os.getenv("MIN_RELEVANCE_STARS"):
+        config.filters.min_relevance_stars = int(os.getenv("MIN_RELEVANCE_STARS"))
+    if os.getenv("MAX_EMAILS_PER_DAY"):
+        config.rate_limit.max_emails_per_day = int(os.getenv("MAX_EMAILS_PER_DAY"))
+    if os.getenv("MAX_EMAILS_PER_HOUR"):
+        config.rate_limit.max_emails_per_hour = int(os.getenv("MAX_EMAILS_PER_HOUR"))
+    if os.getenv("BATCH_SIZE"):
+        config.rate_limit.batch_size = int(os.getenv("BATCH_SIZE"))
+    if os.getenv("BATCH_PAUSE_MINUTES"):
+        config.rate_limit.batch_pause_minutes = int(os.getenv("BATCH_PAUSE_MINUTES"))
+    if os.getenv("CONTACTS_FILE"):
+        config.paths.contacts_file = os.getenv("CONTACTS_FILE")
+    if os.getenv("LOG_DIR"):
+        config.paths.log_dir = os.getenv("LOG_DIR")
 
     return config

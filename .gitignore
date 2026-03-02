@@ -1,0 +1,46 @@
+# ═══════════════════════════════════════════
+#  Secrets & Personal Data
+# ═══════════════════════════════════════════
+.env
+
+# Contact list (contains real names & emails)
+emails_prospection.md
+
+# Sender profile & example emails (contain personal info)
+email_campaign/scraper/sender_profile.txt
+email_campaign/scraper/example_emails.json
+
+# ═══════════════════════════════════════════
+#  Python
+# ═══════════════════════════════════════════
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+*.egg
+
+# ═══════════════════════════════════════════
+#  Scraper Output (contains scraped emails)
+# ═══════════════════════════════════════════
+scraper_output/
+scraped_contacts*.json
+scraped_contacts*.md
+
+# ═══════════════════════════════════════════
+#  Logs & Tracking (contains send history)
+# ═══════════════════════════════════════════
+email_campaign/logs/
+*.log
+
+# ═══════════════════════════════════════════
+#  IDE & OS
+# ═══════════════════════════════════════════
+.vscode/
+.idea/
+.scrapy/
+.zencoder/
+.zenflow/
+Thumbs.db
+.DS_Store
