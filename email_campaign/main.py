@@ -404,7 +404,7 @@ CV auto-attachment (optional):
     )
     arg_parser.add_argument(
         '--site', type=str, nargs='+',
-        choices=['rekrute', 'emploi_ma', 'maroc_annonces', 'bayt', 'linkedin'],
+        choices=['rekrute', 'emploi_ma', 'maroc_annonces', 'bayt', 'linkedin', 'indeed'],
         help='Which job board(s) to scrape (default: all)'
     )
     arg_parser.add_argument(
