@@ -161,6 +161,42 @@ MEDIUM_RELEVANCE_KEYWORDS = [
 #  Functions
 # ═══════════════════════════════════════════════════════════
 
+def _clean_email_tld(email):
+    """
+    Fix emails that have trailing text from DOM textContent concatenation.
+    e.g. 'hr@company.comemail' → 'hr@company.com'
+    """
+    parts = email.split('@')
+    if len(parts) != 2:
+        return email
+    domain = parts[1]
+    # Try to find a known TLD embedded in the domain and truncate after it
+    # Order: longest first to match .co.uk before .co
+    known_tlds = [
+        '.co.uk', '.co.za', '.co.in', '.co.nz', '.co.jp', '.com.au',
+        '.com.br', '.com.mx', '.com.ar', '.org.uk', '.net.au',
+        '.com', '.org', '.net', '.edu', '.gov', '.io', '.co', '.fr',
+        '.ma', '.uk', '.de', '.es', '.pt', '.it', '.be', '.nl', '.ch',
+        '.at', '.ca', '.au', '.nz', '.in', '.za', '.br', '.us', '.info',
+        '.biz', '.tech', '.dev', '.app', '.ai', '.pro', '.me', '.tv',
+        '.cc', '.eu', '.asia', '.se', '.no', '.dk', '.fi', '.ie', '.pl',
+        '.cz', '.ru', '.jp', '.cn', '.kr', '.mx', '.ar', '.cl',
+    ]
+    for tld in known_tlds:
+        # Look for TLD followed by extra letters (the concatenated text)
+        idx = domain.find(tld)
+        if idx >= 0:
+            end_pos = idx + len(tld)
+            # If there are extra chars after the TLD, truncate
+            if end_pos < len(domain):
+                remaining = domain[end_pos:]
+                if remaining.isalpha():  # trailing text, not a valid subdomain
+                    cleaned = parts[0] + '@' + domain[:end_pos]
+                    return cleaned
+            return email  # TLD found, no trailing text
+    return email
+
+
 def extract_emails_from_text(text):
     """Find all valid email addresses in a block of text."""
     if not text:
@@ -170,14 +206,14 @@ def extract_emails_from_text(text):
     emails = EMAIL_PATTERN.findall(text)
     result = []
     for e in emails:
-        e_lower = e.lower()
+        e_lower = _clean_email_tld(e.lower().strip())
         prefix = e_lower.split('@')[0]
         domain = e_lower.split('@')[1] if '@' in e_lower else ''
         if prefix in SKIP_EMAILS:
             continue
         if any(skip in domain for skip in SKIP_DOMAINS):
             continue
-        result.append(e_lower.strip())
+        result.append(e_lower)
     return result
 
 

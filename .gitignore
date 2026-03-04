@@ -40,7 +40,9 @@ scraped_contacts*.md
 #  Logs & Tracking (contains send history)
 # ═══════════════════════════════════════════
 email_campaign/logs/
+email_campaign/scraper/logs/
 *.log
+*.bak
 
 # ═══════════════════════════════════════════
 #  IDE & OS

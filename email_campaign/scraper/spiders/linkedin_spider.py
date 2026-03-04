@@ -1,20 +1,25 @@
 """
 ══════════════════════════════════════════════════════════════
-  LinkedIn Spider — Playwright-Based Company & Job Scraper
+  LinkedIn Spider — Feed-Scrolling "Hiring" Post Scraper
 ══════════════════════════════════════════════════════════════
 
-  Unlike the other spiders (ReKrute, Bayt, etc.) that use
-  Scrapling's HTTP sessions, LinkedIn requires:
-    1. Real browser login with credentials
-    2. Session persistence (cookies + localStorage)
-    3. Anti-detection (human-like delays, headless Chromium)
+  Strategy (anti-detection focused):
+    1. Login with saved session (cookies + localStorage)
+    2. Search LinkedIn with profile-related keywords
+    3. Scroll through results / feed looking for "hiring" posts
+    4. Click "…see more" to expand full post content
+    5. Extract company name, job info, emails from post
+    6. Visit company website → extract emails from /contact pages
+    7. Keep scrolling with human-like delays & random pauses
 
-  This spider uses Playwright directly to:
-    • Search for companies in Morocco by keyword
-    • Scrape company details (name, website, industry, location)
-    • Scrape job listings per company
-    • Feed discovered company websites into the email extraction
-      pipeline (FetcherSession → homepage + /contact pages)
+  Anti-Bot Measures:
+    • Random delays between every action (1-6s)
+    • Human-like scrolling (variable speed, occasional pauses)
+    • Random mouse movements before clicks
+    • Viewport jitter (small scroll-backs)
+    • Session persistence (avoids repeated logins)
+    • navigator.webdriver removed
+    • Realistic user-agent + viewport
 
   Session stored in: linkedin_session.json (auto-gitignored)
 
@@ -30,8 +35,12 @@ import time
 import random
 import asyncio
 import logging
+import warnings
 from pathlib import Path
 from urllib.parse import quote_plus
+
+# Suppress noisy SSL warnings from requests (we use verify=False)
+warnings.filterwarnings('ignore', message='Unverified HTTPS request')
 
 from ..helpers import (
     make_contact_dict, find_relevant_emails, extract_emails_from_text,
@@ -47,52 +56,93 @@ logger = logging.getLogger(__name__)
 
 SESSION_FILE = Path(__file__).resolve().parent.parent / "linkedin_session.json"
 
-# Morocco geoId for LinkedIn searches
 MOROCCO_GEO_ID = "102787409"
 
-# LinkedIn domains to skip when looking for external company websites
 LINKEDIN_SKIP_DOMAINS = SOCIAL_DOMAINS | {
     'linkedin.com', 'licdn.com',
 }
 
-# CSS selectors (LinkedIn's class names change — update if broken)
-SELECTORS = {
-    # Company search results
-    'company_card': '.reusable-search__result-container',
-    'company_link': 'a.app-aware-link[href*="/company/"]',
-    'company_name': '.entity-result__title-text a span',
-
-    # Company about page
-    'company_about_website': 'a[data-test-id="about-us__website"] dd a',
-    'company_website_link': '.link-without-visited-state[href]',
-    'company_industry': '.org-top-card-summary-info-list__info-item',
-    'company_location': '.org-top-card-summary-info-list__info-item',
-    'company_description': '.org-page-details__definition-text',
-
-    # Job search
-    'job_card': '.job-card-container',
-    'job_link': 'a[href*="/jobs/view/"]',
-    'job_title': '.job-card-list__title--link',
-    'job_company': '.artdeco-entity-lockup__subtitle',
-    'job_location': '.artdeco-entity-lockup__caption',
-
-    # Job detail page
-    'job_detail_title': '.t-24.t-bold.inline',
-    'job_detail_company': '.jobs-unified-top-card__company-name a',
-    'job_detail_location': '.jobs-unified-top-card__bullet',
-    'job_detail_description': '#job-details',
-}
-
-# Default search keywords (same as other spiders)
-DEFAULT_KEYWORDS = [
+# ── Keywords derived from sender's profile ──
+PROFILE_KEYWORDS = [
     "développeur full stack",
     "développeur web",
     "full stack developer",
-    "frontend developer",
-    "backend developer",
     "react developer",
     "node.js developer",
+    "développeur laravel",
+    "développeur javascript",
+    "développeur php",
+    "frontend developer",
+    "backend developer",
+    "stage développement web",
+    "stage pfe informatique",
+    "vue.js developer",
+    "NestJS developer",
     "devops",
+    "typescript developer",
+]
+
+# ── Hiring indicators (FR + EN) ──
+HIRING_KEYWORDS_FR = [
+    "on recrute", "nous recrutons", "recrutement", "on embauche",
+    "nous embauchons", "rejoignez-nous", "rejoignez notre équipe",
+    "offre d'emploi", "offre de stage", "cherche un", "cherchons un",
+    "recherche un", "recherchons un", "poste à pourvoir",
+    "opportunité", "stagiaire", "stage disponible",
+    "nous cherchons", "cherche développeur", "recrute un",
+    "candidature", "postulez", "postuler",
+]
+
+HIRING_KEYWORDS_EN = [
+    "we're hiring", "we are hiring", "hiring", "join our team",
+    "join us", "job opening", "open position", "looking for",
+    "we need", "applying", "apply now", "opportunity",
+    "vacant position", "internship", "we're looking for",
+    "come work with us", "career opportunity", "hiring alert",
+    "job alert", "#hiring", "#wearehiring", "#openposition",
+    "#jobalert", "#recrutement",
+]
+
+ALL_HIRING_PATTERNS = HIRING_KEYWORDS_FR + HIRING_KEYWORDS_EN
+
+HIRING_REGEX = re.compile(
+    '|'.join(re.escape(k) for k in ALL_HIRING_PATTERNS),
+    re.IGNORECASE
+)
+
+# JavaScript function that extracts text with proper spacing
+# (textContent concatenates without spaces, causing email parsing issues)
+CLEAN_TEXT_JS = """
+(el) => {
+    const blocks = new Set(['DIV','P','BR','LI','UL','OL','H1','H2','H3','H4','H5','H6',
+                            'SECTION','ARTICLE','HEADER','FOOTER','TD','TR','BLOCKQUOTE',
+                            'PRE','NAV','SPAN','A']);
+    let result = '';
+    function walk(node) {
+        if (node.nodeType === 3) {
+            result += node.textContent;
+        } else if (node.nodeType === 1) {
+            if (blocks.has(node.tagName)) result += ' ';
+            for (const child of node.childNodes) walk(child);
+            if (blocks.has(node.tagName)) result += ' ';
+        }
+    }
+    walk(el);
+    return result.replace(/\\s+/g, ' ').trim();
+}
+"""
+
+# Tech keywords to detect relevance in posts
+TECH_KEYWORDS = [
+    'react', 'node.js', 'nodejs', 'javascript', 'typescript',
+    'laravel', 'php', 'vue.js', 'vuejs', 'next.js', 'nextjs',
+    'nestjs', 'express', 'full stack', 'fullstack', 'full-stack',
+    'frontend', 'front-end', 'backend', 'back-end',
+    'développeur', 'developer', 'devops', 'docker',
+    'mongodb', 'postgresql', 'mysql', 'rest api', 'graphql',
+    'html', 'css', 'tailwind', 'git', 'ci/cd',
+    'spring boot', 'java', 'python', 'angular', 'flutter',
+    'react native', 'mobile',
 ]
 
 
@@ -104,7 +154,6 @@ async def save_session(context):
     """Save browser session (cookies + localStorage) to file."""
     try:
         cookies = await context.cookies()
-        # Get localStorage from the LinkedIn page
         local_storage = {}
         pages = context.pages
         if pages:
@@ -134,7 +183,7 @@ async def save_session(context):
 
 
 async def load_session(context):
-    """Load saved session (cookies + localStorage) into browser context."""
+    """Load saved session into browser context."""
     if not SESSION_FILE.exists():
         return False
 
@@ -147,7 +196,6 @@ async def load_session(context):
             await context.add_cookies(cookies)
             logger.info(f"Loaded {len(cookies)} cookies from session")
 
-        # Navigate to LinkedIn first, then restore localStorage
         page = context.pages[0] if context.pages else await context.new_page()
         await page.goto('https://www.linkedin.com', wait_until='domcontentloaded',
                         timeout=30000)
@@ -173,24 +221,45 @@ async def is_logged_in(page):
     """Check if the current page is a logged-in LinkedIn session."""
     try:
         url = page.url
-        # If we're on the feed or any non-login page, we're logged in
-        if '/feed' in url or '/mynetwork' in url or '/messaging' in url:
+        # Logged-in pages include feed, search, messaging, company pages, etc.
+        logged_in_paths = [
+            '/feed', '/mynetwork', '/messaging', '/search/',
+            '/notifications', '/jobs', '/in/', '/company/',
+        ]
+        if any(p in url for p in logged_in_paths):
             return True
-        # Check for the feed nav element
+
+        # Check for global nav (only present when logged in)
+        global_nav = await page.query_selector(
+            '#global-nav, .global-nav, nav.global-nav__content'
+        )
+        if global_nav:
+            return True
+
+        # Check for feed link in nav
         feed_link = await page.query_selector('a[href*="/feed"]')
         if feed_link:
             return True
-        # Check for login form (means NOT logged in)
-        login_form = await page.query_selector('#session_key')
+
+        # If login form is visible, definitely not logged in
+        login_form = await page.query_selector('#session_key, #username')
         if login_form:
             return False
+
+        # Check for profile icon (logged-in indicator)
+        profile_pic = await page.query_selector(
+            'img.global-nav__me-photo, .feed-identity-module'
+        )
+        if profile_pic:
+            return True
+
         return False
     except Exception:
         return False
 
 
 # ═══════════════════════════════════════════════════════════
-#  Human-Like Behaviour
+#  Human-Like Behaviour (Anti-Detection)
 # ═══════════════════════════════════════════════════════════
 
 async def human_delay(min_sec=1.5, max_sec=4.0):
@@ -208,11 +277,52 @@ async def human_type(page, selector, text):
     await asyncio.sleep(0.5)
 
 
-async def scroll_page(page, scrolls=3):
-    """Scroll the page down to load lazy content."""
-    for _ in range(scrolls):
-        await page.evaluate('window.scrollBy(0, window.innerHeight * 0.7)')
-        await asyncio.sleep(random.uniform(0.8, 1.5))
+async def random_mouse_move(page):
+    """Move mouse to a random position on screen."""
+    try:
+        x = random.randint(100, 1200)
+        y = random.randint(100, 600)
+        await page.mouse.move(x, y)
+        await asyncio.sleep(random.uniform(0.1, 0.3))
+    except Exception:
+        pass
+
+
+async def human_scroll(page, direction='down', amount=None):
+    """
+    Scroll with human-like behaviour:
+    - Variable speed
+    - Occasional small scroll-backs (jitter)
+    - Random pauses
+    """
+    if amount is None:
+        amount = random.randint(300, 700)
+
+    if direction == 'down':
+        await page.evaluate(f'window.scrollBy(0, {amount})')
+    else:
+        await page.evaluate(f'window.scrollBy(0, -{amount})')
+
+    await asyncio.sleep(random.uniform(0.3, 0.8))
+
+    # 20% chance of a small scroll-back (jitter)
+    if random.random() < 0.20:
+        jitter = random.randint(30, 80)
+        await page.evaluate(f'window.scrollBy(0, -{jitter})')
+        await asyncio.sleep(random.uniform(0.2, 0.5))
+
+
+async def slow_scroll_feed(page, scrolls=5):
+    """Scroll through feed slowly, like a human browsing."""
+    for i in range(scrolls):
+        await human_scroll(page, 'down')
+        await asyncio.sleep(random.uniform(1.0, 2.5))
+
+        if i % 3 == 0:
+            await random_mouse_move(page)
+
+        if i % 5 == 0 and i > 0:
+            await asyncio.sleep(random.uniform(2.0, 4.0))
 
 
 # ═══════════════════════════════════════════════════════════
@@ -223,22 +333,76 @@ async def login(page, email, password):
     """
     Login to LinkedIn with credentials.
     Handles the verification PIN step if triggered.
-    Returns True if login was successful.
     """
     logger.info("Attempting LinkedIn login...")
-    await page.goto('https://www.linkedin.com/login', wait_until='domcontentloaded',
-                    timeout=30000)
+    try:
+        await page.goto('https://www.linkedin.com/login', wait_until='domcontentloaded',
+                        timeout=30000)
+    except Exception as e:
+        logger.warning(f"Failed to load login page: {e}")
+        # Retry once
+        try:
+            await asyncio.sleep(3)
+            await page.goto('https://www.linkedin.com/login', wait_until='load',
+                            timeout=30000)
+        except Exception:
+            logger.error("Cannot reach LinkedIn login page")
+            return False
     await human_delay(2, 4)
 
-    # Fill email
-    await human_type(page, '#username', email)
+    # Try multiple selectors for the email field
+    email_selectors = ['#username', '#session_key', 'input[name="session_key"]',
+                        'input[autocomplete="username"]']
+    email_el = None
+    for sel in email_selectors:
+        try:
+            email_el = await page.wait_for_selector(sel, timeout=5000)
+            if email_el:
+                break
+        except Exception:
+            continue
+
+    if not email_el:
+        logger.error("Could not find email input on login page")
+        # Save screenshot for debugging
+        try:
+            ss_path = Path(__file__).resolve().parent.parent / "logs" / "linkedin_login_debug.png"
+            ss_path.parent.mkdir(parents=True, exist_ok=True)
+            await page.screenshot(path=str(ss_path))
+            print(f"  📸 Debug screenshot: {ss_path}")
+        except Exception:
+            pass
+        return False
+
+    # Type email
+    await email_el.click()
+    await asyncio.sleep(0.3)
+    for char in email:
+        await email_el.type(char, delay=random.randint(50, 150))
     await human_delay(0.5, 1.0)
 
-    # Fill password
-    await human_type(page, '#password', password)
+    # Type password
+    pw_selectors = ['#password', 'input[name="session_password"]',
+                     'input[type="password"]']
+    pw_el = None
+    for sel in pw_selectors:
+        try:
+            pw_el = await page.wait_for_selector(sel, timeout=5000)
+            if pw_el:
+                break
+        except Exception:
+            continue
+
+    if not pw_el:
+        logger.error("Could not find password input")
+        return False
+
+    await pw_el.click()
+    await asyncio.sleep(0.3)
+    for char in password:
+        await pw_el.type(char, delay=random.randint(50, 150))
     await human_delay(0.5, 1.5)
 
-    # Click login button
     await page.click('button[type="submit"]')
     await human_delay(3, 6)
 
@@ -258,7 +422,6 @@ async def login(page, email, password):
                 await submit_btn.click()
                 await human_delay(3, 5)
 
-    # Verify login success
     logged_in = await is_logged_in(page)
     if logged_in:
         logger.info("LinkedIn login successful")
@@ -268,407 +431,206 @@ async def login(page, email, password):
 
 
 # ═══════════════════════════════════════════════════════════
-#  Company Search & Scraping
+#  Post Detection & Extraction
 # ═══════════════════════════════════════════════════════════
 
-async def search_companies(page, keyword, max_pages=3):
+def is_hiring_post(text):
+    """Check if post text contains hiring indicators."""
+    return bool(HIRING_REGEX.search(text))
+
+
+def extract_tech_from_text(text):
+    """Extract tech keywords mentioned in a post."""
+    text_lower = text.lower()
+    return [t for t in TECH_KEYWORDS if t.lower() in text_lower]
+
+
+def extract_contact_info_from_post(text):
+    """Extract emails from post text (people sometimes paste emails)."""
+    return extract_emails_from_text(text)
+
+
+def _clean_author_name(name):
     """
-    Search LinkedIn for companies in Morocco matching keyword.
-    Returns list of company dicts with name, url, linkedin_id.
+    Clean up author name extracted from LinkedIn post header.
+    Removes follower counts, timestamps, and connection degrees
+    that get concatenated from the DOM.
     """
-    companies = []
-    seen_urls = set()
+    if not name:
+        return name
+    # Remove "• Xe et +..." (personal profile degree + headline)
+    name = re.split(r'\s*•\s*\d+e\s', name)[0]
+    # Remove follower count: "Name690 abonnés..." or "Name7 656 abonnés..."
+    name = re.sub(r'\d[\d\s,.]*(?:abonnés?|followers?|abonné).*$', '', name, flags=re.IGNORECASE)
+    # Remove trailing timestamp: "41 min •" or "1 h •"
+    name = re.sub(r'\d+\s*(?:min|h|j|d|sem|mo)\s*•?.*$', '', name)
+    # Remove trailing bullets, dots, whitespace
+    name = name.rstrip('•. \t\n')
+    return name.strip()
 
-    for page_num in range(1, max_pages + 1):
-        url = (
-            f"https://www.linkedin.com/search/results/companies/"
-            f"?keywords={quote_plus(keyword)}"
-            f"&geoUrn=%5B%22{MOROCCO_GEO_ID}%22%5D"
-            f"&origin=FACETED_SEARCH"
-            f"&page={page_num}"
-        )
 
-        logger.info(f"[LinkedIn] Company search: '{keyword}' page {page_num}")
-        await page.goto(url, wait_until='domcontentloaded', timeout=30000)
-        await human_delay(2, 4)
-        await scroll_page(page, scrolls=3)
+async def expand_post(page, post_element):
+    """
+    Click "…see more" / "…plus" on a post to expand full content.
+    Uses text-based matching since LinkedIn obfuscates class names.
+    """
+    try:
+        # Find any clickable element containing "see more" / "voir plus" text
+        see_more_btn = await post_element.evaluate_handle("""
+            el => {
+                const buttons = el.querySelectorAll('button, span, a');
+                for (const btn of buttons) {
+                    const text = (btn.textContent || '').trim().toLowerCase();
+                    if (text.includes('see more') || text.includes('voir plus')
+                        || text.includes('…plus') || text.includes('...more')
+                        || text === 'plus' || text === 'more') {
+                        return btn;
+                    }
+                }
+                return null;
+            }
+        """)
 
-        # Extract company cards
-        cards = await page.query_selector_all(
-            '.reusable-search__result-container'
-        )
-        if not cards:
-            # Try alternative selector
-            cards = await page.query_selector_all(
-                '[data-view-name="search-entity-result-universal-template"]'
-            )
-
-        if not cards:
-            logger.info(f"[LinkedIn] No more company results on page {page_num}")
-            break
-
-        for card in cards:
+        if see_more_btn:
             try:
-                # Get company link
-                link_el = await card.query_selector(
-                    'a.app-aware-link[href*="/company/"]'
-                )
-                if not link_el:
-                    continue
+                box = await see_more_btn.as_element().bounding_box()
+                if box:
+                    await page.mouse.move(
+                        box['x'] + random.randint(2, 10),
+                        box['y'] + random.randint(2, 5)
+                    )
+                    await asyncio.sleep(random.uniform(0.2, 0.5))
+                await see_more_btn.as_element().click()
+                await asyncio.sleep(random.uniform(0.5, 1.5))
+            except Exception:
+                pass
 
-                href = await link_el.get_attribute('href')
-                if not href or '/company/' not in href:
-                    continue
-
-                # Extract company slug from URL
-                match = re.search(r'/company/([^/?]+)', href)
-                if not match:
-                    continue
-                slug = match.group(1)
-
-                company_url = f"https://www.linkedin.com/company/{slug}/"
-                if company_url in seen_urls:
-                    continue
-                seen_urls.add(company_url)
-
-                # Get company name
-                name_el = await card.query_selector(
-                    '.entity-result__title-text a span'
-                )
-                name = ''
-                if name_el:
-                    name = (await name_el.inner_text()).strip()
-                if not name:
-                    name = slug.replace('-', ' ').title()
-
-                # Get subtitle (industry/location)
-                subtitle_el = await card.query_selector(
-                    '.entity-result__primary-subtitle'
-                )
-                industry = ''
-                if subtitle_el:
-                    industry = (await subtitle_el.inner_text()).strip()
-
-                companies.append({
-                    'name': name,
-                    'url': company_url,
-                    'slug': slug,
-                    'industry': industry,
-                })
-
-            except Exception as e:
-                logger.debug(f"Error parsing company card: {e}")
-                continue
-
-        logger.info(
-            f"[LinkedIn] Found {len(companies)} companies so far "
-            f"(page {page_num})"
-        )
-        await human_delay(2, 5)
-
-    return companies
-
-
-async def scrape_company_about(page, company):
-    """
-    Visit a company's /about/ page to extract:
-      - Company website URL
-      - Industry, location, description
-    Returns updated company dict or None if failed.
-    """
-    about_url = company['url'].rstrip('/') + '/about/'
-    logger.info(f"[LinkedIn] Scraping company: {company['name']} → {about_url}")
-
-    try:
-        await page.goto(about_url, wait_until='domcontentloaded', timeout=30000)
-        await human_delay(2, 4)
-        await scroll_page(page, scrolls=2)
-    except Exception as e:
-        logger.warning(f"Failed to load {about_url}: {e}")
-        return None
-
-    info = dict(company)  # Copy original data
-
-    # ── Extract website ──
-    website = None
-    try:
-        # Method 1: Look for the website link in the about section
-        website_links = await page.query_selector_all(
-            '.link-without-visited-state[href]'
-        )
-        for link_el in website_links:
-            href = await link_el.get_attribute('href')
-            if href and 'linkedin.com' not in href and href.startswith('http'):
-                # Skip social media links
-                if not any(d in href.lower() for d in LINKEDIN_SKIP_DOMAINS):
-                    website = href
-                    break
-
-        # Method 2: Look in dt/dd pairs (About section)
-        if not website:
-            dds = await page.query_selector_all('dd a[href]')
-            for dd in dds:
-                href = await dd.get_attribute('href')
-                if href and 'linkedin.com' not in href and href.startswith('http'):
-                    if not any(d in href.lower() for d in LINKEDIN_SKIP_DOMAINS):
-                        website = href
-                        break
-
-        # Method 3: Extract from page text using regex
-        if not website:
-            text = await page.inner_text('body')
-            url_pattern = re.compile(
-                r'https?://(?:www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:/[^\s]*)?'
-            )
-            for match in url_pattern.finditer(text):
-                url = match.group()
-                if 'linkedin.com' not in url and not any(
-                    d in url.lower() for d in LINKEDIN_SKIP_DOMAINS
-                ):
-                    website = url
-                    break
-
-    except Exception as e:
-        logger.debug(f"Error extracting website: {e}")
-
-    info['website'] = website
-
-    # ── Extract location ──
-    try:
-        location_items = await page.query_selector_all(
-            '.org-top-card-summary-info-list__info-item'
-        )
-        for item in location_items:
-            text = (await item.inner_text()).strip()
-            if any(city in text.lower() for city in [
-                'casablanca', 'rabat', 'marrakech', 'tanger', 'fes', 'fès',
-                'agadir', 'oujda', 'kenitra', 'tetouan', 'morocco', 'maroc',
-                'mohammedia', 'sale', 'salé', 'meknes', 'meknès', 'el jadida',
-            ]):
-                info['location'] = text
-                break
-    except Exception:
-        pass
-
-    # ── Extract description ──
-    try:
-        desc_el = await page.query_selector(
-            '.org-page-details__definition-text, '
-            'section.org-about-module__margin-bottom p'
-        )
-        if desc_el:
-            info['description'] = (await desc_el.inner_text()).strip()[:500]
-    except Exception:
-        pass
-
-    return info
-
-
-# ═══════════════════════════════════════════════════════════
-#  Job Scraping
-# ═══════════════════════════════════════════════════════════
-
-def extract_company_linkedin_id(html_content):
-    """
-    Extract the numeric LinkedIn company ID from page HTML.
-    Tries multiple regex patterns (LinkedIn embeds this in various places).
-    """
-    patterns = [
-        r'urn:li:fsd_company:(\d+)',
-        r'"companyId":(\d+)',
-        r'"objectUrn":"urn:li:company:(\d+)"',
-        r'f_C=(\d+)',
-        r'/company/(\d+)',
-        r'"companyUrn":"urn:li:fs_miniCompany:(\d+)"',
-    ]
-    for pattern in patterns:
-        match = re.search(pattern, html_content)
-        if match:
-            return match.group(1)
-    return None
-
-
-async def scrape_company_jobs(page, company, max_pages=3):
-    """
-    Scrape job listings for a specific company on LinkedIn.
-    Returns list of job dicts with title, location, description.
-    """
-    jobs = []
-    linkedin_id = None
-
-    # First, get the numeric company ID from the company page
-    try:
-        await page.goto(company['url'], wait_until='domcontentloaded',
-                        timeout=30000)
-        await human_delay(2, 3)
-        html = await page.content()
-        linkedin_id = extract_company_linkedin_id(html)
-    except Exception as e:
-        logger.warning(f"Failed to get company ID for {company['name']}: {e}")
-
-    if not linkedin_id:
-        # Try the slug-based jobs URL instead
-        jobs_url = company['url'].rstrip('/') + '/jobs/'
-        logger.info(f"[LinkedIn] No company ID, trying slug jobs URL: {jobs_url}")
-    else:
-        logger.info(
-            f"[LinkedIn] Company ID for {company['name']}: {linkedin_id}"
-        )
-
-    seen_job_urls = set()
-
-    for page_num in range(max_pages):
-        start = page_num * 25
-
-        if linkedin_id:
-            url = (
-                f"https://www.linkedin.com/jobs/search/"
-                f"?f_C={linkedin_id}"
-                f"&geoId={MOROCCO_GEO_ID}"
-                f"&start={start}"
-            )
-        else:
-            url = company['url'].rstrip('/') + f'/jobs/?start={start}'
-
+        # Get full text content with proper spacing between elements
         try:
-            await page.goto(url, wait_until='domcontentloaded', timeout=30000)
-            await human_delay(2, 4)
-            await scroll_page(page, scrolls=3)
-        except Exception as e:
-            logger.warning(f"Failed to load jobs page {page_num}: {e}")
-            break
+            full_text = await post_element.evaluate(CLEAN_TEXT_JS)
+            return full_text
+        except Exception:
+            return ''
 
-        # Extract job cards
-        job_cards = await page.query_selector_all(
-            '.job-card-container, '
-            '.jobs-search-results__list-item, '
-            '[data-view-name="job-card"]'
-        )
-
-        if not job_cards:
-            logger.info(f"[LinkedIn] No more jobs on page {page_num + 1}")
-            break
-
-        for card in job_cards:
-            try:
-                # Get job link
-                link_el = await card.query_selector(
-                    'a[href*="/jobs/view/"]'
-                )
-                if not link_el:
-                    continue
-
-                href = await link_el.get_attribute('href')
-                if not href:
-                    continue
-
-                # Normalize URL
-                job_match = re.search(r'/jobs/view/(\d+)', href)
-                if not job_match:
-                    continue
-                job_id = job_match.group(1)
-                job_url = f"https://www.linkedin.com/jobs/view/{job_id}/"
-
-                if job_url in seen_job_urls:
-                    continue
-                seen_job_urls.add(job_url)
-
-                # Get job title
-                title_el = await card.query_selector(
-                    '.job-card-list__title--link, '
-                    '.job-card-container__link, '
-                    'a[href*="/jobs/view/"] span'
-                )
-                title = ''
-                if title_el:
-                    title = (await title_el.inner_text()).strip()
-
-                # Get location
-                location_el = await card.query_selector(
-                    '.artdeco-entity-lockup__caption, '
-                    '.job-card-container__metadata-wrapper span'
-                )
-                location = ''
-                if location_el:
-                    location = (await location_el.inner_text()).strip()
-
-                jobs.append({
-                    'url': job_url,
-                    'title': title or 'Unknown Position',
-                    'location': location,
-                    'job_id': job_id,
-                })
-
-            except Exception as e:
-                logger.debug(f"Error parsing job card: {e}")
-                continue
-
-        logger.info(
-            f"[LinkedIn] Found {len(jobs)} jobs for "
-            f"{company['name']} (page {page_num + 1})"
-        )
-        await human_delay(2, 5)
-
-    return jobs
+    except (Exception, asyncio.CancelledError) as e:
+        logger.debug(f"Error expanding post: {e}")
+        return ''
 
 
-async def scrape_job_details(page, job):
+async def extract_post_data(page, post_element):
     """
-    Visit a job detail page to get the full description.
-    Returns updated job dict with description added.
+    Extract all data from a LinkedIn post element.
+    Uses content-based extraction since class names are obfuscated.
     """
+    data = {
+        'author_name': '',
+        'author_url': '',
+        'author_headline': '',
+        'post_text': '',
+        'is_hiring': False,
+        'emails_in_post': [],
+        'tech_mentioned': [],
+    }
+
     try:
-        await page.goto(job['url'], wait_until='domcontentloaded', timeout=30000)
-        await human_delay(2, 3)
-        await scroll_page(page, scrolls=2)
+        # ── Extract all info via JavaScript (one evaluate call) ──
+        info = await post_element.evaluate("""
+            el => {
+                const result = {
+                    authorName: '',
+                    authorUrl: '',
+                    authorHeadline: '',
+                    fullText: '',
+                    links: [],
+                };
 
-        info = dict(job)
+                // Author: first <a> with /in/ or /company/ in href
+                const allLinks = el.querySelectorAll('a[href*="/in/"], a[href*="/company/"]');
+                for (const link of allLinks) {
+                    const text = (link.textContent || '').trim();
+                    if (text && text.length > 2 && text.length < 100) {
+                        result.authorName = text.split('\\n')[0].trim();
+                        result.authorUrl = link.href.split('?')[0];
+                        break;
+                    }
+                }
 
-        # Get full description
-        desc_el = await page.query_selector(
-            '#job-details, '
-            '.jobs-description-content__text, '
-            'article[class*="jobs-description"]'
-        )
-        if desc_el:
-            info['description'] = (await desc_el.inner_text()).strip()[:1000]
-        else:
-            info['description'] = ''
+                // Headline: text right after the author name
+                // LinkedIn puts it in a sibling or parent span
+                if (result.authorName) {
+                    const fullText = el.textContent || '';
+                    const nameIdx = fullText.indexOf(result.authorName);
+                    if (nameIdx >= 0) {
+                        const afterName = fullText.substring(nameIdx + result.authorName.length, nameIdx + result.authorName.length + 200);
+                        // First meaningful line after the name
+                        const lines = afterName.split('\\n').map(l => l.trim()).filter(l => l.length > 5);
+                        if (lines.length > 0) {
+                            result.authorHeadline = lines[0].substring(0, 100);
+                        }
+                    }
+                }
 
-        # Get job title (more accurate from detail page)
-        title_el = await page.query_selector(
-            '.t-24.t-bold.inline, '
-            '.jobs-unified-top-card__job-title, '
-            'h1'
-        )
-        if title_el:
-            title = (await title_el.inner_text()).strip()
-            if title:
-                info['title'] = title
+                // Full text content with spacing between elements
+                const blocks = new Set(['DIV','P','BR','LI','SPAN','A','H1','H2','H3','H4','H5','H6','SECTION','ARTICLE']);
+                let fullText = '';
+                function walkText(node) {
+                    if (node.nodeType === 3) { fullText += node.textContent; }
+                    else if (node.nodeType === 1) {
+                        if (blocks.has(node.tagName)) fullText += ' ';
+                        for (const child of node.childNodes) walkText(child);
+                        if (blocks.has(node.tagName)) fullText += ' ';
+                    }
+                }
+                walkText(el);
+                result.fullText = fullText.replace(/\\s+/g, ' ').trim();
 
-        return info
+                // All external links
+                el.querySelectorAll('a[href]').forEach(a => {
+                    const href = a.href;
+                    if (href && !href.includes('linkedin.com')) {
+                        result.links.push(href);
+                    }
+                });
 
-    except Exception as e:
-        logger.warning(f"Failed to scrape job details: {e}")
-        return job
+                return result;
+            }
+        """)
+
+        data['author_name'] = _clean_author_name(info.get('authorName', ''))
+        data['author_url'] = info.get('authorUrl', '')
+        data['author_headline'] = info.get('authorHeadline', '')
+        data['post_text'] = ' '.join((info.get('fullText', '')).split())  # normalize ws
+
+        # ── Expand post if possible ──
+        expanded = await expand_post(page, post_element)
+        if len(expanded) > len(data['post_text']):
+            data['post_text'] = expanded
+
+        # ── Detect hiring & extract info ──
+        data['is_hiring'] = is_hiring_post(data['post_text'])
+
+        if data['post_text']:
+            data['emails_in_post'] = extract_contact_info_from_post(data['post_text'])
+            data['tech_mentioned'] = extract_tech_from_text(data['post_text'])
+
+    except (Exception, asyncio.CancelledError) as e:
+        logger.debug(f"Error extracting post data: {e}")
+
+    return data
 
 
 # ═══════════════════════════════════════════════════════════
-#  Company Website → Email Extraction (reuses existing pipeline)
+#  Company Website → Email Extraction
 # ═══════════════════════════════════════════════════════════
 
-async def extract_emails_from_website(website_url, company_info, jobs):
+async def extract_emails_from_website(website_url, company_info):
     """
-    Visit a company's actual website (not LinkedIn) to find email addresses.
-    Uses requests for fast HTTP with a short timeout (avoids Fetcher's slow
-    30s timeout × 3 retries per dead site).
-
-    Returns list of contact dicts.
+    Visit a company's website to find email addresses.
+    Checks homepage first, then /contact, /careers, etc.
     """
     import requests as _requests
 
-    contacts = []
-    seen_emails = set()
+    emails_found = set()
     headers = {
         'User-Agent': (
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
@@ -678,46 +640,19 @@ async def extract_emails_from_website(website_url, company_info, jobs):
 
     domain = extract_domain(website_url)
     if not domain:
-        return contacts
+        return list(emails_found)
 
-    def _add_contacts(emails_found):
-        """Helper to create contact dicts from found emails."""
-        for email in emails_found:
-            if email not in seen_emails:
-                seen_emails.add(email)
-                if jobs:
-                    for job in jobs:
-                        contacts.append(make_contact_dict(
-                            company=company_info.get('name', ''),
-                            email=email,
-                            position=job.get('title', ''),
-                            city=job.get('location', company_info.get('location', '')),
-                            source_url=job.get('url', company_info.get('url', '')),
-                            source_site='linkedin',
-                            description=job.get('description', ''),
-                        ))
-                else:
-                    contacts.append(make_contact_dict(
-                        company=company_info.get('name', ''),
-                        email=email,
-                        position=company_info.get('industry', ''),
-                        city=company_info.get('location', ''),
-                        source_url=company_info.get('url', ''),
-                        source_site='linkedin',
-                        description=company_info.get('description', ''),
-                    ))
-
-    # ── Visit homepage ──
+    # Homepage
     try:
         resp = _requests.get(website_url, headers=headers, timeout=10,
                              verify=False, allow_redirects=True)
         emails = find_relevant_emails(resp.text, domain)
-        _add_contacts(emails)
+        emails_found.update(emails)
     except Exception as e:
         logger.debug(f"Failed to fetch homepage {website_url}: {e}")
 
-    # ── Visit contact pages if no emails on homepage ──
-    if not seen_emails:
+    # Contact pages if no emails on homepage
+    if not emails_found:
         base_url = website_url.rstrip('/')
         for path in CONTACT_PATHS:
             try:
@@ -727,52 +662,286 @@ async def extract_emails_from_website(website_url, company_info, jobs):
                 if resp.status_code >= 400:
                     continue
                 emails = find_relevant_emails(resp.text, domain)
-                _add_contacts(emails)
-
-                if seen_emails:
-                    break  # Found emails, stop checking other contact paths
+                emails_found.update(emails)
+                if emails_found:
+                    break
             except Exception:
                 continue
 
-    return contacts
+    return list(emails_found)
+
+
+async def get_company_website_from_linkedin(page, company_url):
+    """
+    Visit a company's LinkedIn /about/ page to find their website.
+    Returns the website URL or None.
+    """
+    try:
+        about_url = company_url.rstrip('/') + '/about/'
+        await page.goto(about_url, wait_until='domcontentloaded', timeout=20000)
+        await human_delay(2, 4)
+        await slow_scroll_feed(page, scrolls=2)
+
+        # Method 1: Website link in about section
+        website_selectors = [
+            '.link-without-visited-state[href]',
+            'dd a[href]',
+            'a[data-test-id="about-us__website"]',
+        ]
+
+        for sel in website_selectors:
+            try:
+                links = await page.query_selector_all(sel)
+                for link_el in links:
+                    href = await link_el.get_attribute('href')
+                    if (href and href.startswith('http')
+                            and 'linkedin.com' not in href
+                            and not any(d in href.lower() for d in LINKEDIN_SKIP_DOMAINS)):
+                        return href
+            except Exception:
+                continue
+
+        # Method 2: Extract URLs from page text
+        text = await page.inner_text('body')
+        url_pattern = re.compile(
+            r'https?://(?:www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:/[^\s]*)?'
+        )
+        for match in url_pattern.finditer(text):
+            url = match.group()
+            if ('linkedin.com' not in url
+                    and not any(d in url.lower() for d in LINKEDIN_SKIP_DOMAINS)):
+                return url
+
+    except Exception as e:
+        logger.debug(f"Failed to get website from {company_url}: {e}")
+
+    return None
+
+
+# ═══════════════════════════════════════════════════════════
+#  Feed / Search Scrolling Strategy
+# ═══════════════════════════════════════════════════════════
+
+async def search_and_scroll_posts(page, keyword, max_scrolls=15):
+    """
+    Search LinkedIn for a keyword, then scroll through results
+    looking for hiring posts.
+
+    Strategy:
+      1. Search with keyword in "Posts" filter (sort by recent)
+      2. Scroll down slowly (human-like)
+      3. For each visible post → quick-check for hiring keywords
+      4. If hiring → expand "see more", extract full data
+      5. Keep scrolling until max_scrolls reached
+
+    Returns list of dicts for posts that matched hiring criteria.
+    """
+    hiring_posts = []
+    seen_posts = set()
+
+    # LinkedIn content search sorted by recent
+    search_url = (
+        f"https://www.linkedin.com/search/results/content/"
+        f"?keywords={quote_plus(keyword)}"
+        f"&origin=GLOBAL_SEARCH_HEADER"
+        f"&sortBy=%22date_posted%22"
+    )
+
+    logger.info(f"[LinkedIn] Searching posts: '{keyword}'")
+    try:
+        await page.goto(search_url, wait_until='domcontentloaded', timeout=30000)
+    except Exception as e:
+        logger.warning(f"Failed to load search page: {e}")
+        return hiring_posts
+
+    await human_delay(3, 5)
+
+    # Check if we got redirected to login/authwall
+    current_url = page.url
+    if 'login' in current_url or 'authwall' in current_url or 'checkpoint' in current_url:
+        logger.warning(f"Redirected to auth page: {current_url}")
+        print(f"    ⚠️  LinkedIn redirected to login/auth wall")
+        print(f"    URL: {current_url}")
+        # Save screenshot for diagnostics
+        try:
+            ss_path = Path(__file__).resolve().parent.parent / "logs" / "linkedin_debug.png"
+            ss_path.parent.mkdir(parents=True, exist_ok=True)
+            await page.screenshot(path=str(ss_path))
+            print(f"    📸 Screenshot saved: {ss_path}")
+        except Exception:
+            pass
+        return hiring_posts
+
+    # Wait for search results to load
+    await human_delay(2, 4)
+
+    # Debug: log current URL and page title
+    page_title = await page.title()
+    logger.info(f"[LinkedIn] Page: {current_url[:80]} — '{page_title}'")
+    print(f"    📄 Page loaded: {page_title[:60]}")
+
+    # ── Main scroll loop ──
+    no_new_posts_count = 0
+
+    # Initial scroll to load content
+    await slow_scroll_feed(page, scrolls=3)
+    await human_delay(2, 3)
+
+    for scroll_num in range(max_scrolls):
+        # Locate post containers using stable semantic selectors
+        # LinkedIn uses obfuscated class names, so we use data-* and role attributes
+        post_selectors = [
+            '[data-view-name="feed-full-update"]',   # Main post wrapper (2025+)
+            '[role="listitem"]',                      # Semantic list items
+            '.feed-shared-update-v2',                 # Legacy class
+            'div[data-urn*="activity"]',
+            'div[data-urn*="ugcPost"]',
+        ]
+
+        posts = []
+        for sel in post_selectors:
+            candidates = await page.query_selector_all(sel)
+            # Filter: only keep elements that have substantial text content
+            for c in candidates:
+                try:
+                    text_len = await c.evaluate('el => (el.textContent || "").trim().length')
+                    if text_len > 50:
+                        posts.append(c)
+                except Exception:
+                    continue
+            if posts:
+                logger.info(f"[LinkedIn] Found {len(posts)} posts with '{sel}'")
+                break
+
+        if not posts:
+            # Only log debug on first scroll if no posts found at all
+            if scroll_num == 0:
+                logger.warning("[LinkedIn] No post elements found on page")
+                try:
+                    ss_path = Path(__file__).resolve().parent.parent / "logs" / "linkedin_search_debug.png"
+                    ss_path.parent.mkdir(parents=True, exist_ok=True)
+                    await page.screenshot(path=str(ss_path), full_page=True)
+                    logger.info(f"Debug screenshot saved: {ss_path}")
+                except Exception:
+                    pass
+
+            logger.info(f"[LinkedIn] No posts visible on scroll {scroll_num + 1}")
+            await slow_scroll_feed(page, scrolls=2)
+            await human_delay(2, 3)
+            no_new_posts_count += 1
+            if no_new_posts_count >= 3:
+                logger.info(f"[LinkedIn] No new posts after 3 scrolls, moving on")
+                break
+            continue
+
+        new_found = 0
+        if scroll_num == 0:
+            print(f"    📊 Found {len(posts)} post elements on page")
+
+        for idx, post_el in enumerate(posts):
+            try:
+                preview = ''
+                try:
+                    # Use clean text extraction with proper spacing between elements
+                    preview = await post_el.evaluate(CLEAN_TEXT_JS)
+                    preview = preview[:500]  # limit length
+                except Exception as ex:
+                    logger.debug(f"Text extraction error: {ex}")
+                    continue
+
+                if not preview:
+                    continue
+
+                dedup_key = hash(preview[:200])
+                if dedup_key in seen_posts:
+                    continue
+                seen_posts.add(dedup_key)
+
+                if not is_hiring_post(preview):
+                    continue
+
+                # ─── Found hiring post → expand & extract ───
+                logger.info(f"[LinkedIn] 🎯 Hiring post (scroll {scroll_num + 1})")
+
+                await random_mouse_move(page)
+                await human_delay(0.5, 1.5)
+
+                post_data = await extract_post_data(page, post_el)
+
+                if post_data['is_hiring'] and post_data['author_name']:
+                    hiring_posts.append(post_data)
+                    new_found += 1
+                    tech_str = ', '.join(post_data['tech_mentioned'][:5]) or 'general'
+                    print(
+                        f"    🎯 [{len(hiring_posts)}] "
+                        f"{post_data['author_name']} — {tech_str}"
+                    )
+                    if post_data['emails_in_post']:
+                        print(f"       📧 Email in post: {', '.join(post_data['emails_in_post'])}")
+
+            except (Exception, asyncio.CancelledError) as e:
+                logger.debug(f"Error processing post: {e}")
+                continue
+
+        if new_found > 0:
+            no_new_posts_count = 0
+        else:
+            no_new_posts_count += 1
+            if no_new_posts_count >= 3:
+                break
+
+        # ── Scroll for more ──
+        await slow_scroll_feed(page, scrolls=random.randint(2, 4))
+        await human_delay(1.5, 3.5)
+
+        # Every 5 scrolls, take a "reading break"
+        if scroll_num > 0 and scroll_num % 5 == 0:
+            pause = random.uniform(4, 8)
+            logger.info(f"[LinkedIn] Reading break — {pause:.1f}s")
+            await asyncio.sleep(pause)
+
+        # Occasional small scroll-up (human jitter)
+        if random.random() < 0.15:
+            await human_scroll(page, 'up', amount=random.randint(50, 150))
+            await asyncio.sleep(random.uniform(0.5, 1.0))
+
+    return hiring_posts
 
 
 # ═══════════════════════════════════════════════════════════
 #  Main Orchestrator
 # ═══════════════════════════════════════════════════════════
 
-async def run_linkedin_spider(keywords=None, max_company_pages=3,
-                              max_job_pages=2, max_job_details=5):
+async def run_linkedin_spider(keywords=None, max_scrolls=15):
     """
-    Run the full LinkedIn scraping pipeline:
+    Run the LinkedIn feed-scrolling spider:
       1. Login / restore session
-      2. Search companies by keyword in Morocco
-      3. For each company: scrape /about/ for website URL
-      4. For each company: scrape job listings
-      5. Visit company websites → extract emails
-      6. Return list of contact dicts
+      2. For each keyword → search LinkedIn Posts, scroll & detect hiring posts
+      3. For each hiring post → find company, get website
+      4. Visit company websites → extract emails
+      5. Return list of contact dicts
 
     Args:
-        keywords:          List of keywords (None = defaults)
-        max_company_pages: Max pages of company search results per keyword
-        max_job_pages:     Max pages of job listings per company
-        max_job_details:   Max job detail pages to visit per company
+        keywords:    Custom keywords list (None = profile-based defaults)
+        max_scrolls: Max scroll iterations per keyword search
 
     Returns:
         List of contact dicts (same format as other spiders)
     """
     from playwright.async_api import async_playwright
 
-    keywords = keywords or DEFAULT_KEYWORDS
+    keywords = keywords or PROFILE_KEYWORDS
     all_contacts = []
+    all_hiring_posts = []
+    seen_company_keys = set()
     stats = {
-        'companies_found': 0,
+        'keywords_searched': 0,
+        'hiring_posts_found': 0,
         'companies_with_website': 0,
-        'jobs_found': 0,
         'emails_found': 0,
     }
 
-    # ── Get LinkedIn credentials from env ──
+    # ── Credentials ──
     li_email = os.getenv('LINKEDIN_EMAIL', '')
     li_password = os.getenv('LINKEDIN_PASSWORD', '')
 
@@ -780,15 +949,16 @@ async def run_linkedin_spider(keywords=None, max_company_pages=3,
         print("\n  ⚠️  LinkedIn credentials not set!")
         print("  Add to your .env file:")
         print("    LINKEDIN_EMAIL=your-linkedin-email")
-        print("    LINKEDIN_PASSWORD=your-linkedin-password")
-        print()
-        logger.error("LinkedIn credentials missing (LINKEDIN_EMAIL / LINKEDIN_PASSWORD)")
+        print("    LINKEDIN_PASSWORD=your-linkedin-password\n")
+        logger.error("LinkedIn credentials missing")
         return []
 
     async with async_playwright() as p:
-        # Launch browser with anti-detection settings
+        # headless=False so you can see the browser & debug
+        # Change to headless=True for production/CI
+        headless = os.getenv('LINKEDIN_HEADLESS', 'false').lower() == 'true'
         browser = await p.chromium.launch(
-            headless=True,
+            headless=headless,
             args=[
                 '--disable-blink-features=AutomationControlled',
                 '--no-sandbox',
@@ -801,14 +971,21 @@ async def run_linkedin_spider(keywords=None, max_company_pages=3,
                 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
                 '(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
             ),
-            locale='en-US',
+            locale='fr-FR',
+            ignore_https_errors=True,
         )
         page = await context.new_page()
 
-        # ── Remove webdriver flag ──
+        # Remove webdriver flag + fake plugins/languages
         await page.add_init_script("""
             Object.defineProperty(navigator, 'webdriver', {
                 get: () => undefined
+            });
+            Object.defineProperty(navigator, 'plugins', {
+                get: () => [1, 2, 3, 4, 5]
+            });
+            Object.defineProperty(navigator, 'languages', {
+                get: () => ['fr-FR', 'fr', 'en-US', 'en']
             });
         """)
 
@@ -818,162 +995,192 @@ async def run_linkedin_spider(keywords=None, max_company_pages=3,
             session_loaded = await load_session(context)
 
             if session_loaded:
-                # Verify session is still valid
                 await page.goto('https://www.linkedin.com/feed/',
                                 wait_until='domcontentloaded', timeout=30000)
                 await human_delay(2, 4)
 
                 if await is_logged_in(page):
-                    print("  ✅ Session restored — logged in")
+                    print("  ✅ Session restored")
                 else:
                     print("  ⚠️  Session expired, logging in fresh...")
-                    success = await login(page, li_email, li_password)
-                    if not success:
+                    if not await login(page, li_email, li_password):
                         print("  ❌ LinkedIn login failed!")
                         return []
                     await save_session(context)
             else:
                 print("  📝 No saved session — logging in...")
-                success = await login(page, li_email, li_password)
-                if not success:
+                if not await login(page, li_email, li_password):
                     print("  ❌ LinkedIn login failed!")
                     return []
                 await save_session(context)
 
-            # ── Step 2: Search companies by keyword ──
-            all_companies = []
-            seen_company_slugs = set()
+            # ── Step 2: Search & scroll for each keyword ──
+            session_lost_count = 0
 
             for keyword in keywords:
-                print(f"  🔍 Searching companies: '{keyword}'...")
-                companies = await search_companies(
-                    page, keyword, max_pages=max_company_pages
-                )
-                for company in companies:
-                    if company['slug'] not in seen_company_slugs:
-                        seen_company_slugs.add(company['slug'])
-                        all_companies.append(company)
+                print(f"\n  🔍 Searching: '{keyword}'...")
+                stats['keywords_searched'] += 1
 
-                await human_delay(3, 6)
-
-            stats['companies_found'] = len(all_companies)
-            print(f"  📋 Found {len(all_companies)} unique companies")
-
-            if not all_companies:
-                print("  ⚠️  No companies found. Check your keywords or login status.")
-                return []
-
-            # ── Step 3 & 4: Scrape company details + jobs ──
-            companies_with_data = []
-
-            for i, company in enumerate(all_companies, 1):
-                print(
-                    f"  🏢 [{i}/{len(all_companies)}] "
-                    f"{company['name']}..."
+                posts = await search_and_scroll_posts(
+                    page, keyword, max_scrolls=max_scrolls
                 )
 
-                # Scrape /about/ page for website
-                enriched = await scrape_company_about(page, company)
-                if not enriched:
-                    continue
+                # If 0 posts and session might be lost, try re-login
+                if not posts and session_lost_count < 2:
+                    # Check if we're still logged in
+                    await page.goto('https://www.linkedin.com/feed/',
+                                    wait_until='domcontentloaded', timeout=30000)
+                    await human_delay(2, 3)
+                    if not await is_logged_in(page):
+                        session_lost_count += 1
+                        print(f"  🔄 Session lost — re-logging in (attempt {session_lost_count})...")
+                        if await login(page, li_email, li_password):
+                            await save_session(context)
+                            print(f"  ✅ Re-logged in, retrying search...")
+                            # Retry this keyword
+                            posts = await search_and_scroll_posts(
+                                page, keyword, max_scrolls=max_scrolls
+                            )
+                        else:
+                            print(f"  ❌ Re-login failed")
+                            break
 
-                await human_delay(2, 4)
+                for post in posts:
+                    key = post['author_name'].lower().strip()
+                    if key in seen_company_keys:
+                        continue
+                    seen_company_keys.add(key)
+                    all_hiring_posts.append(post)
 
-                # Scrape job listings
-                jobs = await scrape_company_jobs(page, enriched,
-                                                 max_pages=max_job_pages)
-                stats['jobs_found'] += len(jobs)
+                stats['hiring_posts_found'] = len(all_hiring_posts)
+                print(f"  📋 Unique hiring posts so far: {len(all_hiring_posts)}")
 
-                # Optionally get job details for top N jobs
-                detailed_jobs = []
-                for j, job in enumerate(jobs[:max_job_details]):
-                    detail = await scrape_job_details(page, job)
-                    detailed_jobs.append(detail)
-                    await human_delay(1.5, 3)
+                # Rest between keyword searches
+                if keyword != keywords[-1]:
+                    rest = random.uniform(5, 10)
+                    print(f"  ⏸️  Resting {rest:.0f}s before next search...")
+                    await asyncio.sleep(rest)
 
-                # Use detailed jobs if available, else basic list
-                final_jobs = detailed_jobs if detailed_jobs else jobs
-
-                if enriched.get('website'):
-                    stats['companies_with_website'] += 1
-                    companies_with_data.append({
-                        'company': enriched,
-                        'jobs': final_jobs,
-                    })
-                    logger.info(
-                        f"  ✓ {enriched['name']}: "
-                        f"website={enriched['website']}, "
-                        f"{len(final_jobs)} jobs"
-                    )
-                else:
-                    logger.info(
-                        f"  ✗ {enriched['name']}: no website found, "
-                        f"{len(final_jobs)} jobs"
-                    )
-
-                # Rate limiting between companies
-                await human_delay(3, 7)
-
-            # Save session after scraping
             await save_session(context)
 
-            print(
-                f"\n  📊 Companies with website: "
-                f"{stats['companies_with_website']}/{stats['companies_found']}"
-            )
-            print(f"  📊 Total jobs found: {stats['jobs_found']}")
+            if not all_hiring_posts:
+                print("\n  ⚠️  No hiring posts found. Try different keywords.")
+                return []
+
+            print(f"\n  {'─'*50}")
+            print(f"  📊 Found {len(all_hiring_posts)} unique hiring posts")
+            print(f"  {'─'*50}")
+
+            # ── Step 3: Find company websites ──
+            print(f"\n  🌐 Resolving company websites...")
+
+            companies_to_scrape = []
+
+            for i, post in enumerate(all_hiring_posts, 1):
+                company_name = post['author_name']
+                author_url = post['author_url']
+
+                print(f"  🏢 [{i}/{len(all_hiring_posts)}] {company_name}...")
+
+                # If post had emails directly → use them
+                if post['emails_in_post']:
+                    for email in post['emails_in_post']:
+                        contact = make_contact_dict(
+                            company=company_name,
+                            email=email,
+                            position=', '.join(post['tech_mentioned'][:3]) or 'Hiring Post',
+                            city='',
+                            source_url=author_url,
+                            source_site='linkedin',
+                            description=post['post_text'][:500],
+                        )
+                        all_contacts.append(contact)
+                        stats['emails_found'] += 1
+                        print(f"     ✅ Email from post: {email}")
+                    continue
+
+                # Try LinkedIn /about/ page for company website
+                website = None
+                if '/company/' in author_url:
+                    website = await get_company_website_from_linkedin(
+                        page, author_url
+                    )
+                    await human_delay(2, 5)
+
+                # Fallback: guess website from company name (only for company profiles)
+                if not website and '/company/' in author_url:
+                    website = guess_website(company_name)
+
+                if website:
+                    stats['companies_with_website'] += 1
+                    companies_to_scrape.append({
+                        'name': company_name,
+                        'website': website,
+                        'post': post,
+                    })
+                    logger.info(f"  ✓ {company_name}: {website}")
+                else:
+                    logger.info(f"  ✗ {company_name}: no website found")
+
+                await human_delay(2, 5)
 
         finally:
-            await browser.close()
+            try:
+                await browser.close()
+            except Exception:
+                pass  # Browser may already be closing
 
-    # ── Step 5: Extract emails from company websites ──
-    if companies_with_data:
-        print(f"\n  🌐 Extracting emails from {len(companies_with_data)} company websites...")
+    # ── Step 4: Extract emails from company websites ──
+    if companies_to_scrape:
+        print(f"\n  📧 Extracting emails from {len(companies_to_scrape)} websites...")
 
-        for i, entry in enumerate(companies_with_data, 1):
-            company = entry['company']
-            jobs = entry['jobs']
-            website = company['website']
+        for i, entry in enumerate(companies_to_scrape, 1):
+            name = entry['name']
+            website = entry['website']
+            post = entry['post']
 
-            print(
-                f"  📧 [{i}/{len(companies_with_data)}] "
-                f"{company['name']} → {website}"
-            )
+            print(f"  📧 [{i}/{len(companies_to_scrape)}] {name} → {website}")
 
             try:
-                contacts = await extract_emails_from_website(
-                    website, company, jobs
-                )
-                if contacts:
-                    all_contacts.extend(contacts)
-                    stats['emails_found'] += len(contacts)
-                    print(f"     ✅ Found {len(contacts)} email(s)")
+                emails = await extract_emails_from_website(website, entry)
+                if emails:
+                    for email in emails:
+                        contact = make_contact_dict(
+                            company=name,
+                            email=email,
+                            position=', '.join(post['tech_mentioned'][:3]) or 'Hiring Post',
+                            city='',
+                            source_url=post.get('author_url', ''),
+                            source_site='linkedin',
+                            description=post['post_text'][:500],
+                        )
+                        all_contacts.append(contact)
+                        stats['emails_found'] += 1
+                    print(f"     ✅ Found {len(emails)} email(s)")
                 else:
                     print(f"     ⚠️  No emails found")
             except Exception as e:
-                logger.warning(
-                    f"Failed to extract emails from {website}: {e}"
-                )
+                logger.warning(f"Failed to extract emails from {website}: {e}")
                 print(f"     ❌ Error: {e}")
 
+    # ── Summary ──
     print(f"\n  {'='*50}")
-    print(f"  📊 LINKEDIN SCRAPER RESULTS")
+    print(f"  📊 LINKEDIN FEED SCRAPER RESULTS")
     print(f"  {'='*50}")
-    print(f"  Companies found:        {stats['companies_found']}")
+    print(f"  Keywords searched:      {stats['keywords_searched']}")
+    print(f"  Hiring posts found:     {stats['hiring_posts_found']}")
     print(f"  Companies with website: {stats['companies_with_website']}")
-    print(f"  Jobs found:             {stats['jobs_found']}")
     print(f"  Emails extracted:       {stats['emails_found']}")
+    print(f"  Total contacts:         {len(all_contacts)}")
     print(f"  {'='*50}")
 
     return all_contacts
 
 
 # ═══════════════════════════════════════════════════════════
-#  Test / Demo Mode — No LinkedIn Login Required
+#  Test / Demo Mode
 # ═══════════════════════════════════════════════════════════
 
-# Real Moroccan tech companies with websites (for testing the
-# website → email extraction pipeline without LinkedIn access)
 TEST_COMPANIES = [
     {
         'name': 'Digitancy',
@@ -1025,24 +1232,23 @@ TEST_COMPANIES = [
     },
 ]
 
-# Fake jobs to pair with test companies
 TEST_JOBS = [
-    {'url': '', 'title': 'Développeur Full Stack', 'location': 'Casablanca', 'description': 'Développement web full stack React/Node.js'},
-    {'url': '', 'title': 'Développeur Java/Spring Boot', 'location': 'Rabat', 'description': 'Développement backend Java Spring Boot microservices'},
-    {'url': '', 'title': 'DevOps Engineer', 'location': 'Casablanca', 'description': 'CI/CD, Docker, Kubernetes, cloud infrastructure'},
+    {'url': '', 'title': 'Développeur Full Stack',
+     'location': 'Casablanca',
+     'description': 'Développement web full stack React/Node.js'},
+    {'url': '', 'title': 'Développeur Java/Spring Boot',
+     'location': 'Rabat',
+     'description': 'Développement backend Java Spring Boot microservices'},
+    {'url': '', 'title': 'DevOps Engineer',
+     'location': 'Casablanca',
+     'description': 'CI/CD, Docker, Kubernetes, cloud infrastructure'},
 ]
 
 
 async def run_linkedin_test():
     """
-    Test the LinkedIn pipeline WITHOUT LinkedIn login.
-    Uses mock company data with real websites to test:
-      - FetcherSession HTTP requests to company websites
-      - Email extraction from homepage + /contact pages
-      - make_contact_dict output format
-      - Full post-processing pipeline
-
-    Returns list of contact dicts (same format as real run).
+    Test mode — no LinkedIn login needed.
+    Uses mock company data + real websites to test email extraction.
     """
     print(f"\n  {'='*55}")
     print(f"  🧪 LINKEDIN TEST MODE — No Login Required")
@@ -1063,16 +1269,22 @@ async def run_linkedin_test():
         print(f"  📧 [{i}/{len(TEST_COMPANIES)}] {company['name']} → {website}")
 
         try:
-            contacts = await extract_emails_from_website(
-                website, company, TEST_JOBS
-            )
-            if contacts:
-                all_contacts.extend(contacts)
-                stats['emails_found'] += len(contacts)
+            emails = await extract_emails_from_website(website, company)
+            if emails:
+                for email in emails:
+                    for job in TEST_JOBS:
+                        all_contacts.append(make_contact_dict(
+                            company=company['name'],
+                            email=email,
+                            position=job['title'],
+                            city=job.get('location', company.get('location', '')),
+                            source_url=company.get('url', ''),
+                            source_site='linkedin',
+                            description=job.get('description', ''),
+                        ))
+                stats['emails_found'] += len(emails)
                 stats['websites_with_email'] += 1
-                # Show found emails
-                unique_emails = set(c['email'] for c in contacts)
-                for email in unique_emails:
+                for email in emails:
                     print(f"     ✅ {email}")
             else:
                 print(f"     ⚠️  No emails found")
