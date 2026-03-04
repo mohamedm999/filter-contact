@@ -63,23 +63,46 @@ LINKEDIN_SKIP_DOMAINS = SOCIAL_DOMAINS | {
 }
 
 # ── Keywords derived from sender's profile ──
+# Grouped by strategy:
+#   1. Profile skills + "Maroc/Morocco" → local companies hiring your stack
+#   2. Generic tech roles → catches multinationals posting in English
+#   3. French job titles → Moroccan & francophone companies
+#   4. Internship/stage → entry-level opportunities
 PROFILE_KEYWORDS = [
-    "développeur full stack",
-    "développeur web",
-    "full stack developer",
-    "react developer",
-    "node.js developer",
-    "développeur laravel",
-    "développeur javascript",
-    "développeur php",
-    "frontend developer",
-    "backend developer",
-    "stage développement web",
-    "stage pfe informatique",
-    "vue.js developer",
-    "NestJS developer",
-    "devops",
-    "typescript developer",
+    # ── Stack-specific (Morocco-targeted) ──
+    "développeur full stack Maroc",
+    "développeur react Maroc",
+    "développeur node.js Maroc",
+    "développeur laravel Maroc",
+    "développeur vue.js Maroc",
+    "développeur javascript Maroc",
+    "développeur php Maroc",
+    "développeur NestJS",
+    "développeur typescript",
+    # ── English roles (multinationals in Morocco) ──
+    "full stack developer Morocco",
+    "react developer Morocco",
+    "node.js developer Morocco",
+    "frontend developer Morocco",
+    "backend developer Morocco",
+    "javascript developer Morocco hiring",
+    "MERN stack developer hiring",
+    # ── Generic French titles ──
+    "recrutement développeur web Maroc",
+    "recrutement développeur Casablanca",
+    "recrutement développeur Rabat",
+    "offre développeur full stack",
+    # ── Internship / Stage ──
+    "stage développement web Maroc",
+    "stage pfe informatique Maroc",
+    "stage développeur full stack",
+    # ── Broader (multinationals, remote, nearshore) ──
+    "hiring developer Morocco",
+    "remote developer Morocco",
+    "nearshore developer Morocco",
+    "IT company Morocco hiring",
+    "devops Morocco",
+    "docker developer Morocco",
 ]
 
 # ── Hiring indicators (FR + EN) ──
@@ -740,12 +763,21 @@ async def search_and_scroll_posts(page, keyword, max_scrolls=15):
     seen_posts = set()
 
     # LinkedIn content search sorted by recent
+    # If keyword already contains a location (Maroc/Morocco/city), search globally
+    # Otherwise, add Morocco geo-filter to focus on local + multinational companies
+    has_location = any(loc in keyword.lower() for loc in [
+        'maroc', 'morocco', 'casablanca', 'rabat', 'tanger', 'marrakech',
+        'fes', 'agadir', 'oujda', 'kenitra', 'mohammedia',
+    ])
     search_url = (
         f"https://www.linkedin.com/search/results/content/"
         f"?keywords={quote_plus(keyword)}"
         f"&origin=GLOBAL_SEARCH_HEADER"
         f"&sortBy=%22date_posted%22"
     )
+    # Add Morocco geo-filter only when keyword has no location qualifier
+    if not has_location:
+        search_url += f"&geoUrn=%5B%22{MOROCCO_GEO_ID}%22%5D"
 
     logger.info(f"[LinkedIn] Searching posts: '{keyword}'")
     try:

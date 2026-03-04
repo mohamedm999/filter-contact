@@ -34,24 +34,32 @@ if _PROJECT_ROOT not in sys.path:
 # ═══════════════════════════════════════════════════════════
 
 SEARCH_KEYWORDS = [
+    # ── Core stack (FR — Moroccan job boards) ──
     "développeur full stack",
     "développeur web",
     "développeur react",
     "développeur node.js",
     "développeur javascript",
+    "développeur typescript",
     "développeur php",
     "développeur laravel",
-    "développeur spring boot",
-    "développeur java",
+    "développeur vue.js",
+    "développeur NestJS",
+    # ── Core stack (EN — multinational companies) ──
     "full stack developer",
     "frontend developer",
     "backend developer",
+    "MERN stack developer",
+    "react developer",
+    "node.js developer",
+    # ── DevOps / Docker ──
+    "devops",
+    "docker developer",
+    # ── Stage / Internship ──
     "stage développement web",
     "stage informatique",
     "stage pfe",
-    "flutter developer",
-    "react native developer",
-    "devops",
+    "stage développeur full stack",
 ]
 
 # Output directory
