@@ -40,7 +40,7 @@ A complete email prospection pipeline: scrape Moroccan & MENA job boards for com
 
 | Feature | Description |
 |---------|-------------|
-| **Web Scraping** | Scrape ReKrute, MarocAnnonces, Emploi.ma (Cloudflare bypass), and Bayt.com via Scrapling |
+| **Web Scraping** | Scrape ReKrute, MarocAnnonces, Emploi.ma (Cloudflare bypass), Bayt.com via Scrapling, Indeed Morocco via JobSpy, and LinkedIn |
 | **Multi-Step Email Discovery** | Job board → company profile → company website → contact/career pages → email extraction |
 | **AI Email Generation** | Auto-generate personalized prospection emails via OpenAI GPT or OpenRouter (Gemini) |
 | **Multi-Language Detection** | Auto-detect French or English per contact (TLD, keywords, company name, city analysis) |
@@ -63,12 +63,12 @@ A complete email prospection pipeline: scrape Moroccan & MENA job boards for com
 ```
 ┌─────────────────┐     ┌──────────────────┐     ┌───────────────────┐
 │   Web Scraper    │────▶│  AI Email Gen    │────▶│  Email Sender     │
-│  (Scrapling)     │     │  (OpenAI/Router) │     │  (SMTP/Gmail)     │
-└────────┬────────┘     └────────┬─────────┘     └────────┬──────────┘
-         │                       │                         │
-    scraped_contacts      ┌──────┴──────┐           sent_tracker.json
-    _latest.md / .json    │ Enrichment  │           (send history)
-                          ├─────────────┤
+│  (Scrapling +   │     │  (OpenAI/Router) │     │  (SMTP/Gmail)     │
+│  JobSpy + PW)   │     └────────┬─────────┘     └────────┬──────────┘
+└────────┬────────┘              │                         │
+         │                ┌──────┴──────┐           sent_tracker.json
+    scraped_contacts      │ Enrichment  │           (send history)
+    _latest.md / .json    ├─────────────┤
                           │ Language     │     ┌───────────────────┐
                           │ Detector     │     │  Inbox Monitor    │
                           │ Company      │     │  (IMAP/Gmail)     │
@@ -294,14 +294,16 @@ python -m email_campaign.main [OPTIONS]
 
 | Command | Description |
 |---------|-------------|
-| `--scrape` | Scrape all job boards (ReKrute, Emploi.ma, MarocAnnonces, Bayt) |
+| `--scrape` | Scrape all job boards (ReKrute, Emploi.ma, MarocAnnonces, Bayt, Indeed, LinkedIn) |
 | `--scrape --site rekrute` | Scrape only ReKrute |
 | `--scrape --site rekrute emploi_ma` | Scrape multiple specific sites |
-| `--scrape --site linkedin` | Scrape LinkedIn companies & jobs |
+| `--scrape --site indeed` | Scrape Indeed Morocco via JobSpy |
+| `--scrape --site linkedin` | Scrape LinkedIn hiring posts (Playwright) |
+| `--scrape --site indeed,linkedin` | Scrape Indeed + LinkedIn only |
 | `--scrape --keywords "react,laravel"` | Override default search keywords |
 | `--dry-scrape` | Preview scraper plan without making requests |
 
-**Supported sites:** `rekrute`, `emploi_ma`, `maroc_annonces`, `bayt`, `linkedin`
+**Supported sites:** `rekrute`, `emploi_ma`, `maroc_annonces`, `bayt`, `linkedin`, `indeed`
 
 ### AI Email Generation
 
@@ -373,7 +375,8 @@ filter contact/
 │   │   │
 │   │   └── spiders/              # Scrapling spiders
 │   │       ├── job_spider.py     # Unified multi-site spider (ReKrute, Emploi.ma, MarocAnnonces, Bayt)
-│   │       └── linkedin_spider.py # LinkedIn company/job spider
+│   │       ├── indeed_spider.py  # Indeed Morocco spider (powered by JobSpy)
+│   │       └── linkedin_spider.py # LinkedIn hiring post spider (Playwright)
 │   │
 │   ├── scraper_output/           # Scraper output files
 │   │   ├── scraped_contacts_latest.md    # Latest scrape (markdown)
@@ -396,6 +399,8 @@ The scraper uses **Scrapling** (not Scrapy) with a multi-session architecture fo
 
 - **FetcherSession** (fast HTTP) — ReKrute, MarocAnnonces, Bayt, company websites
 - **AsyncStealthySession** (stealth browser with CF bypass) — Emploi.ma
+- **JobSpy** (python-jobspy library) — Indeed Morocco (no browser needed)
+- **Playwright** (stealth browser with LinkedIn login) — LinkedIn hiring posts
 
 **Multi-step email discovery** strategy:
 
@@ -423,7 +428,8 @@ Step 7: Yield contact with best email found (rh@, recrutement@, contact@)
 | `job_spider` (maroc_annonces) | MarocAnnonces.com | ✅ Working | JSON-LD parsing, person name filtering, multi-TLD website guessing |
 | `job_spider` (emploi_ma) | Emploi.ma | ✅ Working | Cloudflare Turnstile bypass via Scrapling's stealth browser session |
 | `job_spider` (bayt) | Bayt.com | ✅ Working | MENA job board, company profile → website → email extraction |
-| `linkedin_spider` | LinkedIn | ✅ Working | LinkedIn company/job scraping with mock test mode |
+| `indeed_spider` | Indeed | ✅ Working | Indeed Morocco via JobSpy — multi-keyword search, company website email extraction |
+| `linkedin_spider` | LinkedIn | ✅ Working | LinkedIn hiring post detection, feed-scrolling, company website email extraction |
 
 ### Relevance Scoring
 
@@ -608,8 +614,8 @@ Each `### N. Company` section is one contact. The parser extracts all fields and
 ### Full pipeline from zero
 
 ```bash
-# 1. Scrape ReKrute for web developer jobs
-python -m email_campaign.main --scrape --site rekrute --keywords "développeur web,full stack,react"
+# 1. Scrape ReKrute + Indeed for web developer jobs
+python -m email_campaign.main --scrape --site rekrute,indeed --keywords "développeur web,full stack,react"
 
 # 2. Merge into master file + generate AI emails (with language detection + company research)
 python -m email_campaign.main --merge-scraped
@@ -648,7 +654,7 @@ python -m email_campaign.main --check-replies
 # Send follow-ups to non-responders
 python -m email_campaign.main --follow-up
 
-# Scrape for new contacts
+# Scrape for new contacts (all sites incl. Indeed & LinkedIn)
 python -m email_campaign.main --scrape
 
 # Merge + AI generate
