@@ -162,6 +162,25 @@ def run_scraper(sites=None, keywords=None, dry_run=False):
     if has_linkedin:
         import asyncio
         from .spiders.linkedin_spider import run_linkedin_spider
+        from pathlib import Path as _LiPath
+
+        # ── Recover partial results from previous crash ──
+        partial_json = _LiPath(SCRAPER_OUTPUT_DIR) / 'linkedin_partial.json'
+        if partial_json.exists():
+            try:
+                import json as _json
+                partial = _json.loads(partial_json.read_text(encoding='utf-8'))
+                if partial:
+                    print(f"\n  🔄 Found {len(partial)} contacts from previous crashed run")
+                    print(f"     Recovering into this batch...")
+                    raw_contacts.extend(partial)
+                    partial_json.unlink()
+                    # Also remove partial markdown
+                    partial_md = partial_json.with_suffix('.md')
+                    if partial_md.exists():
+                        partial_md.unlink()
+            except Exception as e:
+                print(f"  ⚠️  Could not recover partial results: {e}")
 
         print(f"\n  🔗 Running LinkedIn spider...\n")
 

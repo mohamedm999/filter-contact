@@ -973,6 +973,33 @@ async def run_linkedin_spider(keywords=None, max_scrolls=15):
         'emails_found': 0,
     }
 
+    # ── Partial save path (crash recovery) ──
+    partial_dir = Path(__file__).resolve().parent.parent.parent / 'scraper_output'
+    partial_dir.mkdir(parents=True, exist_ok=True)
+    partial_json = partial_dir / 'linkedin_partial.json'
+    partial_md = partial_dir / 'linkedin_partial.md'
+
+    def _save_partial():
+        """Save contacts collected so far (crash recovery)."""
+        if not all_contacts:
+            return
+        try:
+            partial_json.write_text(
+                json.dumps(all_contacts, indent=2, ensure_ascii=False),
+                encoding='utf-8'
+            )
+            # Also save as markdown for quick review
+            lines = [f"# LinkedIn Partial Results ({len(all_contacts)} contacts)\n"]
+            lines.append(f"_Saved at {time.strftime('%Y-%m-%d %H:%M:%S')}_\n")
+            for c in all_contacts:
+                lines.append(f"- **{c.get('company', '?')}** — {c.get('email', '?')}")
+                if c.get('position'):
+                    lines[-1] += f" ({c['position']})"
+            partial_md.write_text('\n'.join(lines), encoding='utf-8')
+            logger.debug(f"Partial save: {len(all_contacts)} contacts → {partial_json.name}")
+        except Exception as e:
+            logger.warning(f"Failed to save partial results: {e}")
+
     # ── Credentials ──
     li_email = os.getenv('LINKEDIN_EMAIL', '')
     li_password = os.getenv('LINKEDIN_PASSWORD', '')
@@ -1142,6 +1169,7 @@ async def run_linkedin_spider(keywords=None, max_scrolls=15):
                         all_contacts.append(contact)
                         stats['emails_found'] += 1
                         print(f"     ✅ Email from post: {email}")
+                    _save_partial()
                     continue
 
                 # Try LinkedIn /about/ page for company website
@@ -1202,6 +1230,7 @@ async def run_linkedin_spider(keywords=None, max_scrolls=15):
                         all_contacts.append(contact)
                         stats['emails_found'] += 1
                     print(f"     ✅ Found {len(emails)} email(s)")
+                    _save_partial()
                 else:
                     print(f"     ⚠️  No emails found")
             except Exception as e:
@@ -1218,6 +1247,14 @@ async def run_linkedin_spider(keywords=None, max_scrolls=15):
     print(f"  Emails extracted:       {stats['emails_found']}")
     print(f"  Total contacts:         {len(all_contacts)}")
     print(f"  {'='*50}")
+
+    # Clean up partial files on successful completion
+    for f in [partial_json, partial_md]:
+        if f.exists():
+            try:
+                f.unlink()
+            except Exception:
+                pass
 
     return all_contacts
 
