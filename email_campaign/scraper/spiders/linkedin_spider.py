@@ -1048,6 +1048,7 @@ async def run_linkedin_spider(keywords=None, max_scrolls=15):
 
             # ── Step 2: Search & scroll for each keyword ──
             session_lost_count = 0
+            net_error_count = 0
 
             for keyword in keywords:
                 print(f"\n  🔍 Searching: '{keyword}'...")
@@ -1059,10 +1060,22 @@ async def run_linkedin_spider(keywords=None, max_scrolls=15):
 
                 # If 0 posts and session might be lost, try re-login
                 if not posts and session_lost_count < 2:
-                    # Check if we're still logged in
-                    await page.goto('https://www.linkedin.com/feed/',
-                                    wait_until='domcontentloaded', timeout=30000)
-                    await human_delay(2, 3)
+                    try:
+                        # Check if we're still logged in
+                        await page.goto('https://www.linkedin.com/feed/',
+                                        wait_until='domcontentloaded', timeout=30000)
+                        await human_delay(2, 3)
+                    except (Exception, asyncio.CancelledError):
+                        # Network error (DNS, timeout, etc.) — wait and retry
+                        net_error_count += 1
+                        if net_error_count >= 3:
+                            print(f"  ❌ Network down ({net_error_count} failures) — stopping")
+                            break
+                        wait = 15 * net_error_count
+                        print(f"  🌐 Network error — waiting {wait}s before retry...")
+                        await asyncio.sleep(wait)
+                        continue
+
                     if not await is_logged_in(page):
                         session_lost_count += 1
                         print(f"  🔄 Session lost — re-logging in (attempt {session_lost_count})...")
