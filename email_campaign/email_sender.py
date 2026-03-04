@@ -451,39 +451,31 @@ class EmailSender:
         """
         Resolve which CV file to attach based on detected language.
 
+        Rules:
+          - French emails: NEVER attach CV (French market prefers no unsolicited CV)
+          - English emails: attach cv_en.pdf if it exists, otherwise no attachment
+          - No cross-language fallback (don't send FR CV with EN email or vice-versa)
+
         Auto-discovers CVs from the cv/ folder. No config needed.
-        Priority:
-          1. Language-specific path from config (cv_path_fr / cv_path_en)
-          2. Auto-discover cv/cv_fr.pdf or cv/cv_en.pdf
-          3. Fallback to the other language if only one exists
-          4. Legacy generic cv_path
         Returns empty string if no CV found (email sends without attachment).
         """
+        # French emails → no CV attachment
+        if lang == 'fr':
+            return ""
+
         cfg = self.config.email_content
 
         # Auto-discover from cv/ folder next to this script
         cv_dir = Path(__file__).parent / 'cv'
-        auto_fr = str(cv_dir / 'cv_fr.pdf')
         auto_en = str(cv_dir / 'cv_en.pdf')
 
-        # Build candidates: config paths first, then auto-discovered
-        fr_candidates = [p for p in [cfg.cv_path_fr, auto_fr] if p]
+        # English email → only attach English CV
         en_candidates = [p for p in [cfg.cv_path_en, auto_en] if p]
-
-        if lang == 'fr':
-            primary, fallback = fr_candidates, en_candidates
-        else:
-            primary, fallback = en_candidates, fr_candidates
-
-        # Try primary language
-        for p in primary:
+        for p in en_candidates:
             if Path(p).is_file():
                 return p
-        # Try fallback language
-        for p in fallback:
-            if Path(p).is_file():
-                return p
-        # Try legacy single path
+
+        # Legacy single path (only for EN emails)
         if cfg.cv_path and Path(cfg.cv_path).is_file():
             return cfg.cv_path
         return ""
