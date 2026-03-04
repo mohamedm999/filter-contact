@@ -8,6 +8,9 @@
 # ── Scraper (Scrapling-based job board scraping) ──
 scrapling[all]>=0.4
 #
+# ── Indeed Spider (JobSpy) ──
+python-jobspy>=1.1
+#
 # ── AI Email Generation (OpenAI GPT) ──
 openai>=1.0
 #

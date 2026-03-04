@@ -9,6 +9,7 @@
   Key changes from old Scrapy runner:
     • Uses Scrapling Spider.start() instead of CrawlerProcess
     • Post-processing replaces Scrapy pipelines
+    • Indeed spider powered by JobSpy
     • Same CLI interface (run_scraper / merge_scraped_contacts)
 """
 
@@ -75,14 +76,14 @@ def run_scraper(sites=None, keywords=None, dry_run=False):
 
     Args:
         sites:    List of site names to scrape (None = all).
-                  Options: 'rekrute', 'emploi_ma', 'maroc_annonces', 'bayt', 'linkedin'
+                  Options: 'rekrute', 'emploi_ma', 'maroc_annonces', 'bayt', 'linkedin', 'indeed'
         keywords: Comma-separated keywords to search for (None = use defaults).
         dry_run:  If True, just show what would be scraped without running.
 
     Returns:
         Path to the output markdown file, or None.
     """
-    available_sites = ['rekrute', 'emploi_ma', 'maroc_annonces', 'bayt', 'linkedin']
+    available_sites = ['rekrute', 'emploi_ma', 'maroc_annonces', 'bayt', 'linkedin', 'indeed']
 
     # Validate sites
     if sites:
@@ -132,9 +133,10 @@ def run_scraper(sites=None, keywords=None, dry_run=False):
 
     raw_contacts = []
 
-    # ── LinkedIn uses its own Playwright-based spider ──
-    scrapling_sites = [s for s in target_sites if s != 'linkedin']
+    # ── LinkedIn and Indeed use their own spiders ──
+    scrapling_sites = [s for s in target_sites if s not in ('linkedin', 'indeed')]
     has_linkedin = 'linkedin' in target_sites
+    has_indeed = 'indeed' in target_sites
 
     if scrapling_sites:
         from .spiders.job_spider import JobBoardSpider
@@ -158,6 +160,35 @@ def run_scraper(sites=None, keywords=None, dry_run=False):
             print(f"     Failed requests: {stats.failed_requests_count}")
         if stats.blocked_requests_count:
             print(f"     Blocked requests: {stats.blocked_requests_count}")
+
+    if has_indeed:
+        from .spiders.indeed_spider import run_indeed_spider
+        from pathlib import Path as _IndPath
+
+        # ── Recover partial results from previous crash ──
+        partial_json = _IndPath(SCRAPER_OUTPUT_DIR) / 'indeed_partial.json'
+        if partial_json.exists():
+            try:
+                import json as _json_ind
+                partial = _json_ind.loads(partial_json.read_text(encoding='utf-8'))
+                if partial:
+                    print(f"\n  🔄 Found {len(partial)} contacts from previous Indeed crash")
+                    print(f"     Recovering into this batch...")
+                    raw_contacts.extend(partial)
+                    partial_json.unlink()
+            except Exception as e:
+                print(f"  ⚠️  Could not recover Indeed partial results: {e}")
+
+        print(f"\n  💼 Running Indeed spider (JobSpy)...\n")
+
+        # Parse keywords for Indeed
+        ind_keywords = None
+        if keywords:
+            ind_keywords = [k.strip() for k in keywords.split(',')]
+
+        indeed_contacts = run_indeed_spider(keywords=ind_keywords)
+        raw_contacts.extend(indeed_contacts)
+        print(f"  📊 Indeed: {len(indeed_contacts)} contacts found")
 
     if has_linkedin:
         import asyncio
