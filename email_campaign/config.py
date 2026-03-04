@@ -103,12 +103,39 @@ class RateLimitConfig:
 # ═══════════════════════════════════════════════════════════
 
 @dataclass
+class SignatureConfig:
+    """Professional email signature settings. Loaded from .env."""
+    title: str = ""                          # Job title (e.g., "Développeur Full Stack")
+    portfolio_url: str = ""
+    github_url: str = ""
+    linkedin_url: str = ""
+    # Optional: URL to a small professional logo/photo (hosted publicly)
+    logo_url: str = ""
+    # Signature accent color (hex, used in HTML separator line)
+    accent_color: str = "#2563EB"            # Professional blue
+
+    def __post_init__(self):
+        self.title = os.getenv("SIGNATURE_TITLE", self.title)
+        self.portfolio_url = os.getenv("SIGNATURE_PORTFOLIO", self.portfolio_url)
+        self.github_url = os.getenv("SIGNATURE_GITHUB", self.github_url)
+        self.linkedin_url = os.getenv("SIGNATURE_LINKEDIN", self.linkedin_url)
+        self.logo_url = os.getenv("SIGNATURE_LOGO_URL", self.logo_url)
+        self.accent_color = os.getenv("SIGNATURE_ACCENT_COLOR", self.accent_color)
+
+
+@dataclass
 class EmailContentConfig:
     """Settings for email formatting and anti-spam tricks."""
 
     # ── MIME settings ──
-    send_as_html: bool = False               # Plain text = less spammy
+    send_as_html: bool = True                # HTML with plain-text fallback
     charset: str = "utf-8"
+
+    # ── CV/Resume attachment ──
+    attach_cv: bool = False                  # Attach CV/resume PDF to emails
+    cv_path: str = ""                        # Path to CV file (legacy single-file)
+    cv_path_fr: str = ""                     # Path to French CV (auto-selected)
+    cv_path_en: str = ""                     # Path to English CV (auto-selected)
 
     # ── Anti-spam headers ──
     add_message_id: bool = True              # Unique Message-ID per email
@@ -176,6 +203,7 @@ class CampaignConfig:
     """Master configuration combining all settings."""
     smtp: SMTPConfig = field(default_factory=SMTPConfig)
     sender: SenderProfile = field(default_factory=SenderProfile)
+    signature: SignatureConfig = field(default_factory=SignatureConfig)
     rate_limit: RateLimitConfig = field(default_factory=RateLimitConfig)
     email_content: EmailContentConfig = field(default_factory=EmailContentConfig)
     paths: PathConfig = field(default_factory=PathConfig)
@@ -200,6 +228,15 @@ def load_config() -> CampaignConfig:
     # Campaign-level overrides from .env
     if os.getenv("DRY_RUN", "").lower() in ("false", "0", "no"):
         config.dry_run = False
+    # CV attachment
+    if os.getenv("CV_PATH"):
+        config.email_content.cv_path = os.getenv("CV_PATH")
+    if os.getenv("CV_PATH_FR"):
+        config.email_content.cv_path_fr = os.getenv("CV_PATH_FR")
+    if os.getenv("CV_PATH_EN"):
+        config.email_content.cv_path_en = os.getenv("CV_PATH_EN")
+    if os.getenv("ATTACH_CV", "").lower() in ("true", "1", "yes"):
+        config.email_content.attach_cv = True
     if os.getenv("MIN_RELEVANCE_STARS"):
         config.filters.min_relevance_stars = int(os.getenv("MIN_RELEVANCE_STARS"))
     if os.getenv("MAX_EMAILS_PER_DAY"):

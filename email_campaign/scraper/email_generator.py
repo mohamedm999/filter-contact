@@ -139,8 +139,12 @@ class AIEmailGenerator:
                 "  Run: pip install openai"
             )
 
-    def _build_system_prompt(self) -> str:
-        """Build the system prompt with profile and style instructions."""
+    def _build_system_prompt(self, lang: str = "fr") -> str:
+        """Build the system prompt with profile and style instructions.
+        
+        Args:
+            lang: 'fr' for French, 'en' for English.
+        """
         examples_text = ""
         for i, ex in enumerate(EXAMPLE_EMAILS, 1):
             examples_text += f"""
@@ -155,7 +159,44 @@ Subject: {ex['subject']}
 {ex['body']}
 """
 
-        return f"""Tu es un assistant qui génère des emails de candidature spontanée professionnels en français.
+        if lang == "en":
+            return f"""You are an assistant that generates professional spontaneous application emails in English.
+
+You generate emails for the candidate described in the profile below.
+
+CANDIDATE PROFILE:
+{SENDER_PROFILE}
+
+STRICT RULES:
+1. The email must be in ENGLISH, professional and respectful tone
+2. Start with "Dear Hiring Manager," (formal) or "Hello," (semi-formal for startups)
+3. Personalize EACH email based on the position and company
+4. Mention ONLY skills relevant to the position
+5. If the position doesn't match the profile directly, politely explain what other need you could fill
+6. For ⭐⭐⭐ (very relevant): detailed email — introduction, skills listed (bullets •), key projects, internship
+7. For ⭐⭐ (relevant): medium email — introduction, key skills + one relevant project
+8. For ⭐ (less relevant): short email — concise spontaneous application
+9. End ONLY with a professional closing: "Best regards," or "Sincerely,"
+10. Do NOT include signature, name, phone, email, Portfolio/GitHub/LinkedIn links at the end of the body — the signature is added automatically by the system
+11. Do NOT invent skills not in the profile
+12. Do NOT mention invented job reference numbers
+13. The subject should follow: "Application — [Adapted Position] | {SENDER_NAME}"
+14. Body structure: Hook → Introduction → Skills/Experience → Motivation → Closing
+15. No emojis in the email body (except bullets •)
+16. NEVER use bracket placeholders like [to complete], [insert here], [research...] — if you don't know info about the company, rephrase without placeholder or delete the sentence
+17. NEVER invent information about the company (domain, projects, technologies) — stay factual about YOUR profile only
+
+STYLE EXAMPLES (to imitate — note: signature is no longer in the body):
+{examples_text}
+
+Respond EXACTLY in JSON format:
+{{"subject": "...", "body": "..."}}
+
+The body must NOT include the Subject line. Just the email content starting from the salutation (e.g., "Dear Hiring Manager,").
+The body must NOT include signature, links, or contact info — they are added automatically.
+"""
+
+        return f"""Tu es un assistant qui génère des emails de candidature spontanée professionnels en français, adaptés aux standards professionnels marocains.
 
 Tu génères des emails pour le candidat décrit dans le profil ci-dessous.
 
@@ -163,33 +204,38 @@ PROFIL DU CANDIDAT:
 {SENDER_PROFILE}
 
 RÈGLES STRICTES:
-1. L'email doit être en FRANÇAIS
-2. Ton professionnel mais pas formel — direct et concis
+1. L'email doit être en FRANÇAIS, ton professionnel et respectueux (standards marocains)
+2. Commencer par "Madame, Monsieur," (formel) ou "Bonjour," (semi-formel si l'offre est décontractée/startup)
 3. Personnalise CHAQUE email en fonction du poste et de l'entreprise
 4. Mentionne UNIQUEMENT les compétences pertinentes pour le poste
 5. Si le poste ne correspond pas directement au profil, explique poliment quel autre besoin tu pourrais combler
-6. Pour les ⭐⭐⭐ (très pertinent): email détaillé avec compétences listées, projets, stage
-7. Pour les ⭐⭐ (pertinent): email moyen, compétences clés + un projet
-8. Pour les ⭐ (moins pertinent): email court, candidature spontanée
-9. Toujours terminer avec les liens (Portfolio, GitHub, LinkedIn) et coordonnées
-10. La signature doit utiliser le nom et les coordonnées du profil candidat
+6. Pour les ⭐⭐⭐ (très pertinent): email détaillé — présentation, compétences listées (bullets •), projets clés, stage
+7. Pour les ⭐⭐ (pertinent): email moyen — présentation, compétences clés + un projet pertinent
+8. Pour les ⭐ (moins pertinent): email court — candidature spontanée concise
+9. Terminer UNIQUEMENT par une formule de politesse professionnelle: "Cordialement," ou "Dans l'attente de votre retour, je vous prie d'agréer mes salutations distinguées."
+10. NE PAS inclure de signature, nom, téléphone, email, liens Portfolio/GitHub/LinkedIn à la fin du corps — la signature est ajoutée automatiquement par le système
 11. NE PAS inventer de compétences qui ne sont pas dans le profil
 12. NE PAS mentionner de numéro d'offre inventé
 13. Le sujet doit suivre le format: "Candidature — [Poste adapté] | {SENDER_NAME}"
+14. Structure du corps: Accroche → Présentation → Compétences/Expérience → Motivation → Formule de politesse
+15. Éviter les emojis dans le corps de l'email (sauf bullets •)
+16. JAMAIS de texte entre crochets comme [à compléter], [insérer ici], [rechercher...] — si tu ne connais pas une info sur l'entreprise, reformule la phrase sans placeholder ou supprime-la
+17. JAMAIS inventer d'informations sur l'entreprise (domaine, projets, technologies) — reste factuel sur TON profil uniquement
 
-EXEMPLES DE TON STYLE (à imiter):
+EXEMPLES DE TON STYLE (à imiter — note: la signature n'est plus dans le corps):
 {examples_text}
 
 Réponds EXACTEMENT au format JSON:
 {{"subject": "...", "body": "..."}}
 
-Le body ne doit PAS inclure la ligne Subject. Juste le contenu de l'email à partir de "Bonjour".
+Le body ne doit PAS inclure la ligne Subject. Juste le contenu de l'email à partir de la salutation (ex: "Madame, Monsieur,").
+Le body ne doit PAS inclure de signature, liens, ou coordonnées — ils sont ajoutés automatiquement.
 """
 
-    def _call_api(self, client, model: str, user_prompt: str, provider: str = "OpenAI"):
+    def _call_api(self, client, model: str, user_prompt: str, provider: str = "OpenAI", lang: str = "fr"):
         """Call an OpenAI-compatible API and return (subject, body)."""
         messages = [
-            {"role": "system", "content": self._build_system_prompt()},
+            {"role": "system", "content": self._build_system_prompt(lang=lang)},
             {"role": "user", "content": user_prompt},
         ]
 
@@ -236,36 +282,59 @@ Le body ne doit PAS inclure la ligne Subject. Juste le contenu de l'email à par
 
     def generate_email(self, company: str, position: str, email: str,
                        city: str = '', relevance: int = 2,
-                       job_description: str = '') -> Tuple[str, str]:
+                       job_description: str = '',
+                       lang: str = 'fr',
+                       company_context: str = '') -> Tuple[str, str]:
         """
         Generate a personalized email subject and body.
         Tries OpenAI first, falls back to OpenRouter on failure.
+
+        Args:
+            lang:            'fr' for French, 'en' for English.
+            company_context: Optional context from CompanyResearcher
+                             (description, tech stack, etc.)
 
         Returns:
             Tuple of (subject, body)
         """
         stars = '⭐' * relevance
 
-        user_prompt = f"""Génère un email de candidature pour:
+        if lang == 'en':
+            user_prompt = f"""Generate an application email for:
+- Company: {company or '—'}
+- Position: {position or '—'}
+- Contact email: {email}
+- City: {city or '—'}
+- Relevance: {stars}"""
+            if job_description:
+                user_prompt += f"\n- Job description: {job_description[:500]}"
+            if company_context:
+                user_prompt += f"\n\n{company_context}"
+            user_prompt += '\n\nRespond ONLY in JSON: {"subject": "...", "body": "..."}'
+            default_subject = f"Application — {position} | {SENDER_NAME}"
+        else:
+            user_prompt = f"""Génère un email de candidature pour:
 - Entreprise: {company or '—'}
 - Poste: {position or '—'}
 - Email du contact: {email}
 - Ville: {city or '—'}
 - Pertinence: {stars}"""
-
-        if job_description:
-            user_prompt += f"\n- Description du poste: {job_description[:500]}"
-
-        user_prompt += "\n\nRéponds UNIQUEMENT en JSON: {\"subject\": \"...\", \"body\": \"...\"}"
+            if job_description:
+                user_prompt += f"\n- Description du poste: {job_description[:500]}"
+            if company_context:
+                user_prompt += f"\n\n{company_context}"
+            user_prompt += '\n\nRéponds UNIQUEMENT en JSON: {"subject": "...", "body": "..."}'
+            default_subject = f"Candidature — {position} | {SENDER_NAME}"
 
         # Try primary provider
         try:
             subject, body = self._call_api(
                 self.client, self.model, user_prompt,
-                provider="OpenRouter" if self._using_fallback else "OpenAI"
+                provider="OpenRouter" if self._using_fallback else "OpenAI",
+                lang=lang,
             )
             if not subject:
-                subject = f"Candidature — {position} | {SENDER_NAME}"
+                subject = default_subject
             return subject, body
 
         except Exception as primary_err:
@@ -278,10 +347,11 @@ Le body ne doit PAS inclure la ligne Subject. Juste le contenu de l'email à par
                 try:
                     subject, body = self._call_api(
                         self.fallback_client, self.openrouter_model, user_prompt,
-                        provider="OpenRouter"
+                        provider="OpenRouter",
+                        lang=lang,
                     )
                     if not subject:
-                        subject = f"Candidature — {position} | {SENDER_NAME}"
+                        subject = default_subject
                     return subject, body
                 except Exception as fallback_err:
                     logger.error(f"OpenRouter also failed: {fallback_err}")
@@ -304,22 +374,71 @@ Le body ne doit PAS inclure la ligne Subject. Juste le contenu de l'email à par
 
         return subject, body
 
-    def generate_batch(self, contacts: list, delay: float = 1.0) -> list:
+    def generate_batch(self, contacts: list, delay: float = 1.0,
+                       enrich_companies: bool = True) -> list:
         """
         Generate emails for a batch of contacts.
+        Auto-detects language (FR/EN) per contact.
+        Optionally enriches with company research.
 
         Args:
             contacts: List of dicts with keys: company, position, email, city, relevance
             delay:    Seconds between API calls (rate limiting)
+            enrich_companies: If True, scrape company websites for context
 
         Returns:
-            List of dicts with keys: email, subject, body, success
+            List of dicts with keys: email, subject, body, lang, success
         """
+        # Lazy-import language detector
+        try:
+            from language_detector import LanguageDetector
+            detector = LanguageDetector(default_lang="fr")
+        except ImportError:
+            detector = None
+
+        # Lazy-import company researcher
+        researcher = None
+        if enrich_companies:
+            try:
+                from company_researcher import CompanyResearcher
+                researcher = CompanyResearcher()
+                print("  🔍 Company research enabled — enriching emails with website data")
+            except ImportError:
+                pass
+
         results = []
         total = len(contacts)
 
         for i, contact in enumerate(contacts, 1):
-            print(f"  🤖 [{i}/{total}] Generating email for {contact.get('email', '?')}...",
+            # Auto-detect language
+            if detector:
+                lang = detector.detect(
+                    email=contact.get('email', ''),
+                    company=contact.get('company', ''),
+                    position=contact.get('position', ''),
+                    city=contact.get('city', ''),
+                    job_description=contact.get('job_description', ''),
+                )
+            else:
+                lang = contact.get('lang', 'fr')
+
+            # Company research
+            company_context = ""
+            if researcher:
+                try:
+                    research = researcher.research(
+                        email=contact.get('email', ''),
+                        company_name=contact.get('company', ''),
+                    )
+                    company_context = researcher.format_for_ai(research)
+                    if company_context:
+                        logger.info(f"Enriched {contact.get('email', '?')} with company data")
+                except Exception as e:
+                    logger.debug(f"Company research failed for {contact.get('email', '?')}: {e}")
+
+            lang_tag = "🇫🇷" if lang == "fr" else "🇬🇧"
+            enriched_tag = " 🔍" if company_context else ""
+            print(f"  🤖 [{i}/{total}] {lang_tag}{enriched_tag} Generating email for {contact.get('email', '?')}...",
                   end=' ', flush=True)
 
             try:
@@ -330,12 +449,15 @@ Le body ne doit PAS inclure la ligne Subject. Juste le contenu de l'email à par
                     city=contact.get('city', ''),
                     relevance=contact.get('relevance', 2),
                     job_description=contact.get('job_description', ''),
+                    lang=lang,
+                    company_context=company_context,
                 )
                 results.append({
                     'email': contact['email'],
                     'company': contact.get('company', ''),
                     'subject': subject,
                     'body': body,
+                    'lang': lang,
                     'success': True,
                 })
                 print("✅")
@@ -345,6 +467,7 @@ Le body ne doit PAS inclure la ligne Subject. Juste le contenu de l'email à par
                     'company': contact.get('company', ''),
                     'subject': '',
                     'body': '',
+                    'lang': lang,
                     'success': False,
                     'error': str(e),
                 })

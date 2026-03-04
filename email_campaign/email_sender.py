@@ -1,13 +1,13 @@
 """
 ══════════════════════════════════════════════════════════════
   Professional Email Sender Engine
-  Anti-Spam · Rate-Limited · Error-Resilient · Logged
+  HTML + Signature · Anti-Spam · Rate-Limited · Logged
 ══════════════════════════════════════════════════════════════
 
   Anti-Spam Techniques Used:
   ─────────────────────────
   1. TLS encryption (required by Gmail)
-  2. Proper MIME structure (text/plain preferred)
+  2. Proper MIME structure (multipart/alternative: plain + HTML)
   3. Correct email headers (From, To, Date, Message-ID)
   4. List-Unsubscribe header (reduces spam score)
   5. Randomized delays between emails (human-like)
@@ -15,7 +15,7 @@
   7. Daily/hourly limits
   8. Unique Message-ID per email
   9. Proper Reply-To header
-  10. Plain text format (HTML = higher spam score)
+  10. Professional HTML with plain-text fallback
   11. No URL shorteners or tracking pixels
   12. Single SMTP connection reuse (fewer connections = less suspicious)
 """
@@ -27,15 +27,21 @@ import random
 import logging
 import socket
 import uuid
+import html as html_module
+import mimetypes
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email import encoders
 from email.utils import formatdate, formataddr, make_msgid
 from datetime import datetime, timedelta
+from pathlib import Path
 from typing import List, Optional, Tuple
 
-from config import CampaignConfig, RateLimitConfig
+from config import CampaignConfig, RateLimitConfig, SignatureConfig
 from parse_contacts import Contact
 from tracker import SentTracker
+from language_detector import LanguageDetector
 
 logger = logging.getLogger(__name__)
 
@@ -237,11 +243,267 @@ class EmailSender:
 
     # ─── Email Building ───────────────────────────────────
 
-    def _build_message(self, contact: Contact) -> MIMEMultipart:
+    def _build_plain_signature(self) -> str:
+        """Build a professional plain-text signature."""
+        sig = self.config.signature
+        sender = self.config.sender
+        lines = [
+            "",
+            "—",
+            f"{sender.name}",
+        ]
+        if sig.title:
+            lines.append(sig.title)
+        lines.append("")
+        if sender.phone:
+            lines.append(f"Tél : {sender.phone}")
+        if sender.email:
+            lines.append(f"Email : {sender.email}")
+        if sig.portfolio_url:
+            lines.append(f"Portfolio : {sig.portfolio_url}")
+        if sig.github_url:
+            lines.append(f"GitHub : {sig.github_url}")
+        if sig.linkedin_url:
+            lines.append(f"LinkedIn : {sig.linkedin_url}")
+        return "\n".join(lines)
+
+    # ── Icon URLs (hosted PNGs — works in all email clients) ──
+    ICON_PHONE    = "https://img.icons8.com/fluency/18/phone.png"
+    ICON_EMAIL    = "https://img.icons8.com/fluency/18/email.png"
+    ICON_GLOBE    = "https://img.icons8.com/fluency/18/domain.png"
+    ICON_GITHUB   = "https://img.icons8.com/fluency/18/github.png"
+    ICON_LINKEDIN = "https://img.icons8.com/fluency/18/linkedin.png"
+
+    def _icon(self, url: str, alt: str = "") -> str:
+        """Render a small inline icon image tag for email signatures."""
+        return (
+            f'<img src="{url}" alt="{alt}" width="16" height="16" '
+            f'style="vertical-align:middle;border:0;margin-right:5px;" />'
+        )
+
+    def _build_html_signature(self) -> str:
         """
-        Build a properly formatted email message with anti-spam headers.
+        Build a professional HTML email signature with icons.
+        Uses tables + hosted PNG icons for maximum email client compatibility
+        (Outlook, Gmail, Yahoo, Apple Mail, etc.).
         """
-        msg = MIMEMultipart('alternative')
+        sig = self.config.signature
+        sender = self.config.sender
+        accent = sig.accent_color or "#2563EB"
+
+        # ── Contact rows with icons ──
+        contact_rows = []
+        if sender.phone:
+            contact_rows.append(
+                f'<tr><td style="padding:2px 0;font-size:13px;color:#333333;">'
+                f'{self._icon(self.ICON_PHONE, "Tel")}'
+                f'<a href="tel:{sender.phone.replace(" ", "")}" '
+                f'style="color:#333333;text-decoration:none;">{html_module.escape(sender.phone)}</a>'
+                f'</td></tr>'
+            )
+        if sender.email:
+            contact_rows.append(
+                f'<tr><td style="padding:2px 0;font-size:13px;color:#333333;">'
+                f'{self._icon(self.ICON_EMAIL, "Email")}'
+                f'<a href="mailto:{html_module.escape(sender.email)}" '
+                f'style="color:#333333;text-decoration:none;">{html_module.escape(sender.email)}</a>'
+                f'</td></tr>'
+            )
+
+        # ── Social link rows with icons ──
+        social_rows = []
+        if sig.portfolio_url:
+            social_rows.append(
+                f'<tr><td style="padding:2px 0;font-size:13px;">'
+                f'{self._icon(self.ICON_GLOBE, "Portfolio")}'
+                f'<a href="{html_module.escape(sig.portfolio_url)}" '
+                f'style="color:{accent};text-decoration:none;font-weight:500;" '
+                f'target="_blank">Portfolio</a></td></tr>'
+            )
+        if sig.github_url:
+            social_rows.append(
+                f'<tr><td style="padding:2px 0;font-size:13px;">'
+                f'{self._icon(self.ICON_GITHUB, "GitHub")}'
+                f'<a href="{html_module.escape(sig.github_url)}" '
+                f'style="color:{accent};text-decoration:none;font-weight:500;" '
+                f'target="_blank">GitHub</a></td></tr>'
+            )
+        if sig.linkedin_url:
+            social_rows.append(
+                f'<tr><td style="padding:2px 0;font-size:13px;">'
+                f'{self._icon(self.ICON_LINKEDIN, "LinkedIn")}'
+                f'<a href="{html_module.escape(sig.linkedin_url)}" '
+                f'style="color:{accent};text-decoration:none;font-weight:500;" '
+                f'target="_blank">LinkedIn</a></td></tr>'
+            )
+
+        # ── Optional logo/photo ──
+        logo_html = ""
+        if sig.logo_url:
+            logo_html = f"""
+          <td width="75" valign="top" style="padding-right:15px;">
+            <img src="{html_module.escape(sig.logo_url)}" alt="{html_module.escape(sender.name)}"
+                 width="64" height="64"
+                 style="border-radius:50%;border:2px solid {accent};display:block;" />
+          </td>"""
+
+        all_contact = '\n'.join(contact_rows)
+        all_social = '\n'.join(social_rows)
+
+        # Spacer row between contact and social if both exist
+        spacer = ""
+        if contact_rows and social_rows:
+            spacer = '<tr><td style="padding:4px 0;font-size:1px;line-height:1px;">&nbsp;</td></tr>'
+
+        return f"""
+<table cellpadding="0" cellspacing="0" border="0" style="margin-top:20px;border-collapse:collapse;">
+  <tr>
+    <td colspan="2" style="padding-bottom:10px;">
+      <table cellpadding="0" cellspacing="0" border="0" width="300">
+        <tr><td style="border-top:2px solid {accent};font-size:1px;line-height:1px;">&nbsp;</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>{logo_html}
+    <td valign="top" style="font-family:Arial,Helvetica,sans-serif;">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td style="font-size:16px;font-weight:bold;color:#1A1A1A;padding-bottom:2px;">
+            {html_module.escape(sender.name)}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size:13px;color:{accent};font-weight:600;padding-bottom:10px;">
+            {html_module.escape(sig.title)}
+          </td>
+        </tr>
+{all_contact}
+{spacer}
+{all_social}
+      </table>
+    </td>
+  </tr>
+</table>"""
+
+    def _body_to_html(self, plain_text: str) -> str:
+        """
+        Convert plain-text email body to clean HTML.
+        Handles paragraphs, bullet points (•), and links.
+        """
+        import re
+
+        # Escape HTML special chars first
+        text = html_module.escape(plain_text)
+
+        # Convert URLs to clickable links
+        url_pattern = r'(https?://[^\s&lt;]+)'
+        text = re.sub(url_pattern, r'<a href="\1" style="color:#2563EB;text-decoration:none;">\1</a>', text)
+
+        # Split into paragraphs
+        paragraphs = text.split('\n\n')
+        html_parts = []
+
+        for para in paragraphs:
+            para = para.strip()
+            if not para:
+                continue
+
+            lines = para.split('\n')
+            # Check if this paragraph contains bullet points
+            bullet_lines = [l for l in lines if l.strip().startswith('•') or l.strip().startswith('&bull;')]
+
+            if bullet_lines and len(bullet_lines) >= len(lines) * 0.5:
+                # This is a bullet list — possibly with a header line
+                list_html = ""
+                for line in lines:
+                    stripped = line.strip()
+                    if stripped.startswith('•') or stripped.startswith('&bull;'):
+                        item_text = stripped.lstrip('•').lstrip('&bull;').strip()
+                        list_html += f'<li style="margin-bottom:3px;">{item_text}</li>\n'
+                    else:
+                        # Header line before bullets
+                        if list_html:
+                            html_parts.append(
+                                f'<ul style="margin:5px 0 5px 15px;padding:0;list-style:disc;'
+                                f'color:#333333;font-size:14px;line-height:22px;">{list_html}</ul>'
+                            )
+                            list_html = ""
+                        html_parts.append(
+                            f'<p style="margin:0 0 8px 0;color:#333333;'
+                            f'font-size:14px;line-height:22px;">{stripped}</p>'
+                        )
+                if list_html:
+                    html_parts.append(
+                        f'<ul style="margin:5px 0 5px 15px;padding:0;list-style:disc;'
+                        f'color:#333333;font-size:14px;line-height:22px;">{list_html}</ul>'
+                    )
+            else:
+                # Regular paragraph
+                combined = '<br/>'.join(l.strip() for l in lines if l.strip())
+                html_parts.append(
+                    f'<p style="margin:0 0 12px 0;color:#333333;'
+                    f'font-size:14px;line-height:22px;">{combined}</p>'
+                )
+
+        return '\n'.join(html_parts)
+
+    def _resolve_cv_path(self, lang: str = 'fr') -> str:
+        """
+        Resolve which CV file to attach based on detected language.
+
+        Auto-discovers CVs from the cv/ folder. No config needed.
+        Priority:
+          1. Language-specific path from config (cv_path_fr / cv_path_en)
+          2. Auto-discover cv/cv_fr.pdf or cv/cv_en.pdf
+          3. Fallback to the other language if only one exists
+          4. Legacy generic cv_path
+        Returns empty string if no CV found (email sends without attachment).
+        """
+        cfg = self.config.email_content
+
+        # Auto-discover from cv/ folder next to this script
+        cv_dir = Path(__file__).parent / 'cv'
+        auto_fr = str(cv_dir / 'cv_fr.pdf')
+        auto_en = str(cv_dir / 'cv_en.pdf')
+
+        # Build candidates: config paths first, then auto-discovered
+        fr_candidates = [p for p in [cfg.cv_path_fr, auto_fr] if p]
+        en_candidates = [p for p in [cfg.cv_path_en, auto_en] if p]
+
+        if lang == 'fr':
+            primary, fallback = fr_candidates, en_candidates
+        else:
+            primary, fallback = en_candidates, fr_candidates
+
+        # Try primary language
+        for p in primary:
+            if Path(p).is_file():
+                return p
+        # Try fallback language
+        for p in fallback:
+            if Path(p).is_file():
+                return p
+        # Try legacy single path
+        if cfg.cv_path and Path(cfg.cv_path).is_file():
+            return cfg.cv_path
+        return ""
+
+    def _build_message(self, contact: Contact, lang: str = 'fr') -> MIMEMultipart:
+        """
+        Build a properly formatted email with HTML body + professional signature.
+        Includes both plain-text and HTML parts (multipart/alternative).
+        Optionally attaches a CV/resume file (auto-selects FR/EN based on lang).
+        """
+        # Resolve the correct CV for this contact's language
+        # Auto-attaches if CV files exist, skips silently if not
+        cv_file = self._resolve_cv_path(lang)
+
+        if cv_file:
+            msg = MIMEMultipart('mixed')
+            body_container = MIMEMultipart('alternative')
+        else:
+            msg = MIMEMultipart('alternative')
+            body_container = msg
 
         # ── Required headers ──
         msg['From'] = formataddr((
@@ -261,26 +523,67 @@ class EmailSender:
             msg['Message-ID'] = make_msgid(domain=domain)
 
         if self.config.email_content.add_list_unsubscribe:
-            # CAN-SPAM compliance — reduces spam score
             msg['List-Unsubscribe'] = f'<mailto:{self.config.sender.email}?subject=unsubscribe>'
 
         # ── MIME version ──
         msg['MIME-Version'] = '1.0'
 
-        # ── Priority (normal — don't use high priority, it's spammy) ──
+        # ── Priority (normal) ──
         msg['X-Priority'] = '3'
         msg['X-Mailer'] = 'Professional-Outreach/1.0'
 
-        # ── Body ──
+        # ── Body text (AI-generated, without signature) ──
         body_text = contact.body
 
         # Add small unique variation to avoid identical content detection
         if self.config.email_content.add_random_greeting_variation:
             body_text = self._add_subtle_variation(body_text)
 
-        # Attach as plain text (less likely to be flagged as spam)
-        text_part = MIMEText(body_text, 'plain', self.config.email_content.charset)
-        msg.attach(text_part)
+        # ── 1. Plain-text part (always attached first) ──
+        plain_signature = self._build_plain_signature()
+        plain_full = body_text + "\n" + plain_signature
+        text_part = MIMEText(plain_full, 'plain', self.config.email_content.charset)
+        body_container.attach(text_part)
+
+        # ── 2. HTML part (rich formatting + professional signature) ──
+        if self.config.email_content.send_as_html:
+            html_body = self._body_to_html(body_text)
+            html_signature = self._build_html_signature()
+
+            html_full = f"""<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:20px;font-family:Arial,Helvetica,sans-serif;background-color:#FFFFFF;">
+<div style="max-width:600px;margin:0 auto;">
+{html_body}
+{html_signature}
+</div>
+</body>
+</html>"""
+
+            html_part = MIMEText(html_full, 'html', self.config.email_content.charset)
+            body_container.attach(html_part)
+
+        # ── 3. CV/Resume attachment (optional) ──
+        if cv_file:
+            msg.attach(body_container)
+            cv_path = Path(cv_file)
+            mime_type, _ = mimetypes.guess_type(str(cv_path))
+            if mime_type is None:
+                mime_type = 'application/octet-stream'
+            main_type, sub_type = mime_type.split('/', 1)
+
+            with open(cv_path, 'rb') as f:
+                attachment = MIMEBase(main_type, sub_type)
+                attachment.set_payload(f.read())
+            encoders.encode_base64(attachment)
+            attachment.add_header(
+                'Content-Disposition', 'attachment',
+                filename=cv_path.name
+            )
+            msg.attach(attachment)
+            lang_label = "🇫🇷 FR" if lang == 'fr' else "🇬🇧 EN"
+            logger.debug(f"Attached CV ({lang_label}): {cv_path.name}")
 
         return msg
 
@@ -288,14 +591,18 @@ class EmailSender:
         """
         Add subtle, invisible variations to email content.
         This prevents spam filters from detecting identical mass emails.
+        Uses a zero-width space + unique HTML comment (invisible to recipient).
         """
-        # Add a zero-width space or vary spacing slightly
-        # We keep it subtle and professional
+        # Each email is already unique via Message-ID header and personalized content.
+        # Add an invisible zero-width space variation for extra uniqueness.
         now = datetime.now()
-        # Append a unique but invisible identifier at the very end
-        # This makes each email technically unique
-        unique_id = f"\n\n[Ref: {now.strftime('%Y%m%d')}-{uuid.uuid4().hex[:6]}]"
-        return body + unique_id
+        variation = f"\u200B"  # Zero-width space — invisible but makes text unique
+        # Insert at a random position in the body for natural variation
+        words = body.split(' ')
+        if len(words) > 10:
+            pos = random.randint(5, len(words) - 3)
+            words[pos] = words[pos] + variation
+        return ' '.join(words)
 
     # ─── Sending Logic ────────────────────────────────────
 
@@ -346,16 +653,19 @@ class EmailSender:
         Returns:
             (success: bool, message: str)
         """
+        # Detect language for CV auto-selection
+        lang = LanguageDetector().detect_for_contact(contact)
+
         if self.config.dry_run:
             logger.info(f"[DRY RUN] Would send to: {contact.email}")
-            return True, "DRY RUN — not actually sent"
+            return True, "DRY RUN \u2014 not actually sent"
 
         # Ensure connection
         if not self._ensure_connected():
             return False, "Could not establish SMTP connection"
 
         # Build message
-        msg = self._build_message(contact)
+        msg = self._build_message(contact, lang=lang)
 
         # Retry loop
         last_error = ""
@@ -393,7 +703,7 @@ class EmailSender:
                 self.disconnect()
                 if not self.connect():
                     break
-                msg = self._build_message(contact)  # Rebuild message
+                msg = self._build_message(contact, lang=lang)  # Rebuild message
 
             except (socket.timeout, ConnectionError) as e:
                 last_error = f"Connection error: {e}"

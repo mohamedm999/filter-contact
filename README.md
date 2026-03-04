@@ -1,8 +1,8 @@
 # 📧 Email Campaign Tool — Professional Outreach
 
-**Anti-Spam · Rate-Limited · AI-Powered · Scraper-Integrated**
+**Anti-Spam · Rate-Limited · AI-Powered · Scraper-Integrated · Multi-Language · Auto Follow-Up**
 
-A complete email prospection pipeline: scrape Moroccan job boards for company contacts, generate personalized email bodies with AI, and send them with built-in rate limiting and tracking.
+A complete email prospection pipeline: scrape Moroccan & MENA job boards for company contacts, auto-detect language per contact, enrich with company research, generate personalized emails with AI in French or English, auto-attach the right CV version, send with rate limiting, monitor replies via IMAP, and automatically follow up.
 
 ---
 
@@ -19,9 +19,16 @@ A complete email prospection pipeline: scrape Moroccan job boards for company co
   - [Scraper Commands](#scraper-commands)
   - [AI Email Generation](#ai-email-generation)
   - [Merge & Integration](#merge--integration)
+  - [Follow-Up & Reply Monitoring](#follow-up--reply-monitoring)
 - [Project Structure](#project-structure)
 - [How the Scraper Works](#how-the-scraper-works)
 - [How AI Email Generation Works](#how-ai-email-generation-works)
+- [New Features](#new-features)
+  - [Multi-Language Detection](#multi-language-detection)
+  - [Company Research & Enrichment](#company-research--enrichment)
+  - [CV Auto-Attachment](#cv-auto-attachment)
+  - [Inbox Reply Detection](#inbox-reply-detection)
+  - [Auto Follow-Up System](#auto-follow-up-system)
 - [Contact File Format](#contact-file-format)
 - [Environment Variables](#environment-variables)
 - [Examples & Recipes](#examples--recipes)
@@ -33,13 +40,18 @@ A complete email prospection pipeline: scrape Moroccan job boards for company co
 
 | Feature | Description |
 |---------|-------------|
-| **Web Scraping** | Scrape ReKrute.com and MarocAnnonces.com for company emails. Emploi.ma is placeholder (Cloudflare Turnstile) |
+| **Web Scraping** | Scrape ReKrute, MarocAnnonces, Emploi.ma (Cloudflare bypass), and Bayt.com via Scrapling |
 | **Multi-Step Email Discovery** | Job board → company profile → company website → contact/career pages → email extraction |
-| **AI Email Generation** | Auto-generate personalized French prospection emails via OpenAI GPT or OpenRouter (Gemini) |
+| **AI Email Generation** | Auto-generate personalized prospection emails via OpenAI GPT or OpenRouter (Gemini) |
+| **Multi-Language Detection** | Auto-detect French or English per contact (TLD, keywords, company name, city analysis) |
+| **Company Research** | Auto-scrape company websites for context — technologies, industry, culture — fed to AI for personalization |
+| **CV Auto-Attachment** | Drop `cv_fr.pdf` / `cv_en.pdf` in `email_campaign/cv/` — auto-attached per detected language |
 | **Smart Sending** | SMTP-based sending with rate limiting, batch pauses, and anti-spam measures |
+| **Inbox Reply Detection** | IMAP monitoring — auto-detects replies and marks contacts as "replied" in tracker |
+| **Auto Follow-Up** | AI-generated follow-up emails after N days, with max follow-ups per contact |
 | **Relevance Scoring** | Contacts scored ⭐ to ⭐⭐⭐ based on job/profile keyword matching |
 | **Deduplication** | Automatically skips duplicate emails across scrapes and sends |
-| **Send Tracking** | JSON-based tracker remembers what was sent, failed, or pending |
+| **Send Tracking** | JSON-based tracker remembers what was sent, failed, replied, or pending |
 | **Dry Run Mode** | Safe by default — preview everything before actually sending |
 | **Centralized Config** | All secrets and settings in a single `.env` file |
 | **Retry Failed** | Re-send only previously failed emails |
@@ -51,18 +63,32 @@ A complete email prospection pipeline: scrape Moroccan job boards for company co
 ```
 ┌─────────────────┐     ┌──────────────────┐     ┌───────────────────┐
 │   Web Scraper    │────▶│  AI Email Gen    │────▶│  Email Sender     │
-│  (Scrapy)        │     │  (OpenAI/Router) │     │  (SMTP/Gmail)     │
+│  (Scrapling)     │     │  (OpenAI/Router) │     │  (SMTP/Gmail)     │
 └────────┬────────┘     └────────┬─────────┘     └────────┬──────────┘
          │                       │                         │
-    scraped_contacts         emails_prospection.md     sent_tracker.json
-    _latest.md / .json       (unified contacts file)   (send history)
+    scraped_contacts      ┌──────┴──────┐           sent_tracker.json
+    _latest.md / .json    │ Enrichment  │           (send history)
+                          ├─────────────┤
+                          │ Language     │     ┌───────────────────┐
+                          │ Detector     │     │  Inbox Monitor    │
+                          │ Company      │     │  (IMAP/Gmail)     │
+                          │ Researcher   │     └────────┬──────────┘
+                          └─────────────┘              │
+                                                 reply detection
+                          ┌─────────────┐              │
+                          │ Follow-Up   │◀─────────────┘
+                          │ Generator   │
+                          └─────────────┘
 ```
 
 **Data flow:**
 1. **Scrape** → finds companies + emails from job boards + company websites
 2. **Merge** → adds new contacts into the main `emails_prospection.md` file
-3. **Generate** → AI writes personalized email body for each contact
-4. **Send** → delivers emails via Gmail SMTP with rate limiting
+3. **Enrich** → detects language (FR/EN), researches company website for context
+4. **Generate** → AI writes personalized email body per contact (in detected language)
+5. **Send** → delivers emails via Gmail SMTP with rate limiting + auto-attaches correct CV
+6. **Monitor** → checks inbox for replies via IMAP, marks responded contacts
+7. **Follow-up** → auto-generates and sends follow-ups to non-responders
 
 ---
 
@@ -71,6 +97,7 @@ A complete email prospection pipeline: scrape Moroccan job boards for company co
 - **Python 3.10+** (tested on 3.14)
 - **Gmail account** with [App Password](https://myaccount.google.com/apppasswords) (2FA required)
 - **OpenAI API key** or **OpenRouter API key** (for AI email generation)
+- **Gmail IMAP enabled** (for reply detection — Settings → Forwarding and POP/IMAP → Enable IMAP)
 
 ---
 
@@ -122,6 +149,10 @@ MAX_EMAILS_PER_DAY=40
 MAX_EMAILS_PER_HOUR=15
 BATCH_SIZE=10
 BATCH_PAUSE_MINUTES=15
+
+# ── CV Paths (optional — see CV Auto-Attachment section) ──
+# CV_PATH_FR=email_campaign/cv/cv_fr.pdf
+# CV_PATH_EN=email_campaign/cv/cv_en.pdf
 ```
 
 > ⚠️ **Never commit `.env` to Git!** It's already in `.gitignore`.
@@ -203,7 +234,32 @@ python -m email_campaign.main --send --limit 20
 python -m email_campaign.main --send --limit 10 -y
 ```
 
-### Step 6: Handle failures
+> **CV auto-attachment:** If `cv_fr.pdf` and/or `cv_en.pdf` exist in `email_campaign/cv/`, they are automatically attached to each email based on detected language. No flag needed.
+
+### Step 6: Monitor replies
+
+```bash
+# Check inbox for replies (IMAP)
+python -m email_campaign.main --check-replies
+
+# Check last 30 days
+python -m email_campaign.main --check-replies --days 30
+```
+
+### Step 7: Follow up
+
+```bash
+# Follow up with contacts who haven't replied after 5 days (default)
+python -m email_campaign.main --follow-up
+
+# Follow up after 7 days, max 1 follow-up per contact
+python -m email_campaign.main --follow-up --days 7 --max-followups 1
+
+# Limit to 10 follow-ups per session
+python -m email_campaign.main --follow-up --limit 10
+```
+
+### Step 8: Handle failures
 
 ```bash
 # Retry previously failed emails
@@ -238,13 +294,14 @@ python -m email_campaign.main [OPTIONS]
 
 | Command | Description |
 |---------|-------------|
-| `--scrape` | Scrape all job boards (ReKrute, Emploi.ma, MarocAnnonces) |
+| `--scrape` | Scrape all job boards (ReKrute, Emploi.ma, MarocAnnonces, Bayt) |
 | `--scrape --site rekrute` | Scrape only ReKrute |
 | `--scrape --site rekrute emploi_ma` | Scrape multiple specific sites |
+| `--scrape --site linkedin` | Scrape LinkedIn companies & jobs |
 | `--scrape --keywords "react,laravel"` | Override default search keywords |
 | `--dry-scrape` | Preview scraper plan without making requests |
 
-**Supported sites:** `rekrute`, `emploi_ma` (placeholder — needs CF bypass), `maroc_annonces`
+**Supported sites:** `rekrute`, `emploi_ma`, `maroc_annonces`, `bayt`, `linkedin`
 
 ### AI Email Generation
 
@@ -254,6 +311,7 @@ python -m email_campaign.main [OPTIONS]
 | `--generate-emails --min-stars 3` | Only generate for ⭐⭐⭐ contacts |
 | `--generate-emails --limit 5` | Generate max 5 emails |
 | `--generate-emails --ai-model gpt-4o` | Use a specific OpenAI model |
+| `--generate-emails --no-research` | Skip company website research |
 
 ### Merge & Integration
 
@@ -262,6 +320,17 @@ python -m email_campaign.main [OPTIONS]
 | `--merge-scraped` | Merge latest scraped contacts into `emails_prospection.md` + auto-generate AI emails |
 | `--merge-scraped --no-generate` | Merge contacts only, skip AI email generation |
 | `--merge-scraped --min-stars 2` | Only merge contacts with ≥ 2 stars |
+
+### Follow-Up & Reply Monitoring
+
+| Command | Description |
+|---------|-------------|
+| `--follow-up` | Send follow-up emails to contacts who haven't replied (default: 5 days) |
+| `--follow-up --days 7` | Follow up after 7 days instead of 5 |
+| `--follow-up --max-followups 1` | Max 1 follow-up per contact (default: 2) |
+| `--follow-up --limit 10` | Send max 10 follow-ups per session |
+| `--check-replies` | Check inbox (IMAP) for replies to sent emails |
+| `--check-replies --days 30` | Check last 30 days of inbox |
 
 ---
 
@@ -280,31 +349,39 @@ filter contact/
 │   ├── main.py                   # CLI entry point (all commands)
 │   ├── config.py                 # Configuration (dataclasses, .env loading)
 │   ├── parse_contacts.py         # Parse emails_prospection.md
-│   ├── email_sender.py           # SMTP sender with rate limiting
-│   ├── tracker.py                # Track sent/failed emails (JSON)
+│   ├── email_sender.py           # SMTP sender with rate limiting + CV attachment
+│   ├── tracker.py                # Track sent/failed/replied emails (JSON)
+│   ├── language_detector.py      # Auto-detect FR/EN per contact
+│   ├── company_researcher.py     # Scrape company websites for AI context
+│   ├── inbox_monitor.py          # IMAP inbox monitoring for reply detection
+│   ├── followup.py               # Auto follow-up system (AI-generated)
 │   ├── requirements.txt          # pip dependencies
+│   ├── test_email_preview.py     # Email preview test
 │   │
-│   ├── scraper/                  # Scrapy-based web scraper
+│   ├── cv/                       # CV auto-attachment folder
+│   │   ├── README.md             # Instructions
+│   │   ├── cv_fr.pdf             # French CV (auto-attached to FR contacts)
+│   │   └── cv_en.pdf             # English CV (auto-attached to EN contacts)
+│   │
+│   ├── scraper/                  # Scrapling-based web scraper
 │   │   ├── __init__.py
-│   │   ├── settings.py           # Scrapy settings (delays, pipelines)
-│   │   ├── items.py              # JobContactItem data model
-│   │   ├── pipelines.py          # Validation → Scoring → Dedup → Export
 │   │   ├── runner.py             # Programmatic spider launcher + merge
 │   │   ├── email_generator.py    # AI email body generation (OpenAI/OpenRouter)
+│   │   ├── helpers.py            # Email extraction, URL guessing, utilities
+│   │   ├── post_processing.py    # Deduplication, validation, scoring
+│   │   ├── sender_profile.txt    # Your profile for AI prompt context
 │   │   │
-│   │   └── spiders/              # One spider per job board
-│   │       ├── base.py           # Base spider (email extraction, shared logic)
-│   │       ├── rekrute_spider.py # ReKrute.com spider ✅ working
-│   │       ├── emploi_ma_spider.py       # Emploi.ma spider ⏳ placeholder (CF bypass needed)
-│   │       └── maroc_annonces_spider.py  # MarocAnnonces.com spider ✅ working
+│   │   └── spiders/              # Scrapling spiders
+│   │       ├── job_spider.py     # Unified multi-site spider (ReKrute, Emploi.ma, MarocAnnonces, Bayt)
+│   │       └── linkedin_spider.py # LinkedIn company/job spider
 │   │
 │   ├── scraper_output/           # Scraper output files
 │   │   ├── scraped_contacts_latest.md    # Latest scrape (markdown)
 │   │   └── scraped_contacts_latest.json  # Latest scrape (JSON)
 │   │
 │   └── logs/                     # Runtime logs
-│       ├── sent_tracker.json     # Which emails were sent
-│       └── campaign_YYYYMMDD.log # Daily log files
+│       ├── sent_tracker.json     # Which emails were sent/replied
+│       └── followup_tracker.json # Follow-up history per contact
 │
 ├── app.js                        # Frontend app (contact filter UI)
 ├── index.html                    # Frontend HTML
@@ -315,7 +392,12 @@ filter contact/
 
 ## How the Scraper Works
 
-The scraper uses a **multi-step email discovery** strategy because Moroccan job boards don't expose recruiter emails directly:
+The scraper uses **Scrapling** (not Scrapy) with a multi-session architecture for different anti-bot requirements:
+
+- **FetcherSession** (fast HTTP) — ReKrute, MarocAnnonces, Bayt, company websites
+- **AsyncStealthySession** (stealth browser with CF bypass) — Emploi.ma
+
+**Multi-step email discovery** strategy:
 
 ```
 Step 1: Search job board for keywords
@@ -337,9 +419,11 @@ Step 7: Yield contact with best email found (rh@, recrutement@, contact@)
 
 | Spider | Site | Status | Notes |
 |--------|------|--------|-------|
-| `rekrute_spider` | ReKrute.com | ✅ Working | ~12+ contacts per run. Multi-step: job list → detail → company profile → website → contact page |
-| `maroc_annonces_spider` | MarocAnnonces.com | ✅ Working | ~3 contacts per run. JSON-LD parsing, person name filtering, multi-TLD website guessing |
-| `emploi_ma_spider` | Emploi.ma | ⏳ Placeholder | Cloudflare Turnstile blocks all automation. Parse methods are ready — needs custom CF bypass in `start_requests()` |
+| `job_spider` (rekrute) | ReKrute.com | ✅ Working | ~12+ contacts per run. Multi-step: job list → detail → company profile → website → contact page |
+| `job_spider` (maroc_annonces) | MarocAnnonces.com | ✅ Working | JSON-LD parsing, person name filtering, multi-TLD website guessing |
+| `job_spider` (emploi_ma) | Emploi.ma | ✅ Working | Cloudflare Turnstile bypass via Scrapling's stealth browser session |
+| `job_spider` (bayt) | Bayt.com | ✅ Working | MENA job board, company profile → website → email extraction |
+| `linkedin_spider` | LinkedIn | ✅ Working | LinkedIn company/job scraping with mock test mode |
 
 ### Relevance Scoring
 
@@ -353,13 +437,13 @@ Contacts are automatically scored based on keyword matching:
 
 ### Pipeline Chain
 
-Scraped items pass through 5 pipelines in order:
+Scraped items pass through post-processing in `runner.py` and `post_processing.py`:
 
-1. **ValidationPipeline** — Drop items with missing/invalid email
-2. **RelevanceScoringPipeline** — Score 1-3 stars
-3. **DeduplicationPipeline** — Remove duplicate emails
-4. **MarkdownExportPipeline** — Write `.md` file (same format as `emails_prospection.md`)
-5. **JsonExportPipeline** — Write `.json` for programmatic access
+1. **Validation** — Drop items with missing/invalid email
+2. **Relevance Scoring** — Score 1-3 stars based on keyword matching
+3. **Deduplication** — Remove duplicate emails (in-run + cross-merge)
+4. **Markdown Export** — Write `.md` file (same format as `emails_prospection.md`)
+5. **JSON Export** — Write `.json` for programmatic access
 
 ---
 
@@ -367,17 +451,104 @@ Scraped items pass through 5 pipelines in order:
 
 Email bodies are generated by AI (OpenAI GPT or OpenRouter as fallback):
 
-1. **Few-shot learning** — The AI receives 3 example emails showing the expected style
-2. **Context** — Each prompt includes the company name, position, city, and your profile
-3. **French output** — Emails are generated in professional French
-4. **Fallback chain** — If OpenAI returns a quota error (429), it automatically switches to OpenRouter
+1. **Language detection** — Each contact is auto-classified as French or English (see [Multi-Language Detection](#multi-language-detection))
+2. **Company research** — The company's website is scraped for context: technologies, industry, culture (see [Company Research](#company-research--enrichment))
+3. **Few-shot learning** — The AI receives 3 example emails showing the expected style
+4. **Context-rich prompt** — Each prompt includes the company name, position, city, your profile, detected language, and company research
+5. **Bilingual output** — Emails are generated in French or English based on auto-detected language
+6. **Fallback chain** — If OpenAI returns a quota error (429), it automatically switches to OpenRouter
 
 The generated email follows this structure:
-- Professional greeting
+- Professional greeting (adapted to language)
 - Mention of the specific position/company
 - Your profile summary (Full Stack JS/PHP, YouCode-UM6P)
+- Personalized detail from company research (technologies, industry)
 - Call to action
-- Signature with contact info
+- Signature with contact info + icons
+
+---
+
+## New Features
+
+### Multi-Language Detection
+
+The `LanguageDetector` class (`language_detector.py`) auto-detects French or English per contact using a weighted scoring system:
+
+| Signal | French indicators | English indicators |
+|--------|------------------|--------------------|
+| **TLD** | `.ma`, `.fr`, `.tn`, `.dz` | `.io`, `.ai`, `.us`, `.uk` |
+| **Keywords** | développeur, stage, recrutement | developer, engineer, internship |
+| **Job board** | rekrute.com, emploi.ma | bayt.com, linkedin.com |
+| **Company name** | SARL, SA, Groupe | Ltd, Inc, LLC, Corp |
+| **City** | Casablanca, Rabat, Marrakech | (Moroccan cities lean French) |
+
+- Default fallback: **French** (Moroccan market)
+- Result: `'fr'` or `'en'` — used for email generation, CV selection, and follow-ups
+
+### Company Research & Enrichment
+
+The `CompanyResearcher` class (`company_researcher.py`) auto-scrapes company websites before generating emails:
+
+1. Extracts domain from contact email
+2. Fetches homepage + about/contact pages (`/about`, `/a-propos`, `/qui-sommes-nous`, etc.)
+3. Extracts: description, technologies used (~50 tech keywords), culture keywords, industry/domain
+4. Formats as context block passed to AI prompt → **more personalized emails**
+
+- Uses Python stdlib (`urllib.request`) — no extra dependencies
+- Per-domain cache to avoid duplicate requests
+- Skips generic email providers (gmail, yahoo, etc.)
+- Disable with `--no-research` flag
+
+### CV Auto-Attachment
+
+**Zero config** — just drop your CV PDFs in `email_campaign/cv/`:
+
+```
+email_campaign/cv/
+├── cv_fr.pdf    ← French version
+└── cv_en.pdf    ← English version
+```
+
+- **Auto-detected**: If files exist, they're attached. If not, emails send normally.
+- **Language-matched**: French contacts get `cv_fr.pdf`, English contacts get `cv_en.pdf`
+- **Fallback**: If only one version exists, it's used for all contacts
+- **No flag needed**: No `--attach-cv`, no env vars required
+- Supports any file type (PDF recommended)
+- Can also set paths via `.env`: `CV_PATH_FR=...` and `CV_PATH_EN=...`
+
+### Inbox Reply Detection
+
+The `InboxMonitor` class (`inbox_monitor.py`) connects to Gmail IMAP to detect replies:
+
+```bash
+python -m email_campaign.main --check-replies
+```
+
+- Connects to Gmail IMAP SSL (`imap.gmail.com:993`)
+- Uses same credentials as SMTP (`EMAIL_USERNAME` / `EMAIL_PASSWORD`)
+- Searches inbox for emails from contacts you've sent to
+- Marks contacts as "replied" in the tracker
+- Shows reply stats: `📊 Reply Stats: 5/100 (5.0% reply rate)`
+- `--days N` controls how far back to search (default: 30)
+- Status command (`--status`) also shows reply count and rate
+
+> **Setup:** Enable IMAP in Gmail: Settings → Forwarding and POP/IMAP → Enable IMAP
+
+### Auto Follow-Up System
+
+The `FollowUpGenerator` and `FollowUpTracker` (`followup.py`) handle automated follow-ups:
+
+```bash
+python -m email_campaign.main --follow-up --days 7
+```
+
+- **Eligibility**: Contacts who were sent an email > N days ago, haven't replied, and haven't reached max follow-ups
+- **AI-generated**: Follow-up emails are shorter and reference the initial email
+- **Bilingual**: Uses detected language (FR/EN) for follow-up content
+- **Template fallback**: If AI API is unavailable, uses built-in professional templates
+- **Rate limited**: Same rate limiting as initial sends
+- **Tracked**: Follow-up history stored in `logs/followup_tracker.json`
+- **Configurable**: `--days` (default 5), `--max-followups` (default 2), `--limit`
 
 ---
 
@@ -425,6 +596,10 @@ Each `### N. Company` section is one contact. The parser extracts all fields and
 | `MAX_EMAILS_PER_HOUR` | No | Hourly send limit (default: `15`) |
 | `BATCH_SIZE` | No | Emails per batch (default: `10`) |
 | `BATCH_PAUSE_MINUTES` | No | Pause between batches (default: `15`) |
+| `CV_PATH_FR` | No | Path to French CV (default: auto-detect `cv/cv_fr.pdf`) |
+| `CV_PATH_EN` | No | Path to English CV (default: auto-detect `cv/cv_en.pdf`) |
+| `IMAP_HOST` | No | IMAP server (default: `imap.gmail.com`) |
+| `IMAP_PORT` | No | IMAP port (default: `993`) |
 
 ---
 
@@ -436,7 +611,7 @@ Each `### N. Company` section is one contact. The parser extracts all fields and
 # 1. Scrape ReKrute for web developer jobs
 python -m email_campaign.main --scrape --site rekrute --keywords "développeur web,full stack,react"
 
-# 2. Merge into master file + generate AI emails
+# 2. Merge into master file + generate AI emails (with language detection + company research)
 python -m email_campaign.main --merge-scraped
 
 # 3. Check what we have
@@ -448,18 +623,30 @@ python -m email_campaign.main --preview 5 --min-stars 3
 # 5. Test SMTP first
 python -m email_campaign.main --test
 
-# 6. Send to 3-star contacts
+# 6. Send to 3-star contacts (CV auto-attached if found in cv/)
 python -m email_campaign.main --send --min-stars 3
 
 # 7. Send remaining in batches of 10
 python -m email_campaign.main --send --limit 10
+
+# 8. Check for replies after a few days
+python -m email_campaign.main --check-replies
+
+# 9. Follow up with non-responders
+python -m email_campaign.main --follow-up --days 5
 ```
 
 ### Quick daily routine
 
 ```bash
-# Check progress
+# Check progress + reply stats
 python -m email_campaign.main --status
+
+# Check inbox for new replies
+python -m email_campaign.main --check-replies
+
+# Send follow-ups to non-responders
+python -m email_campaign.main --follow-up
 
 # Scrape for new contacts
 python -m email_campaign.main --scrape
@@ -492,11 +679,13 @@ python -m email_campaign.main --retry-failed --send
 | `SMTP credentials not configured` | Set `EMAIL_USERNAME` and `EMAIL_PASSWORD` in `.env` |
 | `OpenAI 429 RateLimitError` | Your OpenAI account has no credits. Add an `OPENROUTER_API_KEY` as fallback |
 | `Scraper finds 0 contacts` | Normal — many company websites block bots (403). The scraper tries multiple TLDs (.ma, .com, .fr) |
-| `Emploi.ma returns 403` | Cloudflare Turnstile blocks all automated requests. The spider is a placeholder — plug in your own bypass script |
+| `Emploi.ma returns 403` | Make sure Scrapling stealth browser dependencies are installed (`scrapling[all]`) |
 | `DNS lookup failed` | The guessed company URL doesn't exist — this is expected, the scraper tries multiple variants |
-| `Pydantic V1 warning` | Harmless warning on Python 3.14 — can be ignored |
 | `Gmail "Less secure apps"` | Use App Passwords instead — enable 2FA first at [myaccount.google.com](https://myaccount.google.com/apppasswords) |
-| `Duplicate email skipped` | The deduplication pipeline prevents sending the same email twice |
+| `Duplicate email skipped` | The deduplication system prevents sending the same email twice |
+| `IMAP login failed` | Enable IMAP in Gmail: Settings → Forwarding and POP/IMAP → Enable IMAP. Use App Password. |
+| `CV not attached` | Place `cv_fr.pdf` / `cv_en.pdf` in `email_campaign/cv/`. No other config needed. |
+| `Follow-up finds 0 eligible` | Contacts must be sent > N days ago, not replied, and under max follow-ups |
 
 ---
 

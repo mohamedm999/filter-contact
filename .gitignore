@@ -10,6 +10,14 @@ emails_prospection.md
 email_campaign/scraper/sender_profile.txt
 email_campaign/scraper/example_emails.json
 
+# LinkedIn session (contains auth cookies)
+email_campaign/scraper/linkedin_session.json
+
+# CV files (personal documents)
+email_campaign/cv/*.pdf
+email_campaign/cv/*.doc
+email_campaign/cv/*.docx
+
 # ═══════════════════════════════════════════
 #  Python
 # ═══════════════════════════════════════════

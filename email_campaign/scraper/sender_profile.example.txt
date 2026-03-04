@@ -1,23 +1,42 @@
 Nom: Your Name
 Rôle: Your Role / Job Title
-Formation: Your School / University
-Stage: Your Internship Company — description
+Formation:
+  • Degree/Diploma — School/University, City (Year – Year)
+  • Previous Education — School, City (Year – Year)
+
+Expérience professionnelle:
+  Job Title — Company Name
+  • Description of what you did
+  • Technologies used
+  • Methodology (Agile/Scrum, etc.)
 
 Compétences techniques:
-• Frontend : React, JavaScript, TypeScript, HTML5, CSS3
-• Backend : Node.js, Express, PHP, Laravel, REST APIs
-• Bases de données : PostgreSQL, MySQL, MongoDB
-• Testing : Jest, Mocha, Postman
-• DevOps : CI/CD, Docker
-• Outils : Git, GitHub, Figma, Agile/Scrum
+  • Frontend : React, JavaScript, TypeScript, HTML5, CSS3
+  • Backend : Node.js, Express, PHP, Laravel, REST APIs
+  • Bases de données : PostgreSQL, MySQL, MongoDB
+  • DevOps : CI/CD, Docker
+  • Testing : Postman
+  • Outils : Git, GitHub, Figma, Agile/Scrum
 
 Projets clés:
-• Project 1 — Description (Tech Stack)
-• Project 2 — Description (Tech Stack)
+  • Project 1 — Description (Tech Stack)
+  • Project 2 — Description (Tech Stack)
+
+Langues:
+  • Arabic (Native)
+  • French (Level)
+  • English (Level)
+
+Soft Skills: Communication, Problem-solving, Autonomy
 
 Liens:
-🌐 Portfolio : https://your-portfolio.com
-💻 GitHub : https://github.com/your-username
+  🌐 Portfolio : https://your-portfolio.com
+  💻 GitHub : https://github.com/your-username
+  🔗 LinkedIn : https://www.linkedin.com/in/your-profile/
+
+Contact:
+  📞 +212 000 000 000
+  📧 your.email@gmail.com
 🔗 LinkedIn : https://www.linkedin.com/in/your-profile/
 
 Contact:

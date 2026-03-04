@@ -6,7 +6,7 @@
         "city": "Casablanca",
         "relevance": 3,
         "subject": "Candidature — Full Stack Developer | Your Name",
-        "body": "Bonjour,\n\nJe me permets de vous contacter suite à votre offre de Full Stack Developer chez ExampleCorp.\n\nJe m'appelle [Your Name], développeur [Your Role].\n\nMes compétences techniques :\n• Frontend : React, JavaScript, TypeScript\n• Backend : Node.js, Express, PHP, Laravel\n• Bases de données : PostgreSQL, MySQL, MongoDB\n\nCordialement,\n[Your Name] · [Your Phone] · [Your Email]"
+        "body": "Madame, Monsieur,\n\nJe me permets de vous contacter suite à votre offre de Full Stack Developer chez ExampleCorp.\n\nJe m'appelle [Your Name], développeur [Your Role].\n\nMes compétences techniques :\n• Frontend : React, JavaScript, TypeScript\n• Backend : Node.js, Express, PHP, Laravel\n• Bases de données : PostgreSQL, MySQL, MongoDB\n\nJe serais ravi de pouvoir échanger avec vous sur ma candidature.\n\nCordialement,"
     },
     {
         "company": "TechStartup",
@@ -15,6 +15,6 @@
         "city": "Rabat",
         "relevance": 2,
         "subject": "Candidature — Backend Developer | Your Name",
-        "body": "Bonjour,\n\nSuite à votre offre Backend Developer, je vous soumets ma candidature.\n\nCompétences backend :\n• Node.js, Express, PHP, Laravel\n• REST APIs, GraphQL\n• PostgreSQL, MySQL, MongoDB\n\nCordialement,\n[Your Name] · [Your Phone] · [Your Email]"
+        "body": "Madame, Monsieur,\n\nSuite à votre offre Backend Developer, je vous soumets ma candidature.\n\nCompétences backend :\n• Node.js, Express, PHP, Laravel\n• REST APIs, GraphQL\n• PostgreSQL, MySQL, MongoDB\n\nJe reste à votre disposition pour un entretien.\n\nCordialement,"
     }
 ]

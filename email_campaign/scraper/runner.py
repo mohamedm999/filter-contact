@@ -67,14 +67,14 @@ def run_scraper(sites=None, keywords=None, dry_run=False):
 
     Args:
         sites:    List of site names to scrape (None = all).
-                  Options: 'rekrute', 'emploi_ma', 'maroc_annonces', 'bayt'
+                  Options: 'rekrute', 'emploi_ma', 'maroc_annonces', 'bayt', 'linkedin'
         keywords: Comma-separated keywords to search for (None = use defaults).
         dry_run:  If True, just show what would be scraped without running.
 
     Returns:
         Path to the output markdown file, or None.
     """
-    available_sites = ['rekrute', 'emploi_ma', 'maroc_annonces', 'bayt']
+    available_sites = ['rekrute', 'emploi_ma', 'maroc_annonces', 'bayt', 'linkedin']
 
     # Validate sites
     if sites:
@@ -120,30 +120,53 @@ def run_scraper(sites=None, keywords=None, dry_run=False):
     print(f"  Sites: {', '.join(target_sites)}")
     print(f"  This may take several minutes...\n")
 
-    from .spiders.job_spider import JobBoardSpider
     from .post_processing import process_contacts
 
-    # Create and run spider
-    spider = JobBoardSpider(
-        sites=target_sites,
-        keywords=keywords,
-    )
+    raw_contacts = []
 
-    print(f"  🚀 Running spider...\n")
-    result = spider.start()
+    # ── LinkedIn uses its own Playwright-based spider ──
+    scrapling_sites = [s for s in target_sites if s != 'linkedin']
+    has_linkedin = 'linkedin' in target_sites
 
-    # Extract scraped items
-    raw_contacts = list(result.items)
-    stats = result.stats
+    if scrapling_sites:
+        from .spiders.job_spider import JobBoardSpider
 
-    print(f"\n  📊 Spider Stats:")
-    print(f"     Requests: {stats.requests_count}")
-    print(f"     Items scraped: {stats.items_scraped}")
-    print(f"     Items dropped: {stats.items_dropped}")
-    if stats.failed_requests_count:
-        print(f"     Failed requests: {stats.failed_requests_count}")
-    if stats.blocked_requests_count:
-        print(f"     Blocked requests: {stats.blocked_requests_count}")
+        spider = JobBoardSpider(
+            sites=scrapling_sites,
+            keywords=keywords,
+        )
+
+        print(f"  🚀 Running Scrapling spider ({', '.join(scrapling_sites)})...\n")
+        result = spider.start()
+
+        raw_contacts.extend(list(result.items))
+        stats = result.stats
+
+        print(f"\n  📊 Spider Stats:")
+        print(f"     Requests: {stats.requests_count}")
+        print(f"     Items scraped: {stats.items_scraped}")
+        print(f"     Items dropped: {stats.items_dropped}")
+        if stats.failed_requests_count:
+            print(f"     Failed requests: {stats.failed_requests_count}")
+        if stats.blocked_requests_count:
+            print(f"     Blocked requests: {stats.blocked_requests_count}")
+
+    if has_linkedin:
+        import asyncio
+        from .spiders.linkedin_spider import run_linkedin_spider
+
+        print(f"\n  🔗 Running LinkedIn spider...\n")
+
+        # Parse keywords for LinkedIn
+        li_keywords = None
+        if keywords:
+            li_keywords = [k.strip() for k in keywords.split(',')]
+
+        linkedin_contacts = asyncio.run(run_linkedin_spider(
+            keywords=li_keywords,
+        ))
+        raw_contacts.extend(linkedin_contacts)
+        print(f"  📊 LinkedIn: {len(linkedin_contacts)} contacts found")
 
     # Post-process contacts
     processed, md_path, json_path = process_contacts(
@@ -171,6 +194,30 @@ def run_scraper(sites=None, keywords=None, dry_run=False):
     print(f"{'='*60}\n")
 
     return md_path
+
+
+def run_linkedin_test():
+    """
+    Run the LinkedIn pipeline in test mode — no login needed.
+    Uses mock company data with real websites to test email extraction.
+    """
+    import asyncio
+    from .spiders.linkedin_spider import run_linkedin_test as _run_test
+    from .post_processing import process_contacts
+
+    raw_contacts = asyncio.run(_run_test())
+
+    if raw_contacts:
+        processed, md_path, json_path = process_contacts(
+            raw_contacts, output_dir=SCRAPER_OUTPUT_DIR
+        )
+        print(f"\n  📝 Output: {md_path}")
+        print(f"  📊 JSON:   {json_path}")
+        print(f"  📋 Contacts saved: {len(processed)}")
+    else:
+        print("\n  ⚠️  No contacts found during test.")
+
+    return raw_contacts
 
 
 def merge_scraped_contacts(scraped_file, target_file, min_stars=1,

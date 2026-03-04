@@ -15,6 +15,10 @@
     python main.py --limit 10          # Send max 10 emails this session
     python main.py --send --min-stars 2 --limit 20
 
+  CV auto-attachment:
+    Place cv_fr.pdf and/or cv_en.pdf in email_campaign/cv/
+    The system auto-detects and attaches the right version per contact.
+
   Scraper commands:
     python main.py --scrape            # Scrape all job boards
     python main.py --scrape --site rekrute  # Scrape only ReKrute
@@ -24,6 +28,12 @@
     python main.py --merge-scraped --no-generate  # Merge only, no AI
     python main.py --generate-emails   # Generate email bodies via AI
     python main.py --generate-emails --min-stars 3 --limit 10
+
+  Follow-up & monitoring:
+    python main.py --follow-up            # Send follow-ups (5 day default)
+    python main.py --follow-up --days 7   # Follow up after 7 days
+    python main.py --check-replies        # Check inbox for replies (IMAP)
+    python main.py --check-replies --days 30  # Check last 30 days
 
   Environment Variables (centralized in .env at project root):
     Copy .env.example → .env and fill in your values.
@@ -50,8 +60,10 @@ from config import load_config, CampaignConfig
 from parse_contacts import EmailProspectionParser, print_contacts_summary, Contact
 from email_sender import EmailSender, EmailValidator
 from tracker import SentTracker
-from scraper.runner import run_scraper, merge_scraped_contacts
+from scraper.runner import run_scraper, merge_scraped_contacts, run_linkedin_test
 from scraper.email_generator import generate_emails_for_contacts
+from followup import cmd_followup
+from inbox_monitor import InboxMonitor
 
 
 # ═══════════════════════════════════════════════════════════
@@ -135,10 +147,28 @@ def cmd_status(config: CampaignConfig):
     sent_emails = tracker.get_sent_emails()
     failed = tracker.get_failed_emails()
 
+    # Count replies
+    replied = sum(
+        1 for r in tracker.sent.values()
+        if getattr(r, 'status', '') == 'replied'
+    )
+
     remaining = [
         c for c in result.contacts
         if c.has_custom_email and c.email.lower() not in sent_emails
     ]
+
+    # Follow-up stats
+    from pathlib import Path as _Path
+    followup_file = _Path(config.paths.log_dir) / "followup_tracker.json"
+    fu_count = 0
+    if followup_file.exists():
+        import json
+        try:
+            fu_data = json.loads(followup_file.read_text(encoding='utf-8'))
+            fu_count = fu_data.get('total_followups', 0)
+        except Exception:
+            pass
 
     print(f"\n{'='*60}")
     print(f"  📊 CAMPAIGN STATUS")
@@ -149,8 +179,13 @@ def cmd_status(config: CampaignConfig):
     print(f"  🔄 Duplicates removed:         {result.duplicates_removed}")
     print(f"  {'─'*56}")
     print(f"  ✅ Already sent:               {len(sent_emails)}")
+    print(f"  📩 Replied:                    {replied}")
+    print(f"  🔄 Follow-ups sent:            {fu_count}")
     print(f"  ❌ Failed:                     {len(failed)}")
     print(f"  📤 Remaining to send:          {len(remaining)}")
+    if len(sent_emails) > 0:
+        reply_rate = f"{(replied/len(sent_emails)*100):.1f}%"
+        print(f"  📈 Reply rate:                 {reply_rate}")
     print(f"{'='*60}")
 
     if failed:
@@ -291,6 +326,7 @@ Examples:
 Scraper commands:
   python main.py --scrape                Scrape all job boards
   python main.py --scrape --site rekrute Scrape only ReKrute
+  python main.py --scrape --site linkedin  Scrape LinkedIn companies & jobs
   python main.py --dry-scrape            Preview scraper plan
   python main.py --scrape --keywords "react,node.js"
 
@@ -301,11 +337,26 @@ Merge & AI email generation:
   python main.py --generate-emails --min-stars 3  Only for ⭐⭐⭐ contacts
   python main.py --generate-emails --limit 5      Generate max 5 emails
   python main.py --generate-emails --ai-model gpt-4o  Use GPT-4o model
+  python main.py --generate-emails --no-research   Skip company website research
+
+Follow-up & reply monitoring:
+  python main.py --follow-up             Follow up after 5 days (default)
+  python main.py --follow-up --days 7    Follow up after 7 days
+  python main.py --follow-up --max-followups 1   Max 1 follow-up per contact
+  python main.py --check-replies         Check inbox for replies (IMAP)
+  python main.py --check-replies --days 30  Check last 30 days
 
 Before sending, set credentials:
   set EMAIL_USERNAME=your.email@gmail.com
   set EMAIL_PASSWORD=your-16-char-app-password
   set OPENAI_API_KEY=sk-your-key-here     (for AI email generation)
+
+CV auto-attachment (optional):
+  Place your CV files in email_campaign/cv/:
+    cv_fr.pdf    French version
+    cv_en.pdf    English version
+  The system auto-detects language per contact and attaches the right CV.
+  If no CV files found, emails are sent without attachment.
         """
     )
 
@@ -353,7 +404,7 @@ Before sending, set credentials:
     )
     arg_parser.add_argument(
         '--site', type=str, nargs='+',
-        choices=['rekrute', 'emploi_ma', 'maroc_annonces', 'bayt'],
+        choices=['rekrute', 'emploi_ma', 'maroc_annonces', 'bayt', 'linkedin'],
         help='Which job board(s) to scrape (default: all)'
     )
     arg_parser.add_argument(
@@ -379,6 +430,32 @@ Before sending, set credentials:
     arg_parser.add_argument(
         '--ai-model', type=str, default='gpt-4o-mini',
         help='OpenAI model to use for email generation (default: gpt-4o-mini)'
+    )
+    arg_parser.add_argument(
+        '--test-linkedin', action='store_true',
+        help='Test LinkedIn pipeline with mock data (no login needed)'
+    )
+
+    # ── Follow-up & monitoring arguments ──
+    arg_parser.add_argument(
+        '--follow-up', action='store_true',
+        help='Send follow-up emails to contacts who haven\'t replied'
+    )
+    arg_parser.add_argument(
+        '--days', type=int, default=5,
+        help='Days to wait before follow-up (default: 5), or days back for --check-replies'
+    )
+    arg_parser.add_argument(
+        '--max-followups', type=int, default=2,
+        help='Maximum follow-ups per contact (default: 2)'
+    )
+    arg_parser.add_argument(
+        '--check-replies', action='store_true',
+        help='Check inbox (IMAP) for replies to sent emails'
+    )
+    arg_parser.add_argument(
+        '--no-research', action='store_true',
+        help='Skip company website research during email generation'
     )
 
     args = arg_parser.parse_args()
@@ -408,11 +485,38 @@ Before sending, set credentials:
         cmd_test(config)
         return
 
+    # ── Follow-up & monitoring commands (before preview) ──
+    if args.check_replies:
+        monitor = InboxMonitor.from_env()
+        tracker = SentTracker(config.paths.sent_tracker_file, config.paths.failed_file)
+        monitor.check_replies(tracker, days=args.days, verbose=config.verbose)
+        # Show reply stats
+        stats = monitor.get_reply_stats(tracker)
+        print(f"  📊 Reply Stats: {stats['replied']}/{stats['total_sent']} "
+              f"({stats['reply_rate']} reply rate)")
+        monitor.disconnect()
+        return
+
+    if args.follow_up:
+        cmd_followup(
+            config,
+            days=args.days,
+            max_followups=args.max_followups,
+            limit=args.limit,
+            preview=False,
+            min_stars=args.min_stars,
+        )
+        return
+
     if args.preview:
         cmd_preview(config, limit=args.preview, min_stars=args.min_stars)
         return
 
     # ── Scraper commands ──
+    if args.test_linkedin:
+        run_linkedin_test()
+        return
+
     if args.scrape or args.dry_scrape:
         run_scraper(
             sites=args.site,
@@ -454,6 +558,31 @@ Before sending, set credentials:
     else:
         config.dry_run = True
         print("  🔵 DRY RUN MODE — No emails will be sent (use --send to send)\n")
+
+    # ── Auto-detect CV files ──
+    from pathlib import Path as _Path
+    cv_dir = _Path(__file__).parent / 'cv'
+    has_fr = (cv_dir / 'cv_fr.pdf').is_file()
+    has_en = (cv_dir / 'cv_en.pdf').is_file()
+    # Also check env-configured paths
+    if not has_fr and config.email_content.cv_path_fr:
+        has_fr = _Path(config.email_content.cv_path_fr).is_file()
+    if not has_en and config.email_content.cv_path_en:
+        has_en = _Path(config.email_content.cv_path_en).is_file()
+    has_legacy = config.email_content.cv_path and _Path(config.email_content.cv_path).is_file()
+
+    if has_fr or has_en or has_legacy:
+        if has_fr:
+            print(f"  📎 CV 🇫🇷 FR: cv_fr.pdf")
+        if has_en:
+            print(f"  📎 CV 🇬🇧 EN: cv_en.pdf")
+        if has_legacy and not has_fr and not has_en:
+            print(f"  📎 CV: {_Path(config.email_content.cv_path).name}")
+        if has_fr and has_en:
+            print("  🔄 Auto-select: FR/EN based on detected language")
+        print()
+    else:
+        print("  📄 No CV found in email_campaign/cv/ — emails sent without attachment\n")
 
     # Check credentials for live mode
     if not config.dry_run:
