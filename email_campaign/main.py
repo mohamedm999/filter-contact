@@ -568,16 +568,25 @@ CV auto-attachment (optional):
         has_en = _Path(config.email_content.cv_path_en).is_file()
     has_legacy = config.email_content.cv_path and _Path(config.email_content.cv_path).is_file()
 
-    if has_en or has_legacy:
+    has_fr = (cv_dir / 'cv_fr.pdf').is_file()
+    if not has_fr and config.email_content.cv_path_fr:
+        has_fr = _Path(config.email_content.cv_path_fr).is_file()
+
+    if has_fr or has_en or has_legacy:
+        if has_fr:
+            print(f"  📎 CV 🇫🇷 FR: cv_fr.pdf → attached to French emails")
+        else:
+            print(f"  📄 No cv_fr.pdf — French emails sent without CV")
         if has_en:
-            print(f"  📎 CV 🇬🇧 EN: cv_en.pdf (attached to English emails only)")
-        if has_legacy and not has_en:
-            print(f"  📎 CV: {_Path(config.email_content.cv_path).name} (EN emails only)")
-        print("  📄 French emails → sent without CV attachment")
+            print(f"  📎 CV 🇬🇧 EN: cv_en.pdf → attached to English emails")
+        else:
+            print(f"  📄 No cv_en.pdf — English emails sent without CV")
+        if has_legacy and not has_fr and not has_en:
+            print(f"  📎 CV: {_Path(config.email_content.cv_path).name}")
         print()
     else:
-        print("  📄 No cv_en.pdf found — all emails sent without CV attachment")
-        print("     (Place cv_en.pdf in email_campaign/cv/ to attach to EN emails)\n")
+        print("  📄 No CV found in email_campaign/cv/ — emails sent without attachment")
+        print("     (Place cv_fr.pdf and/or cv_en.pdf in email_campaign/cv/)\n")
 
     # Check credentials for live mode
     if not config.dry_run:

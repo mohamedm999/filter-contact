@@ -452,32 +452,31 @@ class EmailSender:
         Resolve which CV file to attach based on detected language.
 
         Rules:
-          - French emails: NEVER attach CV (French market prefers no unsolicited CV)
-          - English emails: attach cv_en.pdf if it exists, otherwise no attachment
-          - No cross-language fallback (don't send FR CV with EN email or vice-versa)
+          - French emails → attach cv_fr.pdf
+          - English emails → attach cv_en.pdf
+          - No cross-language fallback (never send FR CV with EN email or vice-versa)
 
         Auto-discovers CVs from the cv/ folder. No config needed.
         Returns empty string if no CV found (email sends without attachment).
         """
-        # French emails → no CV attachment
-        if lang == 'fr':
-            return ""
-
         cfg = self.config.email_content
 
         # Auto-discover from cv/ folder next to this script
         cv_dir = Path(__file__).parent / 'cv'
+        auto_fr = str(cv_dir / 'cv_fr.pdf')
         auto_en = str(cv_dir / 'cv_en.pdf')
 
-        # English email → only attach English CV
-        en_candidates = [p for p in [cfg.cv_path_en, auto_en] if p]
-        for p in en_candidates:
+        # Pick candidates for the detected language ONLY (no fallback)
+        if lang == 'fr':
+            candidates = [p for p in [cfg.cv_path_fr, auto_fr] if p]
+        else:
+            candidates = [p for p in [cfg.cv_path_en, auto_en] if p]
+
+        for p in candidates:
             if Path(p).is_file():
                 return p
 
-        # Legacy single path (only for EN emails)
-        if cfg.cv_path and Path(cfg.cv_path).is_file():
-            return cfg.cv_path
+        # No matching CV for this language → send without attachment
         return ""
 
     def _build_message(self, contact: Contact, lang: str = 'fr') -> MIMEMultipart:
