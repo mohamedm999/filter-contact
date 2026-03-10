@@ -60,7 +60,7 @@ from config import load_config, CampaignConfig
 from parse_contacts import EmailProspectionParser, print_contacts_summary, Contact
 from email_sender import EmailSender, EmailValidator
 from tracker import SentTracker
-from scraper.runner import run_scraper, merge_scraped_contacts, run_linkedin_test
+from scraper.runner import run_scraper, merge_scraped_contacts, run_linkedin_test, SCRAPER_OUTPUT_DIR
 from scraper.email_generator import generate_emails_for_contacts
 from followup import cmd_followup
 from inbox_monitor import InboxMonitor
@@ -327,8 +327,15 @@ Scraper commands:
   python main.py --scrape                Scrape all job boards
   python main.py --scrape --site rekrute Scrape only ReKrute
   python main.py --scrape --site linkedin  Scrape LinkedIn companies & jobs
+  python main.py --scrape --site apollo  Search Apollo.io for HR/CTO contacts in Morocco
   python main.py --dry-scrape            Preview scraper plan
   python main.py --scrape --keywords "react,node.js"
+
+Apollo enrichment & merge:
+  python main.py --apollo-enrich         Enrich contacts with company website/phone/LinkedIn (free)
+  python main.py --apollo-enrich --limit 20      Enrich max 20 companies
+  python main.py --apollo-merge          Scrape Apollo websites for emails → merge into contacts
+  python main.py --apollo-merge --min-stars 2    Only merge ⭐⭐+ results
 
 Merge & AI email generation:
   python main.py --merge-scraped         Merge + auto-generate emails (AI)
@@ -404,8 +411,9 @@ CV auto-attachment (optional):
     )
     arg_parser.add_argument(
         '--site', type=str, nargs='+',
-        choices=['rekrute', 'emploi_ma', 'maroc_annonces', 'bayt', 'linkedin', 'indeed'],
-        help='Which job board(s) to scrape (default: all)'
+        choices=['rekrute', 'emploi_ma', 'maroc_annonces', 'bayt', 'linkedin', 'indeed', 'apollo'],
+        help='Which job board(s) / source(s) to scrape (default: all). '
+             'apollo = Apollo.io HR & CTO contact search for Morocco'
     )
     arg_parser.add_argument(
         '--keywords', type=str, default=None,
@@ -456,6 +464,18 @@ CV auto-attachment (optional):
     arg_parser.add_argument(
         '--no-research', action='store_true',
         help='Skip company website research during email generation'
+    )
+
+    # ── Apollo enrichment & merge ──
+    arg_parser.add_argument(
+        '--apollo-enrich', action='store_true',
+        help='Use Apollo.io to enrich companies in your contacts file '
+             '(website, phone, LinkedIn, industry — free plan)'
+    )
+    arg_parser.add_argument(
+        '--apollo-merge', action='store_true',
+        help='Scrape Apollo-found websites for email contacts and merge '
+             'them directly into your main contacts file'
     )
 
     args = arg_parser.parse_args()
@@ -548,6 +568,25 @@ CV auto-attachment (optional):
             min_stars=args.min_stars,
             limit=args.limit,
             model=args.ai_model,
+        )
+        return
+
+    if args.apollo_enrich:
+        from scraper.runner import run_apollo_enrich
+
+        run_apollo_enrich(
+            contacts_file=config.paths.contacts_file,
+            min_stars=args.min_stars,
+            limit=args.limit,
+        )
+        return
+
+    if args.apollo_merge:
+        from scraper.runner import run_apollo_merge
+
+        run_apollo_merge(
+            contacts_file=config.paths.contacts_file,
+            min_stars=args.min_stars,
         )
         return
 

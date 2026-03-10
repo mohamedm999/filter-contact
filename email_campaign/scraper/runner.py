@@ -70,20 +70,221 @@ SCRAPER_OUTPUT_DIR = os.path.join(
 )
 
 
+def run_apollo_enrich(contacts_file, min_stars=1, limit=0):
+    """
+    Enrich contacts in emails_prospection.md using Apollo's free-plan API.
+
+    For each contact Apollo returns:
+      • Company website URL (more reliable than guessing)
+      • Phone number (alternative contact channel)
+      • LinkedIn company page
+      • Industry & technology stack (used as AI email generation context)
+
+    Enriched data is saved to a JSON sidecar file next to the contacts file
+    so the AI email generator can use it for personalisation.
+
+    Args:
+        contacts_file: Path to emails_prospection.md
+        min_stars:     Minimum relevance of contacts to enrich (1-3)
+        limit:         Max contacts to enrich this session (0 = no limit)
+
+    Returns:
+        List of enriched contact dicts (with apollo_* keys added)
+    """
+    from email_campaign.parse_contacts import EmailProspectionParser
+    from .spiders.apollo_spider import enrich_contacts_file, APOLLO_API_KEY
+    import json as _json
+    from pathlib import Path as _Path
+
+    if not APOLLO_API_KEY:
+        print("  ❌ APOLLO_API_KEY not set in .env")
+        print("     Add:  APOLLO_API_KEY=your-key-here")
+        return []
+
+    contacts_path = _Path(contacts_file)
+    if not contacts_path.exists():
+        # Try the latest scraped contacts as fallback
+        fallback = _Path(SCRAPER_OUTPUT_DIR) / "scraped_contacts_latest.md"
+        if fallback.exists():
+            print(f"  ⚠️  Main contacts file not found:")
+            print(f"     {contacts_file}")
+            print(f"  ↩️  Falling back to latest scraped contacts:")
+            print(f"     {fallback}\n")
+            contacts_file = str(fallback)
+        else:
+            print(f"  ❌ Contacts file not found: {contacts_file}")
+            print(f"  💡 Save your emails_prospection.md file first (Ctrl+S in editor)")
+            print(f"     Or run --scrape first to create scraped_contacts_latest.md")
+            return []
+
+    parser = EmailProspectionParser(contacts_file)
+    result = parser.parse()
+
+    # Target all contacts (enrich gives company info even if they have an email template)
+    candidates = [c for c in result.contacts if c.relevance >= min_stars]
+
+    if limit > 0:
+        candidates = candidates[:limit]
+
+    print(f"\n{'='*60}")
+    print(f"  🔍 APOLLO COMPANY ENRICHMENT (Free Plan)")
+    print(f"{'='*60}")
+    print(f"  📋 Contacts to enrich: {len(candidates)}")
+    print(f"  ⭐ Minimum relevance:  {min_stars} star(s)")
+    if limit:
+        print(f"  🔢 Limit:              {limit}")
+    print(f"\n  Apollo will look up each company to find:")
+    print(f"    • Company website URL")
+    print(f"    • Phone number")
+    print(f"    • LinkedIn company page")
+    print(f"    • Industry & tech stack (for AI email personalisation)")
+    print()
+
+    # Convert Contact dataclasses → dicts for apollo spider
+    contact_dicts = [
+        {
+            "company":   c.company,
+            "email":     c.email,
+            "position":  c.position,
+            "city":      c.city,
+            "relevance": c.relevance,
+        }
+        for c in candidates
+    ]
+
+    enriched = enrich_contacts_file(contact_dicts, verbose=True)
+
+    # Save enrichment sidecar JSON (used by AI email generator for context)
+    if enriched:
+        sidecar_path = _Path(contacts_file).parent / "apollo_enrichment.json"
+        existing = {}
+        if sidecar_path.exists():
+            try:
+                existing = _json.loads(sidecar_path.read_text(encoding="utf-8"))
+            except Exception:
+                pass
+
+        for c in enriched:
+            email = c.get("email", "").lower()
+            if email:
+                existing[email] = {
+                    "apollo_website":   c.get("apollo_website", ""),
+                    "apollo_phone":     c.get("apollo_phone", ""),
+                    "apollo_linkedin":  c.get("apollo_linkedin", ""),
+                    "apollo_industry":  c.get("apollo_industry", ""),
+                    "apollo_employees": c.get("apollo_employees", ""),
+                    "apollo_tech":      c.get("apollo_tech", ""),
+                    "apollo_desc":      c.get("apollo_desc", ""),
+                }
+
+        sidecar_path.write_text(
+            _json.dumps(existing, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        print(f"  💾 Enrichment saved to: {sidecar_path}")
+        print(f"     (Used automatically by --generate-emails for AI personalisation)")
+
+    return enriched
+
+
+def run_apollo_merge(contacts_file, min_stars=1):
+    """
+    Scrape the company websites found by --apollo-enrich for email addresses,
+    then merge the new contacts directly into the main contacts file.
+
+    Flow:
+      apollo_enrichment.json
+          → scrape each apollo_website for emails
+          → new contact dicts
+          → saved to scraped_contacts_latest.md
+          → merged into emails_prospection.md
+
+    Args:
+        contacts_file: Path to emails_prospection.md (merge target)
+        min_stars:     Minimum relevance for merging (default 1 = all)
+    """
+    from pathlib import Path as _Path
+    from .spiders.apollo_spider import scrape_websites_from_enrichment
+    from .post_processing import process_contacts
+
+    # Apollo enrichment JSON lives next to the contacts file OR in scraper_output
+    candidates = [
+        _Path(contacts_file).parent / "apollo_enrichment.json",
+        _Path(SCRAPER_OUTPUT_DIR) / "apollo_enrichment.json",
+    ]
+    enrichment_path = next((p for p in candidates if p.exists()), None)
+
+    if not enrichment_path:
+        print("  ❌ No apollo_enrichment.json found.")
+        print("     Run first:  python main.py --apollo-enrich")
+        return
+
+    print(f"\n{'='*60}")
+    print(f"  🚀 APOLLO MERGE")
+    print(f"{'='*60}")
+    print(f"  📂 Enrichment file: {enrichment_path}")
+    print(f"  🎯 Target file:     {contacts_file}\n")
+
+    # Step 1 — Scrape websites from enrichment for new emails
+    new_contacts = scrape_websites_from_enrichment(str(enrichment_path))
+
+    if not new_contacts:
+        print("  ⚠️  No new email contacts found from Apollo websites.")
+        print("     The websites may not have public emails, or all were duplicates.")
+        return
+
+    # Step 2 — Run post-processing (validate, score, deduplicate, export)
+    print(f"\n  📊 Post-processing {len(new_contacts)} raw contacts...")
+    processed, md_path, json_path = process_contacts(
+        new_contacts, output_dir=SCRAPER_OUTPUT_DIR
+    )
+
+    if not processed:
+        print("  ⚠️  No valid contacts survived post-processing.")
+        return
+
+    print(f"  📝 Saved to: {md_path}")
+
+    # Step 3 — Merge into main contacts file (if it exists)
+    from pathlib import Path as _P
+    if _P(contacts_file).exists():
+        print(f"\n  📥 Merging into {contacts_file}...")
+        added, skipped_dup, skipped_low = merge_scraped_contacts(
+            scraped_file=md_path,
+            target_file=contacts_file,
+            min_stars=min_stars,
+            auto_generate_emails=False,   # user can run --generate-emails separately
+        )
+        print(f"\n  ✅ Done! {added} new contacts added to your main file.")
+        if added:
+            print(f"\n  Next steps:")
+            print(f"    python main.py --generate-emails   # AI email for new contacts")
+            print(f"    python main.py --preview 5         # Preview emails")
+            print(f"    python main.py --send --min-stars 2")
+    else:
+        print(f"\n  ⚠️  Main contacts file not found: {contacts_file}")
+        print(f"     New contacts saved to scraper output. Run:")
+        print(f"     python main.py --merge-scraped")
+
+
 def run_scraper(sites=None, keywords=None, dry_run=False):
     """
     Run the Scrapling spider from within the email campaign tool.
 
     Args:
         sites:    List of site names to scrape (None = all).
-                  Options: 'rekrute', 'emploi_ma', 'maroc_annonces', 'bayt', 'linkedin', 'indeed'
+                  Options: 'rekrute', 'emploi_ma', 'maroc_annonces', 'bayt',
+                           'linkedin', 'indeed', 'apollo'
         keywords: Comma-separated keywords to search for (None = use defaults).
         dry_run:  If True, just show what would be scraped without running.
 
     Returns:
         Path to the output markdown file, or None.
     """
-    available_sites = ['rekrute', 'emploi_ma', 'maroc_annonces', 'bayt', 'linkedin', 'indeed']
+    available_sites = [
+        'rekrute', 'emploi_ma', 'maroc_annonces', 'bayt',
+        'linkedin', 'indeed', 'apollo',
+    ]
 
     # Validate sites
     if sites:
@@ -103,7 +304,8 @@ def run_scraper(sites=None, keywords=None, dry_run=False):
         print(f"{'='*60}")
         print(f"  Sites to scrape:")
         for site in target_sites:
-            print(f"    • {site}")
+            extra = " (Apollo.io API — HR & CTO contacts)" if site == "apollo" else ""
+            print(f"    • {site}{extra}")
         print(f"\n  Keywords:")
         if keywords:
             for kw in keywords.split(','):
@@ -133,10 +335,11 @@ def run_scraper(sites=None, keywords=None, dry_run=False):
 
     raw_contacts = []
 
-    # ── LinkedIn and Indeed use their own spiders ──
-    scrapling_sites = [s for s in target_sites if s not in ('linkedin', 'indeed')]
+    # ── LinkedIn, Indeed, and Apollo use their own non-Scrapling spiders ──
+    scrapling_sites = [s for s in target_sites if s not in ('linkedin', 'indeed', 'apollo')]
     has_linkedin = 'linkedin' in target_sites
-    has_indeed = 'indeed' in target_sites
+    has_indeed   = 'indeed'   in target_sites
+    has_apollo   = 'apollo'   in target_sites
 
     if scrapling_sites:
         from .spiders.job_spider import JobBoardSpider
@@ -189,6 +392,29 @@ def run_scraper(sites=None, keywords=None, dry_run=False):
         indeed_contacts = run_indeed_spider(keywords=ind_keywords)
         raw_contacts.extend(indeed_contacts)
         print(f"  📊 Indeed: {len(indeed_contacts)} contacts found")
+
+    if has_apollo:
+        from .spiders.apollo_spider import run_apollo_spider
+
+        # Parse page count from keywords arg if user passed e.g. "pages=5"
+        apollo_pages = 3
+        apollo_kwds  = None
+        if keywords:
+            kw_list = [k.strip() for k in keywords.split(',')]
+            page_kw = [k for k in kw_list if k.startswith('pages=')]
+            if page_kw:
+                try:
+                    apollo_pages = int(page_kw[0].split('=')[1])
+                except ValueError:
+                    pass
+                kw_list = [k for k in kw_list if not k.startswith('pages=')]
+            if kw_list:
+                apollo_kwds = kw_list
+
+        print(f"\n  🔭 Running Apollo.io spider...\n")
+        apollo_contacts = run_apollo_spider(pages=apollo_pages, keywords=apollo_kwds)
+        raw_contacts.extend(apollo_contacts)
+        print(f"  📊 Apollo: {len(apollo_contacts)} contacts found")
 
     if has_linkedin:
         import asyncio

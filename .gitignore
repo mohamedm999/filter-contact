@@ -30,6 +30,11 @@ build/
 *.egg
 
 # ═══════════════════════════════════════════
+#  Frontend (job finder UI — local dev only)
+# ═══════════════════════════════════════════
+job_finder/
+
+# ═══════════════════════════════════════════
 #  Scraper Output (contains scraped emails)
 # ═══════════════════════════════════════════
 scraper_output/

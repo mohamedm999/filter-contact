@@ -1,6 +1,6 @@
 # 📧 Email Campaign Tool — Professional Outreach
 
-**Anti-Spam · Rate-Limited · AI-Powered · Scraper-Integrated · Multi-Language · Auto Follow-Up**
+**Anti-Spam · Rate-Limited · AI-Powered · Scraper-Integrated · Multi-Language · Auto Follow-Up · Apollo.io Enriched**
 
 A complete email prospection pipeline: scrape Moroccan & MENA job boards for company contacts, auto-detect language per contact, enrich with company research, generate personalized emails with AI in French or English, auto-attach the right CV version, send with rate limiting, monitor replies via IMAP, and automatically follow up.
 
@@ -17,6 +17,7 @@ A complete email prospection pipeline: scrape Moroccan & MENA job boards for com
 - [CLI Commands Reference](#cli-commands-reference)
   - [Campaign Commands](#campaign-commands)
   - [Scraper Commands](#scraper-commands)
+  - [Apollo.io Enrichment](#apolloio-enrichment)
   - [AI Email Generation](#ai-email-generation)
   - [Merge & Integration](#merge--integration)
   - [Follow-Up & Reply Monitoring](#follow-up--reply-monitoring)
@@ -24,6 +25,7 @@ A complete email prospection pipeline: scrape Moroccan & MENA job boards for com
 - [How the Scraper Works](#how-the-scraper-works)
 - [How AI Email Generation Works](#how-ai-email-generation-works)
 - [New Features](#new-features)
+  - [Apollo.io Integration](#apolloio-integration)
   - [Multi-Language Detection](#multi-language-detection)
   - [Company Research & Enrichment](#company-research--enrichment)
   - [CV Auto-Attachment](#cv-auto-attachment)
@@ -40,6 +42,7 @@ A complete email prospection pipeline: scrape Moroccan & MENA job boards for com
 
 | Feature | Description |
 |---------|-------------|
+| **Apollo.io Integration** | Enrich companies with website, phone, LinkedIn & tech stack (free plan); full HR/CTO contact search (paid plan) |
 | **Web Scraping** | Scrape ReKrute, MarocAnnonces, Emploi.ma (Cloudflare bypass), Bayt.com via Scrapling, Indeed Morocco via JobSpy, and LinkedIn |
 | **Multi-Step Email Discovery** | Job board → company profile → company website → contact/career pages → email extraction |
 | **AI Email Generation** | Auto-generate personalized prospection emails via OpenAI GPT or OpenRouter (Gemini) |
@@ -303,7 +306,34 @@ python -m email_campaign.main [OPTIONS]
 | `--scrape --keywords "react,laravel"` | Override default search keywords |
 | `--dry-scrape` | Preview scraper plan without making requests |
 
-**Supported sites:** `rekrute`, `emploi_ma`, `maroc_annonces`, `bayt`, `linkedin`, `indeed`
+**Supported sites:** `rekrute`, `emploi_ma`, `maroc_annonces`, `bayt`, `linkedin`, `indeed`, `apollo`
+
+### Apollo.io Enrichment
+
+> Requires `APOLLO_API_KEY` in `.env`. Free plan unlocks company enrichment; paid plan (Basic $49/mo) unlocks full HR contact search.
+
+| Command | Description |
+|---------|-------------|
+| `--apollo-enrich` | Enrich contacts with company website, phone, LinkedIn & tech stack (free) |
+| `--apollo-enrich --limit 20` | Enrich max 20 contacts per session |
+| `--apollo-enrich --min-stars 2` | Only enrich ⭐⭐+ contacts |
+| `--apollo-merge` | Scrape Apollo-found websites for email contacts → merge into main file |
+| `--apollo-merge --min-stars 2` | Only merge ⭐⭐+ results |
+| `--scrape --site apollo` | Full HR/CTO contact search across Morocco (paid plan only) |
+
+**Apollo free plan gives you:**
+- 🌐 Company website URL (more accurate than guessing)
+- 📞 Phone number (alternative contact channel)
+- 💼 LinkedIn company page
+- 🏭 Industry + technology stack (richer AI email personalisation)
+
+**Typical Apollo workflow:**
+```bash
+python main.py --apollo-enrich          # Step 1: enrich company data
+python main.py --apollo-merge           # Step 2: scrape websites → new contacts
+python main.py --generate-emails        # Step 3: AI email generation
+python main.py --send --min-stars 2    # Step 4: send
+```
 
 ### AI Email Generation
 
@@ -476,6 +506,45 @@ The generated email follows this structure:
 
 ## New Features
 
+### Apollo.io Integration
+
+The `apollo_spider.py` module connects to the [Apollo.io](https://apollo.io) API to enrich company data and (on paid plans) search for HR & decision-maker contacts directly.
+
+**Free plan — Company Enrichment (`organizations/enrich` + `organizations/search`):**
+
+```bash
+python main.py --apollo-enrich     # Enrich all contacts
+python main.py --apollo-merge      # Scrape found websites → merge new contacts
+```
+
+Saves an `apollo_enrichment.json` sidecar file per contact with:
+
+| Field | Description |
+|-------|-------------|
+| `apollo_website` | Verified company website URL |
+| `apollo_phone` | Company phone number |
+| `apollo_linkedin` | LinkedIn company page |
+| `apollo_industry` | Industry classification |
+| `apollo_employees` | Estimated employee count |
+| `apollo_tech` | Technology stack (top 5) |
+| `apollo_desc` | Short company description for AI context |
+
+**Paid plan — HR Contact Search (`mixed_people/search`):**
+
+```bash
+python main.py --scrape --site apollo   # Search for HR/CTO contacts in Morocco
+```
+
+Searches for: HR Managers, DRH, Responsable RH, Talent Acquisition, CTO, CEO, Fondateur — in Casablanca, Rabat, Marrakech, Tanger, Agadir.
+
+**Setup:**
+```dotenv
+# .env
+APOLLO_API_KEY=your_key_here   # Get from app.apollo.io → Settings → API
+```
+
+---
+
 ### Multi-Language Detection
 
 The `LanguageDetector` class (`language_detector.py`) auto-detects French or English per contact using a weighted scoring system:
@@ -592,6 +661,7 @@ Each `### N. Company` section is one contact. The parser extracts all fields and
 | `SENDER_NAME` | Yes | Your full name |
 | `SENDER_EMAIL` | Yes | Your email (used in From header) |
 | `SENDER_PHONE` | No | Phone number in email signature |
+| `APOLLO_API_KEY` | For Apollo | Apollo.io API key — get at app.apollo.io → Settings → API |
 | `OPENAI_API_KEY` | For AI | OpenAI API key |
 | `OPENAI_MODEL` | No | Model name (default: `gpt-4o-mini`) |
 | `OPENROUTER_API_KEY` | Fallback | OpenRouter API key |
